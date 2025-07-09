@@ -195,3 +195,47 @@ main {
     font-size: 14px;
   }
 }
+/* Hide hamburger by default */
+.hamburger {
+  display: none;
+  font-size: 26px;
+  padding: 10px 15px;
+  border: none;
+  background: var(--accent);
+  color: white;
+  cursor: pointer;
+}
+
+/* Show hamburger on small screens */
+@media (max-width: 768px) {
+  .hamburger {
+    display: block;
+    position: fixed;
+    top: 80px;
+    left: 10px;
+    z-index: 1000;
+    border-radius: 5px;
+  }
+
+  aside {
+    position: fixed;
+    top: 120px;
+    left: -300px;
+    width: 250px;
+    height: calc(100% - 120px);
+    background: var(--bg-light);
+    padding: 1rem;
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    z-index: 999;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+  }
+
+  aside.open {
+    left: 0;
+  }
+
+  .container {
+    flex-direction: column;
+  }
+}

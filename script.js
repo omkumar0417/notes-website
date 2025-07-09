@@ -147,3 +147,8 @@ searchInput.addEventListener("input", handleSearch);
 renderSidebar();
 renderNoteFromHash();
 initDarkMode();
+const hamburgerToggle = document.getElementById("hamburgerToggle");
+
+hamburgerToggle.addEventListener("click", () => {
+  sidebar.classList.toggle("open");
+});
