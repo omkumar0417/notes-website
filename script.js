@@ -24,14 +24,30 @@ function renderSidebar() {
   }
   html += "</ul>";
   sidebar.innerHTML = html;
-}
 
+// Auto-hide sidebar on link click (for mobile)
+if (window.innerWidth <= 768) {
+  const links = sidebar.querySelectorAll("a");
+  links.forEach(link => {
+    link.addEventListener("click", () => {
+      sidebar.classList.remove("open");
+    });
+  });
+}
+}
 function renderNoteFromHash() {
   const hash = decodeURIComponent(location.hash.slice(1));
   if (!hash) {
-    mainContent.innerHTML = `<p>Select a note from the sidebar to view it.</p>`;
-    return;
-  }
+  mainContent.innerHTML = `
+    <div class="welcome-card">
+      <h2>👋 Welcome to Your Notes Library</h2>
+      <p>Start exploring by selecting a subject and topic from the sidebar.</p>
+      <img src="https://raw.githubusercontent.com/omkumar0417/raw-images/main/imagess/image.png" alt="Welcome illustration" class="welcome-image">
+    </div>
+  `;
+  return;
+}
+
 
   const [subject, ...titleParts] = hash.split("/");
   const title = titleParts.join(" ").replaceAll("-", " ");
@@ -109,12 +125,15 @@ function handleSearch() {
 
 
 function initDarkMode() {
-  if (document.body.classList.contains("dark")) return;
+  // Set dark mode by default
+  document.body.classList.add("dark");
 
+  // Toggle on button click
   darkToggle.onclick = () => {
     document.body.classList.toggle("dark");
   };
 }
+
 
 
 async function downloadPDF() {

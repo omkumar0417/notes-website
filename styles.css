@@ -239,3 +239,38 @@ main {
     flex-direction: column;
   }
 }
+@media (max-width: 600px) {
+  body {
+    font-size: 16px;
+  }
+
+  .note-card {
+    padding: 0.8rem;
+  }
+
+  .top-bar input {
+    width: 100%;
+  }
+}
+.welcome-card {
+  text-align: center;
+  padding: 2rem;
+  background: var(--bg-light);
+  border-radius: 15px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+.welcome-card h2 {
+  font-size: 2rem;
+  color: var(--accent);
+}
+.welcome-card p {
+  font-size: 1.1rem;
+  margin: 1rem 0;
+}
+.welcome-image {
+  max-width: 300px;
+  width: 80%;
+  margin-top: 1.5rem;
+  border-radius: 10px;
+  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+}
