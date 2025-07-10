@@ -9,5 +9,12 @@ const notesData = {
   ],
   "DSA": [],
   "dda": [],
-  "Servlet": []
+  "Servlet": [
+    {
+      "title": "Introduction to Servlets",
+      "content": "A Servlet is a Java class used to handle HTTP requests and generate dynamic web content.\nIt runs on a server and extends the capabilities of a web server.\nServlets are platform-independent, secure, efficient, and portable.\nLifecycle of a servlet includes:\nInitialization (init method)\nRequest Handling (service method)\nDestruction (destroy method)\nIt uses javax.servlet and javax.servlet.http packages.",
+      "date": "2025-07-08",
+      "image": ""
+    }
+  ]
 };
