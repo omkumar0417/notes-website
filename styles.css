@@ -18,16 +18,16 @@ body {
   --bg-light: #fce4ec; /* Light pink background */
 }
 
-/* body.dark {
+body.dark {
   --bg: #1e1e1e;
   --text: #f5f5f5;
   --bg-light: #2e2e2e;
-} */
- body.dark {
+}
+ /* body.dark {
   --bg: #1e1e1e;
   --text: #f5f5f5;
-  --bg-light: #3a2b35; /* darker pinkish for dark mode sidebar */
-}
+  --bg-light: #3a2b35; /* darker pinkish for dark mode sidebar 
+}*/
 
 
 header {
