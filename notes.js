@@ -18,5 +18,13 @@ const notesData = {
     }
   ],
   "helli": [],
-  "hii": []
+  "hii": [],
+  "chem": [
+    {
+      "title": "Introduction",
+      "content": "Java is a high-level programming language... 88",
+      "date": "2025-07-08",
+      "image": "https://i.postimg.cc/3RhrPJVG/temp-Image-KGb-Kf-L.avif"
+    }
+  ]
 };
