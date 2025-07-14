@@ -236,5 +236,4 @@ const notesData = {
     "content": "Used to allocate memory at runtime.<br><br>🔧 Functions:<br>- malloc()<br>- calloc()<br>- realloc()<br>- free()<br><br>```c<br>int *p = (int*)malloc(5 * sizeof(int));<br>free(p);<br>```"
   }
 ]
-
 };
