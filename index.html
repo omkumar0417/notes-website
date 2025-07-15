@@ -2,45 +2,59 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Your second brain for code, notes, and snippets" />
   <title>NOTOMIQ | Your Second Brain for Code, Notes & Snippets</title>
+
+  <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Favicon -->
+  <link rel="icon" href="logo.png" type="image/png" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Cedarville+Cursive&display=swap" rel="stylesheet" />
+
+  <!-- Font Awesome (if needed) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- jsPDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
 </head>
-<body>
-  <header>
-    <div class="navbar">
-      <div class="menu-icon">
-        <i class="fa-solid fa-bars" id="hamburgerToggle"></i>
-      </div>
-      <div class="logo">
-        <img src="logo.png" height="70" alt="NOTOMIQ Logo">
-      </div>
-      <div class="text">
-        <h1 class="title">NOTOMIQ</h1>
-        <p class="title">Your second brain for code.</p>
-      </div>
-      <div class="search-container">
-        <input type="text" id="searchInput" placeholder="Search notes..." />
-        <span class="search-icon" onclick="toggleSearch()">
-          <i class="fa-solid fa-magnifying-glass"></i>
-        </span>
-        <div id="searchResults" class="search-results"></div>
-      </div>
-      <button id="darkModeToggle">🌙</button>
+
+<body class="dark">
+  <!-- Navigation Bar -->
+  <header class="navbar">
+    <div class="menu-icon">
+      <i class="fas fa-bars" id="hamburgerToggle"></i>
+    </div>
+    <div class="logo">
+      <!-- <button id="menuToggle" class="menu-icon">☰</button> -->
+<!-- <img src="logo.png" alt="NOTOMIQ Logo" /> -->
+
+      <img src="logo.png" alt="NOTOMIQ Logo" height="50" />
+    </div>
+    <div class="text">
+      <h1 class="title">NOTOMIQ</h1>
+      <p class="subtitle">Your second brain for code.</p>
+    </div>
+    <div class="search-container">
+      <input type="text" id="searchInput" placeholder="Search notes..." />
+      <span class="search-icon" id="searchIcon">
+        <i class="fas fa-magnifying-glass"></i>
+      </span>
+      <!-- <button id="darkModeToggle" title="Toggle dark mode">🌙</button> -->
+      <div id="searchResults" class="search-results"></div>
     </div>
   </header>
 
+  <!-- Sidebar & Main Content -->
   <div class="container">
     <aside id="sidebar"></aside>
-    <main id="mainContent">
-      <div id="noteContent">
-        <p>No notes yet. Add notes from the admin panel.</p>
-      </div>
-    </main>
+    <main id="noteContent"></main>
   </div>
 
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+  <!-- JS Files -->
   <script src="notes.js"></script>
   <script src="script.js"></script>
 </body>

@@ -1,138 +1,38 @@
-// ----- SEARCH BAR TOGGLE & ICON SWITCH -----
-function toggleSearch() {
-  const searchBar = document.getElementById("searchBar");
-  if (searchBar.style.display === "none" || searchBar.style.display === "") {
-    searchBar.style.display = "inline-block";
-    searchBar.focus();
-  } else {
-    searchBar.style.display = "none";
-  }
-}
+// ====== DARK MODE TOGGLE ======
+// const darkToggle = document.getElementById("darkModeToggle");
+// document.body.classList.add("dark");
+// darkToggle.textContent = "🌙";
 
-const searchIcon = document.querySelector(".search-icon");
-const searchBar = document.querySelector("#searchBar");
-const titles = document.querySelectorAll(".title");
+// darkToggle.addEventListener("click", () => {
+//   document.body.classList.toggle("dark");
+//   darkToggle.textContent = document.body.classList.contains("dark") ? "🌙" : "☀️";
+// });
 
-if (searchIcon) {
-  let icon = searchIcon.querySelector("i");
-  let current_Icon = "search";
 
-  searchIcon.addEventListener("click", () => {
-    // Toggle width and visibility
-    searchBar.classList.toggle("expanded");
+// ====== SEARCH FUNCTIONALITY ======
+const searchInput = document.getElementById("searchInput");
+const resultsBox = document.getElementById("searchResults");
 
-    // Toggle title visibility (e.g., "NOTOMIQ")
-    titles.forEach(title => title.classList.toggle("hidden"));
-
-    // Toggle icon
-    if (current_Icon === "search") {
-      current_Icon = "cross";
-      icon.className = "fa-solid fa-xmark";
-    } else {
-      current_Icon = "search";
-      icon.className = "fa-solid fa-magnifying-glass";
-    }
-  });
-}
-
-// ----- SIDEBAR RENDER -----
-const sidebar = document.getElementById("sidebar");
-const mainContent = document.getElementById("noteContent");
-const searchInput = document.getElementById("searchInput") || document.getElementById("searchBar");
-const darkToggle = document.getElementById("darkModeToggle");
-
-function renderSidebar() {
-  if (!notesData || Object.keys(notesData).length === 0) {
-    sidebar.innerHTML = "<p>No subjects found. Please add notes.</p>";
-    return;
-  }
-
-  let html = "<h2>Subjects</h2><ul>";
-  for (let subject in notesData) {
-    html += `<li><strong>${subject}</strong><ul>`;
-    notesData[subject].forEach(note => {
-      html += `<li><a href="#${subject}/${note.title.replaceAll(" ", "-")}">${note.title}</a></li>`;
-    });
-    html += "</ul></li>";
-  }
-  html += "</ul>";
-  sidebar.innerHTML = html;
-
-  // Auto-close sidebar on mobile
-  if (window.innerWidth <= 768) {
-    const links = sidebar.querySelectorAll("a");
-    links.forEach(link => {
-      link.addEventListener("click", () => {
-        sidebar.classList.remove("open");
-      });
-    });
-  }
-}
-
-// ----- NOTE RENDER -----
-function renderNoteFromHash() {
-  const hash = decodeURIComponent(location.hash.slice(1));
-  if (!hash) {
-    mainContent.innerHTML = `
-      <div class="welcome-card">
-        <h2>👋 Welcome to Your Notes Library</h2>
-        <p>Start exploring by selecting a subject and topic from the sidebar.</p>
-        <img src="https://raw.githubusercontent.com/omkumar0417/raw-images/main/imagess/image.png" alt="Welcome illustration" class="welcome-image">
-      </div>
-    `;
-    return;
-  }
-
-  const [subject, ...titleParts] = hash.split("/");
-  const title = titleParts.join(" ").replaceAll("-", " ");
-  const notes = notesData[subject];
-  const note = notes?.find(n => n.title.toLowerCase() === title.toLowerCase());
-
-  if (note) {
-    mainContent.innerHTML = `
-      <div class="note-card">
-        <h2>${note.title}</h2>
-        <p><i>${note.date}</i></p>
-        <div>${note.content}</div>
-        ${note.image ? `<img src="${note.image}" class="note-image" alt="Note Image">` : ''}
-      </div>
-      <div class="toolbar">
-        <button onclick="downloadPDF()">⬇️ Download as PDF</button>
-      </div>
-    `;
-  } else {
-    mainContent.innerHTML = "<p>Note not found!</p>";
-  }
-}
-
-// ----- SEARCH HANDLING -----
-function handleSearch() {
-  const query = searchInput.value.toLowerCase();
-  const resultsBox = document.getElementById("searchResults");
-
+searchInput.addEventListener("input", () => {
+  const query = searchInput.value.trim().toLowerCase();
   if (!query) {
-    resultsBox.style.display = "none";
     resultsBox.innerHTML = "";
+    resultsBox.style.display = "none";
     return;
   }
 
   let results = [];
 
   for (let subject in notesData) {
-    if (subject.toLowerCase().includes(query)) {
-      results.push({
-        label: `📁 ${subject}`,
-        href: `#${subject}`
-      });
-    }
     for (let note of notesData[subject]) {
       if (
         note.title.toLowerCase().includes(query) ||
-        note.tags?.some(tag => tag.toLowerCase().includes(query)) ||
-        note.content?.toLowerCase().includes(query)
+        subject.toLowerCase().includes(query) ||
+        (note.tags && note.tags.some(tag => tag.toLowerCase().includes(query))) ||
+        (note.content && note.content.toLowerCase().includes(query))
       ) {
         results.push({
-          label: `📝 ${note.title} (${subject})`,
+          label: `📘 ${note.title} (${subject})`,
           href: `#${subject}/${note.title.replaceAll(" ", "-")}`
         });
       }
@@ -151,17 +51,231 @@ function handleSearch() {
       resultsBox.style.display = "none";
     };
   });
+});
+
+// ====== SIDEBAR RENDERING ======
+const sidebar = document.getElementById("sidebar");
+const mainContent = document.getElementById("noteContent");
+
+// function renderSidebar() {
+//   if (!notesData || Object.keys(notesData).length === 0) {
+//     sidebar.innerHTML = "<p>No subjects found. Please add notes.</p>";
+//     return;
+//   }
+
+//   let html = "<h2>Subjects</h2><ul>";
+//   for (let subject in notesData) {
+//     html += `<li><strong>${subject}</strong><ul>`;
+//     notesData[subject].forEach(note => {
+//       html += `<li><a href="#${subject}/${note.title.replaceAll(" ", "-")}">${note.title}</a></li>`;
+//     });
+//     html += "</ul></li>";
+//   }
+//   html += "</ul>";
+//   sidebar.innerHTML = html;
+
+//   // For mobile: auto-close on link click
+//   if (window.innerWidth <= 768) {
+//     const links = sidebar.querySelectorAll("a");
+//     links.forEach(link => {
+//       link.addEventListener("click", () => {
+//         sidebar.classList.remove("active");
+
+//       });
+//     });
+//   }
+// }
+// function renderSidebar() {
+//   const sidebar = document.getElementById("sidebar");
+//   sidebar.innerHTML = `<h2>Subjects</h2><ul class="subject-list"></ul>`;
+//   const subjectList = sidebar.querySelector(".subject-list");
+
+//   Object.keys(notesData).forEach(subject => {
+//     const subjectLi = document.createElement("li");
+
+//     const subjectToggle = document.createElement("div");
+//     subjectToggle.className = "subject-toggle";
+//     subjectToggle.textContent = subject;
+
+//     const topicUl = document.createElement("ul");
+//     topicUl.className = "topics";
+
+//     notesData[subject].forEach((note, index) => {
+//       const topicLi = document.createElement("li");
+//       const topicA = document.createElement("a");
+//      topicA.href = `#${subject}/${note.title.replaceAll(" ", "-")}`;
+// topicA.addEventListener("click", () => {
+//   if (window.innerWidth <= 768) {
+//     document.getElementById("sidebar").classList.remove("active");
+//   }
+// });
+
+//       topicA.textContent = note.title;
+//       topicLi.appendChild(topicA);
+//       topicUl.appendChild(topicLi);
+//     });
+
+//     // Append subject and collapsible topic list
+//     subjectLi.appendChild(subjectToggle);
+//     subjectLi.appendChild(topicUl);
+//     subjectList.appendChild(subjectLi);
+//   });
+
+//   // Toggle dropdown
+//   document.querySelectorAll('.subject-toggle').forEach(toggle => {
+//   toggle.addEventListener('click', () => {
+//     const topics = toggle.nextElementSibling;
+
+//     // ✅ Close all other topic lists
+//     document.querySelectorAll('.topics').forEach(list => {
+//       if (list !== topics) list.style.display = 'none';
+//     });
+
+//     // ✅ Toggle only clicked subject's topic list
+//     topics.style.display = (topics.style.display === 'block') ? 'none' : 'block';
+//   });
+// });
+// function renderSidebar() {
+//   const sidebar = document.getElementById("sidebar");
+//   sidebar.innerHTML = `<h2>Subjects</h2><ul class="subject-list"></ul>`;
+//   const subjectList = sidebar.querySelector(".subject-list");
+
+//   Object.keys(notesData).forEach(subject => {
+//     const subjectLi = document.createElement("li");
+
+//     const subjectToggle = document.createElement("div");
+//     subjectToggle.className = "subject-toggle";
+//     subjectToggle.textContent = subject;
+
+//     // Append subject only (not topics yet)
+//     subjectLi.appendChild(subjectToggle);
+//     subjectList.appendChild(subjectLi);
+
+//     // ✅ Add click listener to load topics on click
+//     subjectToggle.addEventListener("click", () => {
+//       // Remove existing topic lists
+//       document.querySelectorAll(".topics").forEach(el => el.remove());
+
+//       // Build topic list
+//       const topicUl = document.createElement("ul");
+//       topicUl.className = "topics";
+
+//       notesData[subject].forEach((note, index) => {
+//         const topicLi = document.createElement("li");
+//         const topicA = document.createElement("a");
+//         topicA.href = `#${subject}/${note.title.replaceAll(" ", "-")}`;
+//         topicA.textContent = note.title;
+//         topicLi.appendChild(topicA);
+//         topicUl.appendChild(topicLi);
+//       });
+
+//       // ✅ Add topics below current subject
+//       subjectLi.appendChild(topicUl);
+
+//       // ✅ Auto-close sidebar in mobile view
+//       if (window.innerWidth <= 768) {
+//         document.getElementById("sidebar").classList.remove("active");
+//       }
+//     });
+//   });
+// }
+function renderSidebar() {
+  const sidebar = document.getElementById("sidebar");
+  sidebar.innerHTML = `<h2>Subjects</h2><ul class="subject-list"></ul>`;
+  const subjectList = sidebar.querySelector(".subject-list");
+
+  Object.keys(notesData).forEach(subject => {
+    const subjectLi = document.createElement("li");
+
+    const subjectToggle = document.createElement("div");
+    subjectToggle.className = "subject-toggle";
+    subjectToggle.textContent = subject;
+
+    const topicUl = document.createElement("ul");
+    topicUl.className = "topics";
+
+    notesData[subject].forEach((note, index) => {
+      const topicLi = document.createElement("li");
+      const topicA = document.createElement("a");
+      topicA.href = `#${subject}/${note.title.replaceAll(" ", "-")}`;
+      topicA.textContent = note.title;
+
+      // ✅ Close sidebar when a topic is clicked (mobile only)
+      topicA.addEventListener("click", () => {
+        if (window.innerWidth <= 768) {
+          document.getElementById("sidebar").classList.remove("active");
+        }
+      });
+
+      topicLi.appendChild(topicA);
+      topicUl.appendChild(topicLi);
+    });
+
+    subjectLi.appendChild(subjectToggle);
+    subjectLi.appendChild(topicUl);
+    subjectList.appendChild(subjectLi);
+  });
+
+  // ✅ Toggle topic dropdowns and close others (accordion behavior)
+  document.querySelectorAll('.subject-toggle').forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const topics = toggle.nextElementSibling;
+
+      // Accordion behavior: close others
+      document.querySelectorAll('.topics').forEach(list => {
+        if (list !== topics) list.style.display = 'none';
+      });
+
+      // Toggle current
+      topics.style.display = (topics.style.display === 'block') ? 'none' : 'block';
+    });
+  });
 }
 
-// ----- DARK MODE TOGGLE -----
-function initDarkMode() {
-  document.body.classList.add("dark");
-  darkToggle.onclick = () => {
-    document.body.classList.toggle("dark");
-  };
-}
 
-// ----- PDF DOWNLOAD -----
+
+// ====== LOAD NOTE FROM URL HASH ======
+function renderNoteFromHash() {
+  const hash = decodeURIComponent(location.hash.slice(1));
+  if (!hash) {
+    mainContent.innerHTML = `
+      <div class="welcome-card">
+        <h2>👋 Welcome to Your Notes Library</h2>
+        <p>Start exploring by selecting a subject and topic from the sidebar.</p>
+        <img src="https://raw.githubusercontent.com/omkumar0417/raw-images/main/imagess/image.png" alt="Welcome" class="welcome-image">
+      </div>
+    `;
+    return;
+  }
+
+  const [subject, ...titleParts] = hash.split("/");
+  const title = titleParts.join(" ").replaceAll("-", " ");
+  const notes = notesData[subject];
+  const note = notes?.find(n => n.title.toLowerCase() === title.toLowerCase());
+
+  if (note) {
+    mainContent.innerHTML = `
+      <div class="note-card">
+        <h2>${note.title}</h2>
+        <p><i>${note.date || ""}</i></p>
+        <div>${note.content}</div>
+        ${note.image ? `<img src="${note.image}" class="note-image" alt="Note Image">` : ''}
+      </div>
+      <div class="toolbar">
+        <button onclick="downloadPDF()">⬇️ Download as PDF</button>
+      </div>
+    `;
+  } else {
+    mainContent.innerHTML = "<p>Note not found!</p>";
+  }
+}
+// // Mobile Sidebar Toggle
+// const menuBtn = document.getElementById("menuToggle");
+// menuBtn?.addEventListener("click", () => {
+//   document.getElementById("sidebar").classList.toggle("active");
+// });
+
+// ====== PDF DOWNLOAD ======
 async function downloadPDF() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
@@ -185,16 +299,47 @@ async function downloadPDF() {
   doc.text(lines, 10, 20);
   doc.save(`${note.title.replaceAll(" ", "_")}.pdf`);
 }
+// ====== MOBILE MENU TOGGLE (unified) ======
+const hamburger = document.getElementById("hamburgerToggle");
+if (hamburger) {
+  hamburger.addEventListener("click", () => {
+    document.getElementById("sidebar").classList.toggle("active");
+  });
+}
+// ====== MOBILE SEARCH ICON TOGGLE (Improved) ======
+const searchIcon = document.getElementById("searchIcon");
 
-// ----- INIT -----
-window.addEventListener("hashchange", renderNoteFromHash);
-searchInput.addEventListener("input", handleSearch);
+searchIcon.addEventListener("click", () => {
+  if (window.innerWidth <= 768) {
+    searchInput.classList.toggle("active");
 
+    if (searchInput.classList.contains("active")) {
+      searchInput.focus();
+    } else {
+      searchInput.value = "";
+      resultsBox.innerHTML = "";
+      resultsBox.style.display = "none";
+    }
+  }
+});
+
+// Auto-close mobile search input after selecting a result
+Array.from(resultsBox.children).forEach(child => {
+  child.onclick = () => {
+    location.hash = child.dataset.href;
+    resultsBox.style.display = "none";
+
+    // Close input field (mobile only)
+    if (window.innerWidth <= 768) {
+      searchInput.classList.remove("active");
+      searchInput.value = "";
+    }
+  };
+});
+
+
+
+// ====== INIT ======
 renderSidebar();
 renderNoteFromHash();
-initDarkMode();
-
-const hamburgerToggle = document.getElementById("hamburgerToggle");
-hamburgerToggle?.addEventListener("click", () => {
-  sidebar.classList.toggle("open");
-});
+window.addEventListener("hashchange", renderNoteFromHash);
