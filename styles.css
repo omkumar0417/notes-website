@@ -130,13 +130,24 @@ body {
 }
 
 /* Sidebar */
-#sidebar {
+/* #sidebar {
   width: 260px;
   background: var(--bg-light);
   padding: 1rem;
   overflow-y: auto;
   transition: all 0.3s ease;
+} */
+ #sidebar {
+  width: 260px;
+  background: rgba(31, 31, 31, 0.4); /* translucent dark glass */
+  backdrop-filter: blur(12px);       /* frosted glass effect */
+  -webkit-backdrop-filter: blur(12px);
+  padding: 1rem;
+  overflow-y: auto;
+  transition: all 0.3s ease;
+  border-right: 1px solid rgba(255, 255, 255, 0.1); /* subtle border */
 }
+
 
 #sidebar h2 {
   font-size: 1.2rem;
@@ -204,6 +215,28 @@ body {
   color: #ffffff;
 }
 
+/* Close button inside sidebar (mobile only) */
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.close-btn {
+  font-size: 24px;
+  font-weight: bold;
+  cursor: pointer;
+  color: var(--text);
+  padding: 5px 10px;
+  display: none; /* hidden by default */
+}
+
+/* Show close button on mobile */
+@media (max-width: 768px) {
+  .close-btn {
+    display: block;
+  }
+}
 
 
 /* Main Content */
@@ -362,7 +395,7 @@ main {
     flex-direction: column;
   }
 
-  #sidebar {
+  /* #sidebar {
     width: 100%;
     position: fixed;
     top: 0;
@@ -373,7 +406,22 @@ main {
     transition: left 0.3s ease;
     z-index: 2000;
     padding-top: 60px;
-  }
+  } */
+   #sidebar {
+  width: 100%;
+  position: fixed;
+  top: 0;
+  left: -100%;
+  height: 100vh;
+  background: rgba(31, 31, 31, 0.4);  /* glass look */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  overflow-y: auto;
+  transition: left 0.3s ease;
+  z-index: 2000;
+  padding-top: 60px;
+}
+
 
   #sidebar.active {
     left: 0;

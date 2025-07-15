@@ -181,7 +181,14 @@ const mainContent = document.getElementById("noteContent");
 // }
 function renderSidebar() {
   const sidebar = document.getElementById("sidebar");
-  sidebar.innerHTML = `<h2>Subjects</h2><ul class="subject-list"></ul>`;
+  sidebar.innerHTML = `
+    <div class="sidebar-header">
+      <h2>Subjects</h2>
+      <span id="closeSidebar" class="close-btn">×</span>
+    </div>
+    <ul class="subject-list"></ul>
+  `;
+
   const subjectList = sidebar.querySelector(".subject-list");
 
   Object.keys(notesData).forEach(subject => {
@@ -200,7 +207,7 @@ function renderSidebar() {
       topicA.href = `#${subject}/${note.title.replaceAll(" ", "-")}`;
       topicA.textContent = note.title;
 
-      // ✅ Close sidebar when a topic is clicked (mobile only)
+      // ✅ Close sidebar on topic click (mobile only)
       topicA.addEventListener("click", () => {
         if (window.innerWidth <= 768) {
           document.getElementById("sidebar").classList.remove("active");
@@ -216,21 +223,26 @@ function renderSidebar() {
     subjectList.appendChild(subjectLi);
   });
 
-  // ✅ Toggle topic dropdowns and close others (accordion behavior)
+  // ✅ Accordion behavior
   document.querySelectorAll('.subject-toggle').forEach(toggle => {
     toggle.addEventListener('click', () => {
       const topics = toggle.nextElementSibling;
-
-      // Accordion behavior: close others
       document.querySelectorAll('.topics').forEach(list => {
         if (list !== topics) list.style.display = 'none';
       });
-
-      // Toggle current
       topics.style.display = (topics.style.display === 'block') ? 'none' : 'block';
     });
   });
+
+  // ✅ Only once, after sidebar DOM is ready
+  const closeBtn = document.getElementById("closeSidebar");
+  if (closeBtn) {
+    closeBtn.addEventListener("click", () => {
+      document.getElementById("sidebar").classList.remove("active");
+    });
+  }
 }
+
 
 
 
