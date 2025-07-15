@@ -252,10 +252,12 @@ function renderNoteFromHash() {
   if (!hash) {
     mainContent.innerHTML = `
       <div class="welcome-card">
-        <h2>👋 Welcome to Your Notes Library</h2>
-        <p>Start exploring by selecting a subject and topic from the sidebar.</p>
-        <img src="https://raw.githubusercontent.com/omkumar0417/raw-images/main/imagess/image.png" alt="Welcome" class="welcome-image">
-      </div>
+  <h2>🎓 Welcome to <span style="color:#a259ff;">NOTOMIQ</span> — Your Personal Code Companion</h2>
+  <p>Dive into structured, simplified notes across every tech subject.<br>
+     Select a subject from the sidebar to start your journey!</p>
+  <img src="https://raw.githubusercontent.com/omkumar0417/raw-images/main/photo.jpeg" alt="Welcome" class="welcome-image">
+</div>
+
     `;
     return;
   }
