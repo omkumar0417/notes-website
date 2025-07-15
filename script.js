@@ -1,11 +1,44 @@
-// let notesData = typeof window.notesData !== "undefined" ? window.notesData : {};
-// const notesData = window.notesData;
+// ----- SEARCH BAR TOGGLE & ICON SWITCH -----
+function toggleSearch() {
+  const searchBar = document.getElementById("searchBar");
+  if (searchBar.style.display === "none" || searchBar.style.display === "") {
+    searchBar.style.display = "inline-block";
+    searchBar.focus();
+  } else {
+    searchBar.style.display = "none";
+  }
+}
 
+const searchIcon = document.querySelector(".search-icon");
+const searchBar = document.querySelector("#searchBar");
+const titles = document.querySelectorAll(".title");
 
+if (searchIcon) {
+  let icon = searchIcon.querySelector("i");
+  let current_Icon = "search";
 
+  searchIcon.addEventListener("click", () => {
+    // Toggle width and visibility
+    searchBar.classList.toggle("expanded");
+
+    // Toggle title visibility (e.g., "NOTOMIQ")
+    titles.forEach(title => title.classList.toggle("hidden"));
+
+    // Toggle icon
+    if (current_Icon === "search") {
+      current_Icon = "cross";
+      icon.className = "fa-solid fa-xmark";
+    } else {
+      current_Icon = "search";
+      icon.className = "fa-solid fa-magnifying-glass";
+    }
+  });
+}
+
+// ----- SIDEBAR RENDER -----
 const sidebar = document.getElementById("sidebar");
 const mainContent = document.getElementById("noteContent");
-const searchInput = document.getElementById("searchInput");
+const searchInput = document.getElementById("searchInput") || document.getElementById("searchBar");
 const darkToggle = document.getElementById("darkModeToggle");
 
 function renderSidebar() {
@@ -25,29 +58,30 @@ function renderSidebar() {
   html += "</ul>";
   sidebar.innerHTML = html;
 
-// Auto-hide sidebar on link click (for mobile)
-if (window.innerWidth <= 768) {
-  const links = sidebar.querySelectorAll("a");
-  links.forEach(link => {
-    link.addEventListener("click", () => {
-      sidebar.classList.remove("open");
+  // Auto-close sidebar on mobile
+  if (window.innerWidth <= 768) {
+    const links = sidebar.querySelectorAll("a");
+    links.forEach(link => {
+      link.addEventListener("click", () => {
+        sidebar.classList.remove("open");
+      });
     });
-  });
+  }
 }
-}
+
+// ----- NOTE RENDER -----
 function renderNoteFromHash() {
   const hash = decodeURIComponent(location.hash.slice(1));
   if (!hash) {
-  mainContent.innerHTML = `
-    <div class="welcome-card">
-      <h2>👋 Welcome to Your Notes Library</h2>
-      <p>Start exploring by selecting a subject and topic from the sidebar.</p>
-      <img src="https://raw.githubusercontent.com/omkumar0417/raw-images/main/imagess/image.png" alt="Welcome illustration" class="welcome-image">
-    </div>
-  `;
-  return;
-}
-
+    mainContent.innerHTML = `
+      <div class="welcome-card">
+        <h2>👋 Welcome to Your Notes Library</h2>
+        <p>Start exploring by selecting a subject and topic from the sidebar.</p>
+        <img src="https://raw.githubusercontent.com/omkumar0417/raw-images/main/imagess/image.png" alt="Welcome illustration" class="welcome-image">
+      </div>
+    `;
+    return;
+  }
 
   const [subject, ...titleParts] = hash.split("/");
   const title = titleParts.join(" ").replaceAll("-", " ");
@@ -56,22 +90,22 @@ function renderNoteFromHash() {
 
   if (note) {
     mainContent.innerHTML = `
-  <div class="note-card">
-    <h2>${note.title}</h2>
-    <p><i>${note.date}</i></p>
-    <div>${note.content}</div>
-    ${note.image ? `<img src="${note.image}" class="note-image" alt="Note Image">` : ''}
-  </div>
-  <div class="toolbar">
-    <button onclick="downloadPDF()">⬇️ Download as PDF</button>
-  </div>
-`;
-
+      <div class="note-card">
+        <h2>${note.title}</h2>
+        <p><i>${note.date}</i></p>
+        <div>${note.content}</div>
+        ${note.image ? `<img src="${note.image}" class="note-image" alt="Note Image">` : ''}
+      </div>
+      <div class="toolbar">
+        <button onclick="downloadPDF()">⬇️ Download as PDF</button>
+      </div>
+    `;
   } else {
     mainContent.innerHTML = "<p>Note not found!</p>";
   }
 }
 
+// ----- SEARCH HANDLING -----
 function handleSearch() {
   const query = searchInput.value.toLowerCase();
   const resultsBox = document.getElementById("searchResults");
@@ -105,15 +139,12 @@ function handleSearch() {
     }
   }
 
-  if (results.length === 0) {
-    resultsBox.innerHTML = `<div>No matches found</div>`;
-  } else {
-    resultsBox.innerHTML = results.map(res => `<div data-href="${res.href}">${res.label}</div>`).join('');
-  }
+  resultsBox.innerHTML = results.length === 0
+    ? `<div>No matches found</div>`
+    : results.map(res => `<div data-href="${res.href}">${res.label}</div>`).join('');
 
   resultsBox.style.display = "block";
 
-  // Add click behavior
   Array.from(resultsBox.children).forEach(child => {
     child.onclick = () => {
       location.hash = child.dataset.href;
@@ -122,20 +153,15 @@ function handleSearch() {
   });
 }
 
-
-
+// ----- DARK MODE TOGGLE -----
 function initDarkMode() {
-  // Set dark mode by default
   document.body.classList.add("dark");
-
-  // Toggle on button click
   darkToggle.onclick = () => {
     document.body.classList.toggle("dark");
   };
 }
 
-
-
+// ----- PDF DOWNLOAD -----
 async function downloadPDF() {
   const { jsPDF } = window.jspdf;
   const doc = new jsPDF();
@@ -160,14 +186,15 @@ async function downloadPDF() {
   doc.save(`${note.title.replaceAll(" ", "_")}.pdf`);
 }
 
+// ----- INIT -----
 window.addEventListener("hashchange", renderNoteFromHash);
 searchInput.addEventListener("input", handleSearch);
 
 renderSidebar();
 renderNoteFromHash();
 initDarkMode();
-const hamburgerToggle = document.getElementById("hamburgerToggle");
 
-hamburgerToggle.addEventListener("click", () => {
+const hamburgerToggle = document.getElementById("hamburgerToggle");
+hamburgerToggle?.addEventListener("click", () => {
   sidebar.classList.toggle("open");
 });
