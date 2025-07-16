@@ -30,6 +30,31 @@
 
   gtag('config', 'G-R86QJK3VH1');
 </script>
+<script>
+// Track after 30 seconds
+setTimeout(() => {
+  gtag('event', 'time_on_site_30s', {
+    event_category: 'Engagement',
+    event_label: 'User stayed at least 30 seconds'
+  });
+}, 30 * 1000);
+
+// Track after 1 minute
+setTimeout(() => {
+  gtag('event', 'time_on_site_1min', {
+    event_category: 'Engagement',
+    event_label: 'User stayed at least 1 minute'
+  });
+}, 60 * 1000);
+
+// Track after 3 minutes
+setTimeout(() => {
+  gtag('event', 'time_on_site_3min', {
+    event_category: 'Engagement',
+    event_label: 'User stayed at least 3 minutes'
+  });
+}, 180 * 1000);
+</script>
 </head>
 
 <body class="dark">

@@ -1,3 +1,38 @@
+let currentTopicLabel = null;
+let topicStartTime = null;
+
+function trackTopicView(subject, topic) {
+  // If switching topics, track exit
+  if (currentTopicLabel && currentTopicLabel !== `${subject} > ${topic}`) {
+    trackTopicExit(); 
+  }
+
+  // Track this new topic click
+  gtag('event', 'topic_clicked', {
+    event_category: 'Notes',
+    event_label: `${subject} > ${topic}`
+  });
+
+  currentTopicLabel = `${subject} > ${topic}`;
+  topicStartTime = Date.now();
+}
+
+function trackTopicExit() {
+  if (!currentTopicLabel || !topicStartTime) return;
+
+  const durationSeconds = Math.round((Date.now() - topicStartTime) / 1000);
+  gtag('event', 'topic_time_spent', {
+    event_category: 'Notes',
+    event_label: currentTopicLabel,
+    value: durationSeconds
+  });
+
+  currentTopicLabel = null;
+  topicStartTime = null;
+}
+
+
+
 // ====== SEARCH FUNCTIONALITY ======
 const searchInput = document.getElementById("searchInput");
 const resultsBox = document.getElementById("searchResults");
@@ -75,11 +110,21 @@ function renderSidebar() {
       topicA.textContent = note.title;
 
       // ✅ Close sidebar on topic click (mobile only)
+      // topicA.addEventListener("click", () => {
+      //   if (window.innerWidth <= 768) {
+      //     document.getElementById("sidebar").classList.remove("active");
+      //   }
+      // });
       topicA.addEventListener("click", () => {
-        if (window.innerWidth <= 768) {
-          document.getElementById("sidebar").classList.remove("active");
-        }
-      });
+  if (window.innerWidth <= 768) {
+    document.getElementById("sidebar").classList.remove("active");
+  }
+
+  // Extract subject & topic and track
+  const topic = note.title;
+  trackTopicView(subject, topic);
+});
+
 
       topicLi.appendChild(topicA);
       topicUl.appendChild(topicLi);
@@ -126,6 +171,8 @@ function renderNoteFromHash() {
 </div>
 
     `;
+   
+
     return;
   }
 
@@ -135,6 +182,7 @@ function renderNoteFromHash() {
   const note = notes?.find(n => n.title.toLowerCase() === title.toLowerCase());
 
   if (note) {
+    trackTopicView(subject, title);
     mainContent.innerHTML = `
       <div class="note-card">
         <h2>${note.title}</h2>
@@ -163,6 +211,10 @@ async function downloadPDF() {
   const [subject, ...titleParts] = hash.split("/");
   const title = titleParts.join(" ").replaceAll("-", " ");
   const note = notesData[subject]?.find(n => n.title.toLowerCase() === title.toLowerCase());
+gtag('event', 'note_downloaded', {
+  event_category: 'Notes',
+  event_label: `${subject} > ${note.title}`
+});
 
   if (!note) {
     alert("Note not found.");
@@ -201,12 +253,30 @@ searchIcon.addEventListener("click", () => {
 });
 
 // Auto-close mobile search input after selecting a result
+// Array.from(resultsBox.children).forEach(child => {
+//   child.onclick = () => {
+//     location.hash = child.dataset.href;
+//     resultsBox.style.display = "none";
+
+//     // Close input field (mobile only)
+//     if (window.innerWidth <= 768) {
+//       searchInput.classList.remove("active");
+//       searchInput.value = "";
+//     }
+//   };
+// });
 Array.from(resultsBox.children).forEach(child => {
   child.onclick = () => {
-    location.hash = child.dataset.href;
+    const href = child.dataset.href;
+    const parts = href.slice(1).split("/");  // Remove "#" and split
+    const subject = parts[0];
+    const title = parts.slice(1).join(" ").replaceAll("-", " ");
+
+    trackTopicView(subject, title);  // ✅ Track search click
+
+    location.hash = href;
     resultsBox.style.display = "none";
 
-    // Close input field (mobile only)
     if (window.innerWidth <= 768) {
       searchInput.classList.remove("active");
       searchInput.value = "";
@@ -216,8 +286,12 @@ Array.from(resultsBox.children).forEach(child => {
 
 
 
+
 // ====== INIT ======
 renderSidebar();
 renderNoteFromHash();
 window.addEventListener("hashchange", renderNoteFromHash);
+window.addEventListener("beforeunload", () => {
+  trackTopicExit(); // Log last topic before exit
+});
 

@@ -20,6 +20,7 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+
   // Initial Greeting with Avatar
   chatBody.innerHTML += `
     <div class="chat-message bot">
@@ -32,12 +33,25 @@ document.addEventListener("DOMContentLoaded", () => {
   // Close and Reopen Button Logic
   closeBtn.addEventListener("click", () => {
     chatbot.style.display = "none";
+    
     reopenBtn.style.display = "block";
+    gtag('event', 'chatbot_closed', {
+  event_category: 'Chatbot',
+  event_label: 'User closed chatbot'
+});
+
   });
 
   reopenBtn.addEventListener("click", () => {
     chatbot.style.display = "block";
+   
+
     reopenBtn.style.display = "none";
+    gtag('event', 'chatbot_opened', {
+  event_category: 'Chatbot',
+  event_label: 'User opened chatbot'
+});
+
     setTimeout(() => {
       chatInput.focus();
       chatBody.scrollTo({ top: chatBody.scrollHeight, behavior: "smooth" });
@@ -56,6 +70,12 @@ document.addEventListener("DOMContentLoaded", () => {
         <img src="user-avatar.png" class="chat-avatar" alt="User Avatar" />
         <div class="chat-text"><b>You:</b> ${safeUserMsg}</div>
       </div>`;
+      gtag('event', 'chat_message_sent', {
+  event_category: 'Chatbot',
+  event_label: safeUserMsg,
+  value: safeUserMsg.length
+});
+
     chatInput.value = "";
     chatBody.scrollTop = chatBody.scrollHeight;
 
@@ -92,6 +112,10 @@ Now answer: ${safeMsg}`
 
       const data = await res.json();
       const aiReply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "⚠️ No reply from NOTOMIQ-BOT.";
+      gtag('event', 'chatbot_reply_generated', {
+  event_category: 'Chatbot',
+  event_label: aiReply.substring(0, 100)  // Track first 100 chars
+});
 
       typingEl.remove();
 
@@ -144,6 +168,12 @@ Now answer: ${safeMsg}`
     if (inList) html += "</ul>";
     return html;
   }
+});
+window.addEventListener("beforeunload", () => {
+  gtag('event', 'page_exit', {
+    event_category: 'Engagement',
+    event_label: 'User left the site'
+  });
 });
 
 
