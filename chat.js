@@ -45,7 +45,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const safeMsg = userMsg.length < 4
     ? `${userMsg}, how can I help you with coding or this website?`
     : userMsg;
-    
+
     try {
       const res = await fetch("/api/gemini", {
         method: "POST",
@@ -66,7 +66,7 @@ Now answer: ${userMsg}`
       });
 
       const data = await res.json();
-      const aiReply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "⚠️ No reply from Gemini.";
+      const aiReply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "⚠️ No reply from NOTOMIQ-BOT.";
 
       typingEl.remove();
       chatBody.innerHTML += `<div class="chat-message bot"><b>NOTOMIQ:</b><br>${formatMarkdownToHTML(aiReply)}</div>`;
