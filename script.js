@@ -1,14 +1,3 @@
-// ====== DARK MODE TOGGLE ======
-// const darkToggle = document.getElementById("darkModeToggle");
-// document.body.classList.add("dark");
-// darkToggle.textContent = "🌙";
-
-// darkToggle.addEventListener("click", () => {
-//   document.body.classList.toggle("dark");
-//   darkToggle.textContent = document.body.classList.contains("dark") ? "🌙" : "☀️";
-// });
-
-
 // ====== SEARCH FUNCTIONALITY ======
 const searchInput = document.getElementById("searchInput");
 const resultsBox = document.getElementById("searchResults");
@@ -57,128 +46,6 @@ searchInput.addEventListener("input", () => {
 const sidebar = document.getElementById("sidebar");
 const mainContent = document.getElementById("noteContent");
 
-// function renderSidebar() {
-//   if (!notesData || Object.keys(notesData).length === 0) {
-//     sidebar.innerHTML = "<p>No subjects found. Please add notes.</p>";
-//     return;
-//   }
-
-//   let html = "<h2>Subjects</h2><ul>";
-//   for (let subject in notesData) {
-//     html += `<li><strong>${subject}</strong><ul>`;
-//     notesData[subject].forEach(note => {
-//       html += `<li><a href="#${subject}/${note.title.replaceAll(" ", "-")}">${note.title}</a></li>`;
-//     });
-//     html += "</ul></li>";
-//   }
-//   html += "</ul>";
-//   sidebar.innerHTML = html;
-
-//   // For mobile: auto-close on link click
-//   if (window.innerWidth <= 768) {
-//     const links = sidebar.querySelectorAll("a");
-//     links.forEach(link => {
-//       link.addEventListener("click", () => {
-//         sidebar.classList.remove("active");
-
-//       });
-//     });
-//   }
-// }
-// function renderSidebar() {
-//   const sidebar = document.getElementById("sidebar");
-//   sidebar.innerHTML = `<h2>Subjects</h2><ul class="subject-list"></ul>`;
-//   const subjectList = sidebar.querySelector(".subject-list");
-
-//   Object.keys(notesData).forEach(subject => {
-//     const subjectLi = document.createElement("li");
-
-//     const subjectToggle = document.createElement("div");
-//     subjectToggle.className = "subject-toggle";
-//     subjectToggle.textContent = subject;
-
-//     const topicUl = document.createElement("ul");
-//     topicUl.className = "topics";
-
-//     notesData[subject].forEach((note, index) => {
-//       const topicLi = document.createElement("li");
-//       const topicA = document.createElement("a");
-//      topicA.href = `#${subject}/${note.title.replaceAll(" ", "-")}`;
-// topicA.addEventListener("click", () => {
-//   if (window.innerWidth <= 768) {
-//     document.getElementById("sidebar").classList.remove("active");
-//   }
-// });
-
-//       topicA.textContent = note.title;
-//       topicLi.appendChild(topicA);
-//       topicUl.appendChild(topicLi);
-//     });
-
-//     // Append subject and collapsible topic list
-//     subjectLi.appendChild(subjectToggle);
-//     subjectLi.appendChild(topicUl);
-//     subjectList.appendChild(subjectLi);
-//   });
-
-//   // Toggle dropdown
-//   document.querySelectorAll('.subject-toggle').forEach(toggle => {
-//   toggle.addEventListener('click', () => {
-//     const topics = toggle.nextElementSibling;
-
-//     // ✅ Close all other topic lists
-//     document.querySelectorAll('.topics').forEach(list => {
-//       if (list !== topics) list.style.display = 'none';
-//     });
-
-//     // ✅ Toggle only clicked subject's topic list
-//     topics.style.display = (topics.style.display === 'block') ? 'none' : 'block';
-//   });
-// });
-// function renderSidebar() {
-//   const sidebar = document.getElementById("sidebar");
-//   sidebar.innerHTML = `<h2>Subjects</h2><ul class="subject-list"></ul>`;
-//   const subjectList = sidebar.querySelector(".subject-list");
-
-//   Object.keys(notesData).forEach(subject => {
-//     const subjectLi = document.createElement("li");
-
-//     const subjectToggle = document.createElement("div");
-//     subjectToggle.className = "subject-toggle";
-//     subjectToggle.textContent = subject;
-
-//     // Append subject only (not topics yet)
-//     subjectLi.appendChild(subjectToggle);
-//     subjectList.appendChild(subjectLi);
-
-//     // ✅ Add click listener to load topics on click
-//     subjectToggle.addEventListener("click", () => {
-//       // Remove existing topic lists
-//       document.querySelectorAll(".topics").forEach(el => el.remove());
-
-//       // Build topic list
-//       const topicUl = document.createElement("ul");
-//       topicUl.className = "topics";
-
-//       notesData[subject].forEach((note, index) => {
-//         const topicLi = document.createElement("li");
-//         const topicA = document.createElement("a");
-//         topicA.href = `#${subject}/${note.title.replaceAll(" ", "-")}`;
-//         topicA.textContent = note.title;
-//         topicLi.appendChild(topicA);
-//         topicUl.appendChild(topicLi);
-//       });
-
-//       // ✅ Add topics below current subject
-//       subjectLi.appendChild(topicUl);
-
-//       // ✅ Auto-close sidebar in mobile view
-//       if (window.innerWidth <= 768) {
-//         document.getElementById("sidebar").classList.remove("active");
-//       }
-//     });
-//   });
-// }
 function renderSidebar() {
   const sidebar = document.getElementById("sidebar");
   sidebar.innerHTML = `
@@ -283,11 +150,7 @@ function renderNoteFromHash() {
     mainContent.innerHTML = "<p>Note not found!</p>";
   }
 }
-// // Mobile Sidebar Toggle
-// const menuBtn = document.getElementById("menuToggle");
-// menuBtn?.addEventListener("click", () => {
-//   document.getElementById("sidebar").classList.toggle("active");
-// });
+
 
 // ====== PDF DOWNLOAD ======
 async function downloadPDF() {
@@ -357,3 +220,28 @@ Array.from(resultsBox.children).forEach(child => {
 renderSidebar();
 renderNoteFromHash();
 window.addEventListener("hashchange", renderNoteFromHash);
+const chatInput = document.getElementById("chatInput");
+const chatBody = document.getElementById("chatBody");
+
+chatInput.addEventListener("keydown", async (e) => {
+  if (e.key === "Enter") {
+    const userMsg = chatInput.value.trim();
+    if (!userMsg) return;
+    chatBody.innerHTML += `<p><b>You:</b> ${userMsg}</p>`;
+    chatInput.value = "";
+
+    try {
+      const res = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ message: userMsg }),
+      });
+
+      const data = await res.json();
+      chatBody.innerHTML += `<p><b>NOTOMIQ:</b> ${data.reply}</p>`;
+      chatBody.scrollTop = chatBody.scrollHeight;
+    } catch (err) {
+      chatBody.innerHTML += `<p><b>Error:</b> Something went wrong.</p>`;
+    }
+  }
+});
