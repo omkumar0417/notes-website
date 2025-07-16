@@ -38,6 +38,9 @@ document.addEventListener("DOMContentLoaded", () => {
   sendBtn.addEventListener("click", sendMessage);
 });
 
+
+
+
 // document.addEventListener("DOMContentLoaded", () => {
 //   const chatInput = document.getElementById("chatInput");
 //   const chatBody = document.getElementById("chatBody");
