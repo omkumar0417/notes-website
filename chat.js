@@ -42,6 +42,10 @@ document.addEventListener("DOMContentLoaded", () => {
     chatBody.appendChild(typingEl);
     chatBody.scrollTop = chatBody.scrollHeight;
 
+    const safeMsg = userMsg.length < 4
+    ? `${userMsg}, how can I help you with coding or this website?`
+    : userMsg;
+    
     try {
       const res = await fetch("/api/gemini", {
         method: "POST",
