@@ -21,10 +21,33 @@ function trackTopicExit() {
   if (!currentTopicLabel || !topicStartTime) return;
 
   const durationSeconds = Math.round((Date.now() - topicStartTime) / 1000);
+
+  // Define bucket based on duration
+  let bucketLabel = "";
+  if (durationSeconds < 1800) bucketLabel = "< 30 minutes";
+  else if (durationSeconds < 3600) bucketLabel = "30 minutes - 1 hour";
+  else if (durationSeconds < 7200) bucketLabel = "1 - 2 hours";
+  else if (durationSeconds < 10800) bucketLabel = "2 - 3 hours";
+  else if (durationSeconds < 14400) bucketLabel = "3 - 4 hours";
+  else if (durationSeconds < 18000) bucketLabel = "4 - 5 hours";
+  else if (durationSeconds < 21600) bucketLabel = "5 - 6 hours";
+  else if (durationSeconds < 25200) bucketLabel = "6 - 7 hours";
+  else if (durationSeconds < 28800) bucketLabel = "7 - 8 hours";
+  else if (durationSeconds < 32400) bucketLabel = "8 - 9 hours";
+  else if (durationSeconds < 36000) bucketLabel = "9 - 10 hours";
+  else bucketLabel = "> 10 hours";
+
+  // Track raw seconds (optional, for analytics)
   gtag('event', 'topic_time_spent', {
     event_category: 'Notes',
     event_label: currentTopicLabel,
     value: durationSeconds
+  });
+
+  // Track bucketed range
+  gtag('event', 'topic_time_bucket', {
+    event_category: 'Notes',
+    event_label: `${currentTopicLabel} (${bucketLabel})`
   });
 
   currentTopicLabel = null;
