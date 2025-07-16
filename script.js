@@ -223,37 +223,43 @@ window.addEventListener("hashchange", renderNoteFromHash);
 
 
 
+document.addEventListener("DOMContentLoaded", () => {
+  const chatInput = document.getElementById("chatInput");
+  const chatBody = document.getElementById("chatBody");
 
-const chatInput = document.getElementById("chatInput");
-const chatBody = document.getElementById("chatBody");
-
-chatInput.addEventListener("keydown", async (e) => {
-  if (e.key === "Enter") {
-    const userMsg = chatInput.value.trim();
-    if (!userMsg) return;
-    chatBody.innerHTML += `<p><b>You:</b> ${userMsg}</p>`;
-    chatInput.value = "";
-
-    try {
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: userMsg }),
-      });
-
-      const data = await res.json();
-
-      if (data.error) {
-        chatBody.innerHTML += `<p><b>NOTOMIQ:</b> ❌ ${data.error}</p>`;
-      } else if (data.reply) {
-        chatBody.innerHTML += `<p><b>NOTOMIQ:</b> ${data.reply}</p>`;
-      } else {
-        chatBody.innerHTML += `<p><b>NOTOMIQ:</b> ⚠️ Unexpected response</p>`;
-      }
-
-      chatBody.scrollTop = chatBody.scrollHeight;
-    } catch (err) {
-      chatBody.innerHTML += `<p><b>Error:</b> 🔥 Network error or CORS issue</p>`;
-    }
+  if (!chatInput || !chatBody) {
+    console.error("Chat input or body not found in DOM.");
+    return;
   }
+
+  chatInput.addEventListener("keydown", async (e) => {
+    if (e.key === "Enter") {
+      const userMsg = chatInput.value.trim();
+      if (!userMsg) return;
+      chatBody.innerHTML += `<p><b>You:</b> ${userMsg}</p>`;
+      chatInput.value = "";
+
+      try {
+        const res = await fetch("/api/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message: userMsg }),
+        });
+
+        const data = await res.json();
+
+        if (data.error) {
+          chatBody.innerHTML += `<p><b>NOTOMIQ:</b> ❌ ${data.error}</p>`;
+        } else if (data.reply) {
+          chatBody.innerHTML += `<p><b>NOTOMIQ:</b> ${data.reply}</p>`;
+        } else {
+          chatBody.innerHTML += `<p><b>NOTOMIQ:</b> ⚠️ Unexpected response</p>`;
+        }
+
+        chatBody.scrollTop = chatBody.scrollHeight;
+      } catch (err) {
+        chatBody.innerHTML += `<p><b>Error:</b> 🔥 Network error or CORS issue</p>`;
+      }
+    }
+  });
 });
