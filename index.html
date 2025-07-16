@@ -55,6 +55,80 @@ setTimeout(() => {
   });
 }, 180 * 1000);
 </script>
+<script>
+// 5 minutes
+setTimeout(() => {
+  gtag('event', 'time_on_site_5min', {
+    event_category: 'Engagement',
+    event_label: 'User stayed at least 5 minutes'
+  });
+}, 5 * 60 * 1000);
+
+// 10 minutes
+setTimeout(() => {
+  gtag('event', 'time_on_site_10min', {
+    event_category: 'Engagement',
+    event_label: 'User stayed at least 10 minutes'
+  });
+}, 10 * 60 * 1000);
+
+// 15 minutes
+setTimeout(() => {
+  gtag('event', 'time_on_site_15min', {
+    event_category: 'Engagement',
+    event_label: 'User stayed at least 15 minutes'
+  });
+}, 15 * 60 * 1000);
+
+// 20 minutes
+setTimeout(() => {
+  gtag('event', 'time_on_site_20min', {
+    event_category: 'Engagement',
+    event_label: 'User stayed at least 20 minutes'
+  });
+}, 20 * 60 * 1000);
+
+// 30 minutes
+setTimeout(() => {
+  gtag('event', 'time_on_site_30min', {
+    event_category: 'Engagement',
+    event_label: 'User stayed at least 30 minutes'
+  });
+}, 30 * 60 * 1000);
+
+// 45 minutes
+setTimeout(() => {
+  gtag('event', 'time_on_site_45min', {
+    event_category: 'Engagement',
+    event_label: 'User stayed at least 45 minutes'
+  });
+}, 45 * 60 * 1000);
+
+// 1 hour
+setTimeout(() => {
+  gtag('event', 'time_on_site_1hr', {
+    event_category: 'Engagement',
+    event_label: 'User stayed at least 1 hour'
+  });
+}, 60 * 60 * 1000);
+
+// 90 minutes
+setTimeout(() => {
+  gtag('event', 'time_on_site_1.5hr', {
+    event_category: 'Engagement',
+    event_label: 'User stayed at least 1.5 hours'
+  });
+}, 90 * 60 * 1000);
+
+// 2 hours
+setTimeout(() => {
+  gtag('event', 'time_on_site_2hr', {
+    event_category: 'Engagement',
+    event_label: 'User stayed at least 2 hours'
+  });
+}, 120 * 60 * 1000);
+</script>
+
 <script defer src="/_vercel/insights/script.js"></script>
 </head>
 
