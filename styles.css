@@ -470,6 +470,39 @@ main {
   color: white;
   outline: none;
 }
+/* Chat input container and send button */
+.chatbox-input-container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px;
+  border-top: 1px solid #444;
+  background-color: #1a1a1a;
+}
+
+.chatbox-input-container input {
+  flex: 1;
+  padding: 10px;
+  border: none;
+  background: #2c2c2c;
+  color: white;
+  border-radius: 5px;
+  font-size: 14px;
+  outline: none;
+}
+
+#chatSendBtn {
+  background: #4a90e2;
+  border: none;
+  padding: 10px 14px;
+  color: white;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+#chatSendBtn i {
+  font-size: 16px;
+}
 
 /* Chat messages */
 .chat-message {
