@@ -56,10 +56,15 @@
   <!-- JS Files -->
   <script src="notes.js"></script>
   <script src="script.js"></script>
+  <script src="api/chat.js"></script> 
   <div class="chatbot-container" id="chatbot">
   <div class="chat-header">🤖 Ask NOTOMIQ</div>
   <div class="chat-body" id="chatBody"></div>
   <input type="text" id="chatInput" placeholder="Ask me anything..." />
 </div>
+<script>
+  window.GEMINI_API_KEY = "{{GEMINI_API_KEY}}"; // Will be replaced by Vercel env var
+</script>
+
 </body>
 </html>
