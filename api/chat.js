@@ -4,41 +4,25 @@ export default async function handler(req, res) {
   }
 
   const { message } = req.body;
-  const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+  const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
-  if (!OPENAI_API_KEY) {
-    return res.status(500).json({ error: "API key not configured." });
+  if (!GEMINI_API_KEY) {
+    return res.status(500).json({ error: "Gemini API key is missing." });
   }
 
   try {
-    const openaiRes = await fetch("https://api.openai.com/v1/chat/completions", {
+    const geminiRes = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-pro:generateContent?key=${GEMINI_API_KEY}`, {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: `Bearer ${OPENAI_API_KEY}`,
-      },
+      headers: { "Content-Type": "application/json" },
       body: JSON.stringify({
-        model: "gpt-3.5-turbo",
-        messages: [{ role: "user", content: message }],
-        temperature: 0.7,
-      }),
+        contents: [{ parts: [{ text: message }] }]
+      })
     });
 
-    const data = await openaiRes.json();
-
-    // Log the full response for debugging
-    console.log("🔎 OpenAI full response:", JSON.stringify(data, null, 2));
-
-    if (!data.choices || !data.choices[0] || !data.choices[0].message) {
-      return res.status(500).json({
-        error: `No valid reply. Reason: ${data.error?.message || "Empty choices"}`,
-      });
-    }
-
-    const reply = data.choices[0].message.content;
+    const data = await geminiRes.json();
+    const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "⚠️ No reply from Gemini.";
     res.status(200).json({ reply });
   } catch (err) {
-    console.error("🔥 OpenAI request failed:", err);
-    res.status(500).json({ error: "OpenAI request failed" });
+    res.status(500).json({ error: "❌ Gemini request failed." });
   }
 }
