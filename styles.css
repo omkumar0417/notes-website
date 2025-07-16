@@ -534,12 +534,12 @@ main {
   font-family: monospace;
   word-wrap: break-word;
 }
-.chat-message.bot {
+/* .chat-message.bot {
   background-color: #3d3d5c;
   color: #f1f1f1;
   align-self: flex-start;
   margin-right: auto;
-}
+} */
 .chat-message.bot li {
   margin-left: 20px;
   list-style-type: disc;
