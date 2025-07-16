@@ -13,9 +13,17 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   reopenBtn.addEventListener("click", () => {
-    chatbot.style.display = "block";
-    reopenBtn.style.display = "none";
-  });
+  chatbot.style.display = "block";
+  reopenBtn.style.display = "none";
+
+  // 🔥 Focus the chat input and scroll to bottom
+  setTimeout(() => {
+    chatInput.focus();
+    chatBody.scrollTop = chatBody.scrollHeight;
+  }, 100);
+});
+
+
 
   // Initial greeting
   chatBody.innerHTML += `<div class="chat-message bot"><b>NOTOMIQ:</b> 👋 Hello! I'm your AI assistant. Ask me anything about coding or this website.</div>`;
