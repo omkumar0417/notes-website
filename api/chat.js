@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatInput = document.getElementById("chatInput");
   const chatBody = document.getElementById("chatBody");
   const sendBtn = document.getElementById("chatSendBtn");
-  const GEMINI_API_KEY = window.GEMINI_API_KEY || "YOUR_DEFAULT_KEY";
+  const GEMINI_API_KEY = window.GEMINI_API_KEY; // Use environment variable in production
 
   async function sendMessage() {
     const userMsg = chatInput.value.trim();
