@@ -58,14 +58,23 @@
   <script src="script.js"></script>
   <script src="api/chat.js"></script> 
   <div class="chatbot-container" id="chatbot">
+  <div class="chatbot-container" id="chatbot">
+  <div class="chat-header">NOTOMIQ AI Assistant</div> <!-- Optional -->
+  <div class="chat-body" id="chatBody"></div> <!-- This was missing -->
   <div class="chatbox-input-container">
-  <input type="text" id="chatInput" placeholder="Ask me anything..." />
-  <button id="chatSendBtn" title="Send"><i class="fas fa-paper-plane"></i></button>
+    <input type="text" id="chatInput" placeholder="Ask me anything..." />
+    <button id="chatSendBtn" title="Send"><i class="fas fa-paper-plane"></i></button>
+  </div>
 </div>
+
 
 <script>
   window.GEMINI_API_KEY = "{{GEMINI_API_KEY}}"; // Will be replaced by Vercel env var
 </script>
+<noscript>
+  <style>.chatbot-container { display: none; }</style>
+  <p style="color: white; text-align: center;">JavaScript is required to use the chatbot.</p>
+</noscript>
 
 </body>
 </html>
