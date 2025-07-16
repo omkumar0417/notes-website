@@ -544,3 +544,21 @@ main {
   cursor: pointer;
   z-index: 10;
 }
+#reopenChatBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #6b4eff;
+  color: white;
+  border-radius: 50%;
+  padding: 12px;
+  cursor: pointer;
+  z-index: 999;
+  box-shadow: 0 0 10px rgba(0,0,0,0.3);
+  font-size: 20px;
+}
+
+#reopenChatBtn:hover {
+  background-color: #4c32cc;
+}

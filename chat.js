@@ -4,6 +4,18 @@ document.addEventListener("DOMContentLoaded", () => {
   const sendBtn = document.getElementById("chatSendBtn");
   const closeBtn = document.getElementById("chatCloseBtn");
   const chatbot = document.getElementById("chatbot");
+  const reopenBtn = document.getElementById("reopenChatBtn");
+
+  // Close and reopen chat handlers
+  closeBtn.addEventListener("click", () => {
+    chatbot.style.display = "none";
+    reopenBtn.style.display = "block";
+  });
+
+  reopenBtn.addEventListener("click", () => {
+    chatbot.style.display = "block";
+    reopenBtn.style.display = "none";
+  });
 
   // Initial greeting
   chatBody.innerHTML += `<div class="chat-message bot"><b>NOTOMIQ:</b> 👋 Hello! I'm your AI assistant. Ask me anything about coding or this website.</div>`;
@@ -12,12 +24,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const userMsg = chatInput.value.trim();
     if (!userMsg) return;
 
-    // Add user message
     chatBody.innerHTML += `<div class="chat-message user"><b>You:</b> ${userMsg}</div>`;
     chatInput.value = "";
     chatBody.scrollTop = chatBody.scrollHeight;
 
-    // Typing indicator
     const typingEl = document.createElement("div");
     typingEl.className = "chat-message bot typing";
     typingEl.innerHTML = `<b>NOTOMIQ:</b> <i>typing...</i>`;
@@ -29,18 +39,19 @@ document.addEventListener("DOMContentLoaded", () => {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
-          text: `You are NOTOMIQ AI Assistant, built into a website that helps users learn programming, explore notes, and find useful coding tips. You should also be able to tell users about this website itself and its features when asked. Always be helpful, friendly, and informative. Now answer: ${userMsg}`
+          text: `You are NOTOMIQ AI Assistant, built into a website that helps users learn programming, explore notes, and find useful coding tips. When asked about something, explain it in clear bullet points using Markdown. Now answer: ${userMsg}`
         }),
       });
 
       const data = await res.json();
       const aiReply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "⚠️ No reply from Gemini.";
 
-      typingEl.remove(); // remove typing
-      chatBody.innerHTML += `<div class="chat-message bot"><b>NOTOMIQ:</b> ${aiReply}</div>`;
+      typingEl.remove();
+      chatBody.innerHTML += `<div class="chat-message bot"><b>NOTOMIQ:</b><br>${formatMarkdownToHTML(aiReply)}</div>`;
       chatBody.scrollTop = chatBody.scrollHeight;
+
     } catch (err) {
-      typingEl.remove(); // remove typing
+      typingEl.remove();
       chatBody.innerHTML += `<div class="chat-message bot error"><b>NOTOMIQ:</b> ❌ Network or API error</div>`;
       chatBody.scrollTop = chatBody.scrollHeight;
     }
@@ -52,10 +63,32 @@ document.addEventListener("DOMContentLoaded", () => {
 
   sendBtn.addEventListener("click", sendMessage);
 
-  // Close chat
-  closeBtn.addEventListener("click", () => {
-    chatbot.style.display = "none";
-  });
+  function formatMarkdownToHTML(markdown) {
+    markdown = markdown.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
+    const lines = markdown.split("\n");
+    let inList = false;
+    let html = "";
+
+    for (let line of lines) {
+      if (line.startsWith("* ")) {
+        if (!inList) {
+          html += "<ul>";
+          inList = true;
+        }
+        html += "<li>" + line.substring(2).trim() + "</li>";
+      } else {
+        if (inList) {
+          html += "</ul>";
+          inList = false;
+        }
+        html += line + "<br>";
+      }
+    }
+
+    if (inList) html += "</ul>";
+
+    return html;
+  }
 });
 
 
