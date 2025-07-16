@@ -4,8 +4,8 @@ export default async function handler(req, res) {
   }
 
   const { message } = req.body;
-
   const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
+
   if (!OPENAI_API_KEY) {
     return res.status(500).json({ error: "API key not configured." });
   }
@@ -24,9 +24,14 @@ export default async function handler(req, res) {
     });
 
     const data = await openaiRes.json();
+
+    // ✅ Add this log
+    console.log("OpenAI response:", JSON.stringify(data, null, 2));
+
     const reply = data.choices?.[0]?.message?.content || "No response";
     res.status(200).json({ reply });
   } catch (err) {
+    console.error("OpenAI API error:", err);
     res.status(500).json({ error: "OpenAI request failed" });
   }
 }
