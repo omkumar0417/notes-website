@@ -533,3 +533,14 @@ main {
   background-color: #ff4d4f;
   color: white;
 }
+.chat-close-btn {
+  position: absolute;
+  top: 6px;
+  right: 12px;
+  font-size: 20px;
+  color: white;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+}
