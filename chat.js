@@ -6,6 +6,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatbot = document.getElementById("chatbot");
   const reopenBtn = document.getElementById("reopenChatBtn");
 
+  // Escape HTML helper
+  function escapeHTML(str) {
+    return str.replace(/[&<>"']/g, function (match) {
+      const escape = {
+        "&": "&amp;",
+        "<": "&lt;",
+        ">": "&gt;",
+        '"': "&quot;",
+        "'": "&#39;",
+      };
+      return escape[match];
+    });
+  }
+
+  // Initial greeting
+  chatBody.innerHTML += `<div class="chat-message bot"><b>NOTOMIQ:</b> 👋 Hello! I'm your AI assistant. Ask me anything about coding or this website.</div>`;
+
   // Close and reopen chat handlers
   closeBtn.addEventListener("click", () => {
     chatbot.style.display = "none";
@@ -13,26 +30,22 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   reopenBtn.addEventListener("click", () => {
-  chatbot.style.display = "block";
-  reopenBtn.style.display = "none";
+    chatbot.style.display = "block";
+    reopenBtn.style.display = "none";
 
-  // 🔥 Focus the chat input and scroll to bottom
-  setTimeout(() => {
-    chatInput.focus();
-    chatBody.scrollTop = chatBody.scrollHeight;
-  }, 100);
-});
-
-
-
-  // Initial greeting
-  chatBody.innerHTML += `<div class="chat-message bot"><b>NOTOMIQ:</b> 👋 Hello! I'm your AI assistant. Ask me anything about coding or this website.</div>`;
+    // 🔥 Focus the chat input and scroll to bottom
+    setTimeout(() => {
+      chatInput.focus();
+      chatBody.scrollTo({ top: chatBody.scrollHeight, behavior: "smooth" });
+    }, 100);
+  });
 
   async function sendMessage() {
     const userMsg = chatInput.value.trim();
     if (!userMsg) return;
 
-    chatBody.innerHTML += `<div class="chat-message user"><b>You:</b> ${userMsg}</div>`;
+    // Escape user message properly
+    chatBody.innerHTML += `<div class="chat-message user"><b>You:</b> ${escapeHTML(userMsg)}</div>`;
     chatInput.value = "";
     chatBody.scrollTop = chatBody.scrollHeight;
 
@@ -42,9 +55,9 @@ document.addEventListener("DOMContentLoaded", () => {
     chatBody.appendChild(typingEl);
     chatBody.scrollTop = chatBody.scrollHeight;
 
-    const safeMsg = userMsg.length < 4
-    ? `${userMsg}, how can I help you with coding or this website?`
-    : userMsg;
+    const safeMsg = userMsg.length < 3
+      ? `${userMsg}, how can I help you with coding or this website?`
+      : userMsg;
 
     try {
       const res = await fetch("/api/gemini", {
@@ -60,8 +73,7 @@ document.addEventListener("DOMContentLoaded", () => {
 6. Suggest tips, best practices, and real-world applications where helpful.
 7. When asked about this website, explain its purpose and features clearly.
 8. Be friendly, helpful, and concise.
-Now answer: ${userMsg}`
-
+Now answer: ${safeMsg}`
         }),
       });
 
@@ -79,12 +91,14 @@ Now answer: ${userMsg}`
     }
   }
 
+  // Event Listeners
   chatInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") sendMessage();
   });
 
   sendBtn.addEventListener("click", sendMessage);
 
+  // Markdown to HTML converter
   function formatMarkdownToHTML(markdown) {
     markdown = markdown.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
     const lines = markdown.split("\n");
@@ -103,15 +117,15 @@ Now answer: ${userMsg}`
           html += "</ul>";
           inList = false;
         }
-        html += line + "<br>";
+        html += `<p>${line}</p>`;
       }
     }
 
     if (inList) html += "</ul>";
-
     return html;
   }
 });
+
 
 
 
