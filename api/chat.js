@@ -7,11 +7,14 @@ export default async function handler(req, res) {
   const OPENAI_API_KEY = process.env.OPENAI_API_KEY;
 
   if (!OPENAI_API_KEY) {
-    return res.status(500).json({ error: "Missing OpenAI API Key" });
+    console.error("❌ Missing OpenAI API Key in environment");
+    return res.status(500).json({ error: "API key not configured." });
   }
 
+  console.log("✅ Message received:", message);
+
   try {
-    const apiRes = await fetch("https://api.openai.com/v1/chat/completions", {
+    const openaiRes = await fetch("https://api.openai.com/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -23,10 +26,17 @@ export default async function handler(req, res) {
       }),
     });
 
-    const data = await apiRes.json();
-    const reply = data.choices?.[0]?.message?.content || "No response";
+    const data = await openaiRes.json();
+    console.log("✅ OpenAI raw response:", data);
+
+    const reply = data.choices?.[0]?.message?.content;
+    if (!reply) {
+      return res.status(500).json({ error: "No reply from OpenAI" });
+    }
+
     res.status(200).json({ reply });
   } catch (err) {
+    console.error("🔥 OpenAI request failed:", err);
     res.status(500).json({ error: "OpenAI request failed" });
   }
 }
