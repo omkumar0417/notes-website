@@ -15,7 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
       const res = await fetch("/api/gemini", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ text: userMsg }),
+        body: JSON.stringify({
+          text: `You are NOTOMIQ AI Assistant, built into a website that helps users learn programming, explore notes, and find useful coding tips. You should also be able to tell users about this website itself and its features when asked. Always be helpful, friendly, and informative. Now answer: ${userMsg}`
+        }),
       });
 
       const data = await res.json();
@@ -35,6 +37,44 @@ document.addEventListener("DOMContentLoaded", () => {
 
   sendBtn.addEventListener("click", sendMessage);
 });
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   const chatInput = document.getElementById("chatInput");
+//   const chatBody = document.getElementById("chatBody");
+//   const sendBtn = document.getElementById("chatSendBtn");
+
+//   async function sendMessage() {
+//     const userMsg = chatInput.value.trim();
+//     if (!userMsg) return;
+
+//     chatBody.innerHTML += `<div class="chat-message user"><b>You:</b> ${userMsg}</div>`;
+//     chatInput.value = "";
+//     chatBody.scrollTop = chatBody.scrollHeight;
+
+//     try {
+//       const res = await fetch("/api/gemini", {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: JSON.stringify({ text: userMsg }),
+//       });
+
+//       const data = await res.json();
+//       const aiReply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "⚠️ No reply from Gemini.";
+
+//       chatBody.innerHTML += `<div class="chat-message bot"><b>NOTOMIQ:</b> ${aiReply}</div>`;
+//       chatBody.scrollTop = chatBody.scrollHeight;
+//     } catch (err) {
+//       chatBody.innerHTML += `<div class="chat-message bot error"><b>NOTOMIQ:</b> ❌ Network or API error</div>`;
+//       chatBody.scrollTop = chatBody.scrollHeight;
+//     }
+//   }
+
+//   chatInput.addEventListener("keydown", (e) => {
+//     if (e.key === "Enter") sendMessage();
+//   });
+
+//   sendBtn.addEventListener("click", sendMessage);
+// });
 
 
 
