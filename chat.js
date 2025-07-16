@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
   const chatbot = document.getElementById("chatbot");
   const reopenBtn = document.getElementById("reopenChatBtn");
 
-  // Escape HTML helper
+  // Escape HTML to prevent XSS
   function escapeHTML(str) {
     return str.replace(/[&<>"']/g, function (match) {
       const escape = {
@@ -20,10 +20,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
-  // Initial greeting
-  chatBody.innerHTML += `<div class="chat-message bot"><b>NOTOMIQ:</b> 👋 Hello! I'm your AI assistant. Ask me anything about coding or this website.</div>`;
+  // Initial Greeting with Avatar
+  chatBody.innerHTML += `
+    <div class="chat-message bot">
+      <img src="bot-avatar.png" class="chat-avatar" alt="Bot Avatar" />
+      <div class="chat-text">
+        <b>NOTOMIQ:</b> 👋 Hello! I'm your AI assistant. Ask me anything about coding or this website.
+      </div>
+    </div>`;
 
-  // Close and reopen chat handlers
+  // Close and Reopen Button Logic
   closeBtn.addEventListener("click", () => {
     chatbot.style.display = "none";
     reopenBtn.style.display = "block";
@@ -32,8 +38,6 @@ document.addEventListener("DOMContentLoaded", () => {
   reopenBtn.addEventListener("click", () => {
     chatbot.style.display = "block";
     reopenBtn.style.display = "none";
-
-    // 🔥 Focus the chat input and scroll to bottom
     setTimeout(() => {
       chatInput.focus();
       chatBody.scrollTo({ top: chatBody.scrollHeight, behavior: "smooth" });
@@ -44,14 +48,23 @@ document.addEventListener("DOMContentLoaded", () => {
     const userMsg = chatInput.value.trim();
     if (!userMsg) return;
 
-    // Escape user message properly
-    chatBody.innerHTML += `<div class="chat-message user"><b>You:</b> ${escapeHTML(userMsg)}</div>`;
+    const safeUserMsg = escapeHTML(userMsg);
+
+    // Show user message with avatar
+    chatBody.innerHTML += `
+      <div class="chat-message user">
+        <img src="user-avatar.png" class="chat-avatar" alt="User Avatar" />
+        <div class="chat-text"><b>You:</b> ${safeUserMsg}</div>
+      </div>`;
     chatInput.value = "";
     chatBody.scrollTop = chatBody.scrollHeight;
 
+    // Typing indicator
     const typingEl = document.createElement("div");
     typingEl.className = "chat-message bot typing";
-    typingEl.innerHTML = `<b>NOTOMIQ:</b> <i>typing...</i>`;
+    typingEl.innerHTML = `
+      <img src="bot-avatar.png" class="chat-avatar" alt="Bot Avatar" />
+      <div class="chat-text"><b>NOTOMIQ:</b> <i>typing...</i></div>`;
     chatBody.appendChild(typingEl);
     chatBody.scrollTop = chatBody.scrollHeight;
 
@@ -81,24 +94,31 @@ Now answer: ${safeMsg}`
       const aiReply = data?.candidates?.[0]?.content?.parts?.[0]?.text || "⚠️ No reply from NOTOMIQ-BOT.";
 
       typingEl.remove();
-      chatBody.innerHTML += `<div class="chat-message bot"><b>NOTOMIQ:</b><br>${formatMarkdownToHTML(aiReply)}</div>`;
-      chatBody.scrollTop = chatBody.scrollHeight;
 
+      chatBody.innerHTML += `
+        <div class="chat-message bot">
+          <img src="bot-avatar.png" class="chat-avatar" alt="Bot Avatar" />
+          <div class="chat-text"><b>NOTOMIQ:</b><br>${formatMarkdownToHTML(aiReply)}</div>
+        </div>`;
+      chatBody.scrollTop = chatBody.scrollHeight;
     } catch (err) {
       typingEl.remove();
-      chatBody.innerHTML += `<div class="chat-message bot error"><b>NOTOMIQ:</b> ❌ Network or API error</div>`;
+      chatBody.innerHTML += `
+        <div class="chat-message bot error">
+          <img src="bot-avatar.png" class="chat-avatar" alt="Bot Avatar" />
+          <div class="chat-text"><b>NOTOMIQ:</b> ❌ Network or API error</div>
+        </div>`;
       chatBody.scrollTop = chatBody.scrollHeight;
     }
   }
 
-  // Event Listeners
+  // Send message on Enter or Send button
   chatInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") sendMessage();
   });
-
   sendBtn.addEventListener("click", sendMessage);
 
-  // Markdown to HTML converter
+  // Convert Markdown to HTML
   function formatMarkdownToHTML(markdown) {
     markdown = markdown.replace(/\*\*(.*?)\*\*/g, "<strong>$1</strong>");
     const lines = markdown.split("\n");
@@ -125,6 +145,7 @@ Now answer: ${safeMsg}`
     return html;
   }
 });
+
 
 
 
