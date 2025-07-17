@@ -656,7 +656,7 @@ main {
   background-color: #6b4eff;
   color: white;
   border: none;
-  border-radius: 2px;
+  border-radius: 100px;
   cursor: pointer;
   font-weight: bold;
 }
