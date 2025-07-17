@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Your second brain for code, notes, and snippets" />
   <title>NOTOMIQ | Your Second Brain for Code, Notes & Snippets</title>
+<script>
+  if (localStorage.getItem("loggedIn") !== "true") {
+    window.location.href = "login.html";
+  }
+</script>
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
