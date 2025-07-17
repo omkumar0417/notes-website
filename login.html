@@ -1,4 +1,82 @@
 <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login | NOTOMIQ</title>
+  <link rel="stylesheet" href="login.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet"/>
+</head>
+<body>
+  <!-- HEADER -->
+  <header class="site-header">
+    <div class="container">
+      <h1 class="site-logo">NOTOMIQ</h1>
+      <nav class="site-nav">
+        <a href="/">Home</a>
+        <a href="#">About</a>
+        <a href="#">Help</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- LOGIN MAIN -->
+  <div class="login-wrapper">
+    <div class="login-box glass">
+      <h1 class="title">Welcome to <span class="highlight">NOTOMIQ</span></h1>
+      <p class="subtitle">Log in to continue your coding journey</p>
+      <form id="login-form">
+        <div class="input-group">
+          <input type="text" id="username" required />
+          <label for="username">Username</label>
+        </div>
+        <div class="input-group">
+          <input type="password" id="password" required />
+          <label for="password">Password</label>
+        </div>
+        <button type="submit" class="login-btn">Login</button>
+        <p class="helper-text">Don't have an account? <a href="#">Register</a></p>
+      </form>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="site-footer">
+    <div class="footer-content">
+      <p>&copy; 2025 NOTOMIQ. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="#">Privacy</a>
+        <a href="#">Terms</a>
+        <a href="#">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("login-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const username = document.getElementById("username").value;
+      const password = document.getElementById("password").value;
+
+      const res = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ username, password })
+      });
+
+      const data = await res.json();
+      if (data.success) {
+        localStorage.setItem("loggedIn", "true");
+        window.location.href = "/";
+      } else {
+        alert("Invalid credentials!");
+      }
+    });
+  </script>
+</body>
+</html>
+
+<!-- <!DOCTYPE html>
 <html>
 <head>
   <title>Login</title>
@@ -34,4 +112,4 @@
     });
   </script>
 </body>
-</html>
+</html> -->
