@@ -160,6 +160,10 @@ setTimeout(() => {
   
       <div id="searchResults" class="search-results"></div>
     </div>
+    <div class="logout-btn">
+  <button onclick="logoutUser()">Logout</button>
+</div>
+
   </header>
 
   <!-- Sidebar & Main Content -->
@@ -207,5 +211,12 @@ setTimeout(() => {
   <p style="color: white; text-align: center;">JavaScript is required to use the chatbot.</p>
 </noscript>
 <script defer src="/_vercel/insights/script.js"></script>
+<script>
+  function logoutUser() {
+    localStorage.removeItem("loggedIn");
+    window.location.href = "login";
+  }
+</script>
+
 </body>
 </html>
