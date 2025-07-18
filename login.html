@@ -73,6 +73,24 @@
       }
     });
   </script>
+  <!-- <script>
+  const LOCAL_USERNAME = "admin";
+  const LOCAL_PASSWORD = "1234";
+
+  document.getElementById("login-form").addEventListener("submit", (e) => {
+    e.preventDefault();
+    const username = document.getElementById("username").value;
+    const password = document.getElementById("password").value;
+
+    if (username === LOCAL_USERNAME && password === LOCAL_PASSWORD) {
+      localStorage.setItem("loggedIn", "true");
+      window.location.href = "index.html"; // or "/"
+    } else {
+      alert("Invalid credentials!");
+    }
+  });
+</script> -->
+
 </body>
 </html>
 
