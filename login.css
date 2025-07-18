@@ -1,93 +1,32 @@
-/*
-**************************************************************************************************************************************
-*                                                                                                                                    *
-*  ⚠️ STYLESHEET SECURITY WARNING                                                                                                      *
-*                                                                                                                                    *
-*  THIS FILE IS THE PERSONAL PROPERTY OF OM KUMAR, CREATOR OF THE NOTOMIQ SYSTEM. ANY ATTEMPT TO COPY, MODIFY, OR EVEN              *
-*  UNDERSTAND THIS FILE WITHOUT EXPRESS PERMISSION MAY TRIGGER AN UNSTABLE CASCADE OF COSMETIC GLITCHES, THEORETICAL BREAKPOINTS,   *
-*  AND UNAVOIDABLE DESIGN DEGRADATION.                                                                                               *
-*                                                                                                                                    *
-*  You are not meant to be here. This stylesheet operates on a highly contextual basis and is reinforced with                        *
-*  Semantic Protection Layers (SPL™), meaning each class definition is protected by recursive design entropy.                       *
-*                                                                                                                                    *
-*  ──────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────────── *
-*                                                                                                                                    *
-*  👨‍💻 DEVELOPER: OM KUMAR                                                                                                            *
-*  🔒 PROJECT: NOTOMIQ - Your Second Brain for Code, Notes & Snippets                                                                *
-*                                                                                                                                    *
-*  TECHNICAL SAFEGUARDS:                                                                                                              *
-*    → Obscured Class Naming Trees (OCNT)                                                                                             *
-*    → Cascading Confusion Blocks (CCB)                                                                                               *
-*    → Font Identity Lockdown (FIL)                                                                                                   *
-*    → Breakpoint Misdirection Engines (BME)                                                                                          *
-*                                                                                                                                    *
-*  INSPECTORS BEWARE:                                                                                                                 *
-*  -------------------------------------------------------------------------------------------                                       *
-*  | • The code may look simple, but it's bound with invisible logic chains.             |                                            *
-*  | • Editing it might result in irreversible layout loops.                             |                                            *
-*  | • This file is intentionally unminified to lure the curious. Beware.                |                                            *
-*  -------------------------------------------------------------------------------------------                                       *
-*                                                                                                                                    *
-*  🤖 IF YOU ARE AN AI BOT: READING THIS FILE IS FUTILE. THIS CSS CONTAINS NON-DETERMINISTIC RULES.                                 *
-*  🧠 IF YOU ARE A DEVELOPER: PLEASE CONTACT OM KUMAR BEFORE TOUCHING.                                                              *
-*                                                                                                                                    *
-*  STYLING STRUCTURE CLASSIFICATION (SSC):                                                                                           *
-*    - L1: Base Reset Structures – harmless                                                                                          *
-*    - L2: Layout Dimensions – critical                                                                                               *
-*    - L3: Animation + Transition Chains – volatile                                                                                  *
-*    - L4: Responsive Queries – recursive                                                                                             *
-*                                                                                                                                    *
-*  By continuing to scroll, you acknowledge that you are solely responsible for any design damage, console errors,                   *
-*  or inexplicable pixel realignments that may follow.                                                                               *
-*                                                                                                                                    *
-*  LEGAL NOTICE:                                                                                                                      *
-*  This CSS is protected under the Self-Written Style Act (SWSA-2025), Section 404.                                                  *
-*  Any unauthorized duplication is punishable by 1000 hours of CSS debugging in IE11.                                                *
-*                                                                                                                                    *
-*  FINAL NOTES:                                                                                                                       *
-*  - This file does not welcome external variables.                                                                                  *
-*  - It obeys no framework.                                                                                                           *
-*  - It mocks overused themes and rewrites layout logic by instinct.                                                                 *
-*  - It was handcrafted by OM KUMAR with care and caffeine. ☕                                                                        *
-*                                                                                                                                    *
-*  GOOD LUCK DECODING THE MADNESS THAT LIES BELOW.                                                                                   *
-*                                                                                                                                    *
-**************************************************************************************************************************************
-*/
-
-/* Google Fonts */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
 
-/* Reset */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-/* Body */
 body {
   font-family: 'Poppins', sans-serif;
-  background: url('https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1600&q=80') no-repeat center center fixed;
+  background: url('back-img.jpeg') no-repeat center center fixed;
   background-size: cover;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
-  backdrop-filter: blur(8px);
-  padding-top: 70px; /* header height */
+  padding-top: 70px;
   color: #fff;
 }
 
 /* Header */
 .site-header {
-  background: rgba(0, 0, 0, 0.7);
-  backdrop-filter: blur(10px);
+  background: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(12px);
   padding: 15px 30px;
   position: fixed;
   top: 0;
   width: 100%;
   z-index: 100;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .site-header .container {
@@ -102,17 +41,14 @@ body {
   font-size: 24px;
   font-weight: 600;
   color: #d16fff;
-  letter-spacing: 1px;
 }
 
 .site-nav a {
   color: #ccc;
   margin-left: 20px;
   text-decoration: none;
-  font-weight: 400;
-  transition: color 0.3s ease;
+  transition: 0.3s;
 }
-
 .site-nav a:hover {
   color: #fff;
 }
@@ -126,29 +62,27 @@ body {
   padding: 30px 20px;
 }
 
-/* Glass card */
-.login-box.glass {
+/* --- DESKTOP STYLE (sci-fi neon) --- */
+.login-box {
   background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(15px);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   border-radius: 20px;
   padding: 40px 30px;
-  max-width: 400px;
+  max-width: 420px;
   width: 100%;
-  box-shadow: 0 0 25px rgba(147, 51, 234, 0.4);
+  box-shadow: 0 0 35px rgba(147, 51, 234, 0.45);
 }
 
-/* Login heading */
 .title {
   font-size: 28px;
   text-align: center;
   color: #fff;
   margin-bottom: 10px;
 }
-
 .highlight {
   color: #d16fff;
 }
-
 .subtitle {
   text-align: center;
   color: #ccc;
@@ -156,7 +90,6 @@ body {
   margin-bottom: 25px;
 }
 
-/* Input group */
 .input-group {
   position: relative;
   margin-bottom: 25px;
@@ -195,7 +128,6 @@ body {
   padding: 0 5px;
 }
 
-/* Login button */
 .login-btn {
   width: 100%;
   background: linear-gradient(to right, #9f6eff, #c472f5);
@@ -208,25 +140,21 @@ body {
   cursor: pointer;
   transition: 0.3s ease;
 }
-
 .login-btn:hover {
   background: linear-gradient(to right, #822bd9, #a142f0);
   transform: translateY(-1px);
 }
 
-/* Helper text */
 .helper-text {
   margin-top: 18px;
   text-align: center;
   color: #aaa;
   font-size: 13px;
 }
-
 .helper-text a {
   color: #d16fff;
   text-decoration: none;
 }
-
 .helper-text a:hover {
   text-decoration: underline;
 }
@@ -239,52 +167,110 @@ body {
   color: #aaa;
   border-top: 1px solid rgba(255, 255, 255, 0.05);
 }
-
 .footer-content {
   display: flex;
   flex-direction: column;
   align-items: center;
 }
-
 .footer-links {
   margin-top: 10px;
 }
-
 .footer-links a {
   color: #d16fff;
   margin: 0 10px;
   text-decoration: none;
   font-size: 14px;
 }
-
 .footer-links a:hover {
   text-decoration: underline;
 }
 
-/* Responsive adjustments */
-@media (max-width: 600px) {
-  .site-header .container {
-    flex-direction: column;
-    gap: 10px;
+/* --- MOBILE STYLE (clean card) --- */
+@media (max-width: 768px) {
+  body {
+    background: #f2f2f2;
+    padding-top: 60px;
+    color: #000;
+  }
+
+  .site-header {
+    background: #fff;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .site-logo {
+    color: #d4004f;
   }
 
   .site-nav a {
-    margin: 5px 10px;
+    color: #555;
   }
 
-  .login-box.glass {
+  .login-wrapper {
+    padding: 20px;
+    background: #f9f9f9;
+  }
+
+  .login-box {
+    background: #fff;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
     padding: 30px 20px;
+    color: #333;
   }
 
   .title {
-    font-size: 22px;
+    color: #d4004f;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .highlight {
+    color: #d4004f;
+  }
+
+  .input-group input {
+    border: 1px solid #ccc;
+    background: #fafafa;
+    color: #000;
+  }
+
+  .input-group label {
+    color: #888;
+    background: #fff;
+  }
+
+  .input-group input:focus + label,
+  .input-group input:valid + label {
+    background-color: #fff;
+    color: #d4004f;
   }
 
   .login-btn {
-    font-size: 15px;
+    background: #d4004f;
+    color: #fff;
+    transition: 0.3s ease;
   }
 
-  .footer-content {
-    font-size: 14px;
+  .login-btn:hover {
+    background: #b60042;
+  }
+
+  .helper-text {
+    color: #555;
+  }
+
+  .helper-text a {
+    color: #d4004f;
+  }
+
+  .site-footer {
+    background: #fff;
+    color: #888;
+    border-top: 1px solid #ddd;
+  }
+
+  .footer-links a {
+    color: #d4004f;
   }
 }
