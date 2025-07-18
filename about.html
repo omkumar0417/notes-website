@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | NOTOMIQ</title>
+    <link rel="icon" href="logo.png" type="image/png" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #0e0e0e;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .header {
+      text-align: center;
+      padding: 60px 20px 20px;
+    }
+
+    .header h1 {
+      font-size: 2.5rem;
+      color: #00ffcc;
+      margin-bottom: 10px;
+    }
+
+    .header p {
+      font-size: 1.2rem;
+      color: #ccc;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+      max-width: 1100px;
+      padding: 40px 20px;
+      width: 100%;
+    }
+
+    .card {
+      background-color: #1a1a1a;
+      border-radius: 15px;
+      padding: 25px;
+      box-shadow: 0 0 15px rgba(0, 255, 204, 0.15);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 0 20px rgba(0, 255, 204, 0.25);
+    }
+
+    .card h3 {
+      color: #00ffcc;
+      margin-bottom: 10px;
+      font-size: 1.3rem;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #bbb;
+    }
+
+    .quote {
+      font-style: italic;
+      color: #999;
+      text-align: center;
+      margin: 40px 20px 60px;
+      font-size: 1rem;
+      max-width: 700px;
+      border-left: 4px solid #00ffcc;
+      padding-left: 15px;
+    }
+
+    .back-button {
+      background-color: #00ffcc;
+      color: #000;
+      padding: 12px 24px;
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      font-weight: bold;
+      margin-bottom: 60px;
+      transition: background-color 0.3s ease;
+      text-decoration: none;
+    }
+
+    .back-button:hover {
+      background-color: #00e6b2;
+    }
+
+    @media (max-width: 480px) {
+      .header h1 {
+        font-size: 2rem;
+      }
+
+      .card h3 {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="header">
+    <h1>NOTOMIQ — Your Second Brain</h1>
+    <p>Built for coders, learners & thinkers who demand clarity, speed, and style in a distraction-free workspace.</p>
+  </div>
+
+  <div class="features">
+    <div class="card">
+      <h3>🧠 Smart Organization</h3>
+      <p>Group your notes, code, and snippets by subject in sleek collapsible sections. Stay structured without friction.</p>
+    </div>
+
+    <div class="card">
+      <h3>🔐 Secure & Local</h3>
+      <p>All data is protected using token-based <code>/api/verify</code> authentication. Nothing leaves your machine.</p>
+    </div>
+
+    <div class="card">
+      <h3>🤖 AI Assistant</h3>
+      <p>Built-in AI chat helps you understand topics, debug faster, and stay focused with contextual support.</p>
+    </div>
+
+    <div class="card">
+      <h3>📄 PDF Embeds</h3>
+      <p>Embed reference material right into your notes for seamless access to books, slides, or research docs.</p>
+    </div>
+
+    <div class="card">
+      <h3>⚡ Instant Search</h3>
+      <p>Search your entire workspace in milliseconds. Find what you need, when you need it.</p>
+    </div>
+
+    <div class="card">
+      <h3>🌙 Minimal Dark UI</h3>
+      <p>Elegant, responsive, and minimal design. Dark mode by default to keep your eyes at ease during long sessions.</p>
+    </div>
+  </div>
+
+  <div class="quote">
+    “NOTOMIQ isn’t just a notes app — it’s a developer’s workspace, a learner’s vault, and a creator’s memory system.”<br><br>
+    <strong>— Made with ❤️  • 2025</strong>
+  </div>
+
+  <a href="index.html" class="back-button">← 🧭 Back to Dashboard</a>
+
+</body>
+</html>
