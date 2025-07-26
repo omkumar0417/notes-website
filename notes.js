@@ -3,7 +3,12 @@ const notesData = {
     {
       "title": "Introduction to Java",
       "date": "2025-07-08",
-      "content": "Java is a high-level programming language... 88",
+      "content": `Java is a high-level programming language.<br>
+It was originally developed by Sun Microsystems and released in 1995.<br>
+Java is platform-independent due to the Java Virtual Machine (JVM).<br>
+It follows the principle of WORA – Write Once, Run Anywhere.<br>
+
+Java is widely used in web development, Android apps, enterprise software, and more.`,
       "image": "https://i.postimg.cc/3RhrPJVG/temp-Image-KGb-Kf-L.avif"
     }
   ],
@@ -11,10 +16,102 @@ const notesData = {
   "Servlet": [
     {
       "title": "Introduction to Servlets",
-      "content": "A Servlet is a Java class used to handle HTTP requests and generate dynamic web content.<br>It runs on a server and extends the capabilities of a web server.<br>Servlets are platform-independent, secure, efficient, and portable.<br>Lifecycle of a servlet includes:<br>Initialization (init method)<br>Request Handling (service method)<br>Destruction (destroy method)<br>It uses javax.servlet and javax.servlet.http packages.",
+      "date": "2025-07-19",
+      "content": `A Servlet is a Java-based server-side component that dynamically handles requests and responses over HTTP.<br>
+It runs inside a web container like Apache Tomcat and is used to create web applications with backend logic.<br>
+Servlets are written in Java, making them portable, secure, and robust.<br>
+Common use cases include form handling, session management, dynamic content generation, and backend APIs.<br><br>
+
+<strong>Advantages of Servlets over CGI:</strong><br>
+- Servlets use threads instead of processes, so they consume fewer resources and offer better performance.<br>
+- They are platform-independent and secure due to Java's features.<br>
+- Servlets support session tracking, cookies, and request dispatching natively.<br>
+- Unlike CGI, Servlets don’t need to launch a new process for each request.<br><br>
+
+<strong>Servlet vs Applet:</strong><br>
+- Servlet runs on the server, Applet runs in the browser (client-side).<br>
+- Servlet is used for backend logic, Applet is used for GUI and frontend.<br>
+- Applets are outdated and deprecated; Servlets are still widely used.<br>
+- Servlets handle HTTP requests; Applets provide interactive UIs.<br><br>
+
+<strong>Servlet API Packages:</strong><br>
+- javax.servlet: Contains core classes like Servlet, ServletRequest, ServletResponse, ServletContext, and RequestDispatcher.<br>
+- javax.servlet.http: Contains HTTP-specific classes like HttpServlet, HttpServletRequest, HttpServletResponse, HttpSession, and Cookie.<br><br>
+
+<strong>Servlet Lifecycle:</strong><br>
+1. <strong>Loading & Instantiation:</strong> Servlet class is loaded and object is created by the container.<br>
+2. <strong>init():</strong> Called once to initialize the servlet.<br>
+3. <strong>service():</strong> Called for each request; in HttpServlet, it dispatches to doGet(), doPost(), etc.<br>
+4. <strong>destroy():</strong> Called once before servlet is destroyed to release resources.<br>
+5. <strong>Garbage Collection:</strong> Servlet object is collected by JVM after destruction.`,
+      "image": ""
+    },
+    {
+      "title": "Introduction to Java",
       "date": "2025-07-08",
+      "content": `Java is a high-level programming language.
+It was originally developed by Sun Microsystems and released in 1995.
+Java is platform-independent due to the Java Virtual Machine (JVM).
+It follows the principle of WORA – Write Once, Run Anywhere.
+
+Java is widely used in web development, Android apps, enterprise software, and more.`,
+      "image": ""
+    },
+    {
+      "title": "intro",
+      "date": "2025-07-19",
+      "content": "`Here are <strong>detailed notes</strong> for the topic <strong>\"Introduction to Servlets\"</strong> covering all the sub-points:<br><br>---<br><br># <strong>1. Introduction to Servlets</strong><br><br>## 🧾 What is a Servlet?<br><br>A <strong>Servlet</strong> is a <strong>Java-based server-side component</strong> that dynamically processes requests and generates responses, typically over HTTP. Servlets are used to develop web applications.<br><br>* It runs on a <strong>Java-enabled web server</strong> (Servlet container) like Apache Tomcat.<br>* It is part of <strong>Java EE</strong> (Jakarta EE as of now).<br>* Servlets <strong>extend the capabilities of servers</strong>, such as handling form data, managing sessions, connecting to databases, etc.<br>* It <strong>does not generate GUI</strong>; it handles backend logic and typically responds with HTML or JSON.<br><br>### 💡 Example Use Cases:<br><br>* Processing login forms<br>* Retrieving data from a database<br>* Displaying user-specific pages<br>* API endpoints for web apps<br><br>---<br><br>## ✅ Advantages of Servlets over CGI (Common Gateway Interface)<br><br>| Feature                      | CGI                            | Servlet                               |<br>| ---------------------------- | ------------------------------ | ------------------------------------- |<br>| <strong>Language</strong>                 | C, Perl, etc.                  | Java                                  |<br>| <strong>Performance</strong>              | Poor (new process per request) | High (multi-threaded, single process) |<br>| <strong>Portability</strong>              | Platform-dependent             | Platform-independent (Java)           |<br>| <strong>Resource Usage</strong>           | High (forks process)           | Low (threads reuse)                   |<br>| <strong>Security</strong>                 | Low                            | High (Java security features)         |<br>| <strong>Robustness & Scalability</strong> | Low                            | High                                  |<br>| <strong>Session Management</strong>       | Manual                         | Built-in                              |<br><br>### 🔍 Summary:<br><br>* <strong>Servlets are faster</strong>, more secure, and more scalable than CGI scripts.<br>* They eliminate the overhead of creating a new process per request (as in CGI).<br>* They offer <strong>built-in support for sessions, cookies, and request dispatching</strong>.<br><br>---<br><br>## 🔄 Servlet vs Applet<br><br>| Feature       | Servlet (Server-side)                    | Applet (Client-side)                    |<br>| ------------- | ---------------------------------------- | --------------------------------------- |<br>| <strong>Location</strong>  | Runs on the <strong>server</strong>                   | Runs on the <strong>client (browser)</strong>        |<br>| <strong>Execution</strong> | Processes <strong>HTTP requests/responses</strong>    | Provides <strong>UI inside browser</strong>          |<br>| <strong>Purpose</strong>   | Backend logic (data handling, DB access) | Frontend logic (UI, graphics)           |<br>| <strong>Security</strong>  | More secure, runs in server environment  | Less secure, runs in sandbox            |<br>| <strong>Usage</strong>     | Used in <strong>web applications</strong>             | Used in <strong>Java-based GUI applications</strong> |<br>| <strong>Lifespan</strong>  | Managed by web server                    | Managed by browser                      |<br><br>### 🧠 Note:<br><br>* <strong>Applets are deprecated</strong> in modern browsers due to security issues and lack of support.<br>* Servlets remain the <strong>standard way</strong> to build backend logic in Java web apps.<br><br>---<br><br>## 🧩 Servlet API Overview<br><br>Servlets are defined and managed via <strong>Servlet API</strong>, primarily found in these two packages:<br><br>### 📦 `javax.servlet`<br><br>* Core interfaces and classes common to all servlets:<br><br>  * `Servlet`<br>  * `GenericServlet`<br>  * `ServletRequest`, `ServletResponse`<br>  * `ServletConfig`, `ServletContext`<br>  * `RequestDispatcher`<br><br>### 📦 `javax.servlet.http`<br><br>* Specializations for <strong>HTTP-based web apps</strong>:<br><br>  * `HttpServlet` (extends `GenericServlet`)<br>  * `HttpServletRequest`, `HttpServletResponse`<br>  * `HttpSession`<br>  * `Cookie`<br><br>### 🔧 Key Interfaces/Classes:<br><br>| Interface/Class     | Purpose                                                               |<br>| ------------------- | --------------------------------------------------------------------- |<br>| `Servlet`           | Defines the lifecycle methods like `init()`, `service()`, `destroy()` |<br>| `HttpServlet`       | Abstract class to simplify HTTP servlet creation                      |<br>| `ServletRequest`    | Provides request information (parameters, attributes, etc.)           |<br>| `ServletResponse`   | Used to send response data                                            |<br>| `HttpSession`       | For session tracking                                                  |<br>| `RequestDispatcher` | For request forwarding or including                                   |<br><br>---<br><br>## 🔁 Servlet Lifecycle<br><br>A servlet goes through the following <strong>5 phases</strong>, managed by the <strong>Servlet Container</strong> (like Tomcat):<br><br>### 1. <strong>Loading and Instantiation</strong><br><br>* Container loads the servlet class and creates an instance.<br>* Happens <strong>once</strong> per servlet.<br><br>### 2. <strong>Initialization (`init()` method)</strong><br><br>* Called <strong>once</strong> after servlet instance is created.<br>* Initializes resources (e.g., DB connections).<br><br>```java<br>public void init(ServletConfig config) throws ServletException {<br>    // Initialization code here<br>}<br>```<br><br>### 3. <strong>Request Handling (`service()` method)</strong><br><br>* Called <strong>for every request</strong>.<br>* Dispatches to appropriate method (`doGet()`, `doPost()`, etc. in `HttpServlet`).<br><br>```java<br>public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {<br>    // Request processing logic<br>}<br>```<br><br>### 4. <strong>Destruction (`destroy()` method)</strong><br><br>* Called <strong>once</strong> before the servlet is removed.<br>* Used to release resources.<br><br>```java<br>public void destroy() {<br>    // Cleanup code here<br>}<br>```<br><br>### 5. <strong>Garbage Collection</strong><br><br>* After destruction, object is garbage collected.<br><br>---<br><br>## 🧠 Servlet Lifecycle Methods in `HttpServlet`<br><br>| Method       | Description                             |<br>| ------------ | --------------------------------------- |<br>| `init()`     | Called once during initialization       |<br>| `doGet()`    | Handles GET requests                    |<br>| `doPost()`   | Handles POST requests                   |<br>| `doPut()`    | Handles PUT requests                    |<br>| `doDelete()` | Handles DELETE requests                 |<br>| `destroy()`  | Called once before servlet is destroyed |<br><br>---<br><br>If you’d like this as a downloadable PDF or need additional topics like <strong>ServletConfig vs ServletContext</strong>, <strong>Session Management</strong>, or <strong>RequestDispatcher</strong>, just let me know!`",
+      "image": ""
+    },
+    {
+      "title": "Here are **detailed notes** for the topic **\"Introduction to Servlets\"** covering all the sub-points:",
+      "date": "2025-07-19",
+      "content": "`<br>---<br><br>`",
+      "image": ""
+    },
+    {
+      "title": "**1. Introduction to Servlets**",
+      "date": "2025-07-19",
+      "content": "`<br>`",
+      "image": ""
+    },
+    {
+      "title": "🧾 What is a Servlet?",
+      "date": "2025-07-19",
+      "content": "`<br>A <strong>Servlet</strong> is a <strong>Java-based server-side component</strong> that dynamically processes requests and generates responses, typically over HTTP. Servlets are used to develop web applications.<br><br>* It runs on a <strong>Java-enabled web server</strong> (Servlet container) like Apache Tomcat.<br>* It is part of <strong>Java EE</strong> (Jakarta EE as of now).<br>* Servlets <strong>extend the capabilities of servers</strong>, such as handling form data, managing sessions, connecting to databases, etc.<br>* It <strong>does not generate GUI</strong>; it handles backend logic and typically responds with HTML or JSON.<br><br>### 💡 Example Use Cases:<br><br>* Processing login forms<br>* Retrieving data from a database<br>* Displaying user-specific pages<br>* API endpoints for web apps<br><br>---<br><br>`",
+      "image": ""
+    },
+    {
+      "title": "✅ Advantages of Servlets over CGI (Common Gateway Interface)",
+      "date": "2025-07-19",
+      "content": "`<br>| Feature                      | CGI                            | Servlet                               |<br>| ---------------------------- | ------------------------------ | ------------------------------------- |<br>| <strong>Language</strong>                 | C, Perl, etc.                  | Java                                  |<br>| <strong>Performance</strong>              | Poor (new process per request) | High (multi-threaded, single process) |<br>| <strong>Portability</strong>              | Platform-dependent             | Platform-independent (Java)           |<br>| <strong>Resource Usage</strong>           | High (forks process)           | Low (threads reuse)                   |<br>| <strong>Security</strong>                 | Low                            | High (Java security features)         |<br>| <strong>Robustness & Scalability</strong> | Low                            | High                                  |<br>| <strong>Session Management</strong>       | Manual                         | Built-in                              |<br><br>### 🔍 Summary:<br><br>* <strong>Servlets are faster</strong>, more secure, and more scalable than CGI scripts.<br>* They eliminate the overhead of creating a new process per request (as in CGI).<br>* They offer <strong>built-in support for sessions, cookies, and request dispatching</strong>.<br><br>---<br><br>`",
+      "image": ""
+    },
+    {
+      "title": "🔄 Servlet vs Applet",
+      "date": "2025-07-19",
+      "content": "`<br>| Feature       | Servlet (Server-side)                    | Applet (Client-side)                    |<br>| ------------- | ---------------------------------------- | --------------------------------------- |<br>| <strong>Location</strong>  | Runs on the <strong>server</strong>                   | Runs on the <strong>client (browser)</strong>        |<br>| <strong>Execution</strong> | Processes <strong>HTTP requests/responses</strong>    | Provides <strong>UI inside browser</strong>          |<br>| <strong>Purpose</strong>   | Backend logic (data handling, DB access) | Frontend logic (UI, graphics)           |<br>| <strong>Security</strong>  | More secure, runs in server environment  | Less secure, runs in sandbox            |<br>| <strong>Usage</strong>     | Used in <strong>web applications</strong>             | Used in <strong>Java-based GUI applications</strong> |<br>| <strong>Lifespan</strong>  | Managed by web server                    | Managed by browser                      |<br><br>### 🧠 Note:<br><br>* <strong>Applets are deprecated</strong> in modern browsers due to security issues and lack of support.<br>* Servlets remain the <strong>standard way</strong> to build backend logic in Java web apps.<br><br>---<br><br>`",
+      "image": ""
+    },
+    {
+      "title": "🧩 Servlet API Overview",
+      "date": "2025-07-19",
+      "content": "`<br>Servlets are defined and managed via <strong>Servlet API</strong>, primarily found in these two packages:<br><br>### 📦 `javax.servlet`<br><br>* Core interfaces and classes common to all servlets:<br><br>  * `Servlet`<br>  * `GenericServlet`<br>  * `ServletRequest`, `ServletResponse`<br>  * `ServletConfig`, `ServletContext`<br>  * `RequestDispatcher`<br><br>### 📦 `javax.servlet.http`<br><br>* Specializations for <strong>HTTP-based web apps</strong>:<br><br>  * `HttpServlet` (extends `GenericServlet`)<br>  * `HttpServletRequest`, `HttpServletResponse`<br>  * `HttpSession`<br>  * `Cookie`<br><br>### 🔧 Key Interfaces/Classes:<br><br>| Interface/Class     | Purpose                                                               |<br>| ------------------- | --------------------------------------------------------------------- |<br>| `Servlet`           | Defines the lifecycle methods like `init()`, `service()`, `destroy()` |<br>| `HttpServlet`       | Abstract class to simplify HTTP servlet creation                      |<br>| `ServletRequest`    | Provides request information (parameters, attributes, etc.)           |<br>| `ServletResponse`   | Used to send response data                                            |<br>| `HttpSession`       | For session tracking                                                  |<br>| `RequestDispatcher` | For request forwarding or including                                   |<br><br>---<br><br>`",
+      "image": ""
+    },
+    {
+      "title": "🔁 Servlet Lifecycle",
+      "date": "2025-07-19",
+      "content": "`<br>A servlet goes through the following <strong>5 phases</strong>, managed by the <strong>Servlet Container</strong> (like Tomcat):<br><br>### 1. <strong>Loading and Instantiation</strong><br><br>* Container loads the servlet class and creates an instance.<br>* Happens <strong>once</strong> per servlet.<br><br>### 2. <strong>Initialization (`init()` method)</strong><br><br>* Called <strong>once</strong> after servlet instance is created.<br>* Initializes resources (e.g., DB connections).<br><br>```java<br>public void init(ServletConfig config) throws ServletException {<br>    // Initialization code here<br>}<br>```<br><br>### 3. <strong>Request Handling (`service()` method)</strong><br><br>* Called <strong>for every request</strong>.<br>* Dispatches to appropriate method (`doGet()`, `doPost()`, etc. in `HttpServlet`).<br><br>```java<br>public void service(ServletRequest req, ServletResponse res) throws ServletException, IOException {<br>    // Request processing logic<br>}<br>```<br><br>### 4. <strong>Destruction (`destroy()` method)</strong><br><br>* Called <strong>once</strong> before the servlet is removed.<br>* Used to release resources.<br><br>```java<br>public void destroy() {<br>    // Cleanup code here<br>}<br>```<br><br>### 5. <strong>Garbage Collection</strong><br><br>* After destruction, object is garbage collected.<br><br>---<br><br>`",
+      "image": ""
+    },
+    {
+      "title": "🧠 Servlet Lifecycle Methods in `HttpServlet`",
+      "date": "2025-07-19",
+      "content": "`<br>| Method       | Description                             |<br>| ------------ | --------------------------------------- |<br>| `init()`     | Called once during initialization       |<br>| `doGet()`    | Handles GET requests                    |<br>| `doPost()`   | Handles POST requests                   |<br>| `doPut()`    | Handles PUT requests                    |<br>| `doDelete()` | Handles DELETE requests                 |<br>| `destroy()`  | Called once before servlet is destroyed |<br><br>---<br><br>If you’d like this as a downloadable PDF or need additional topics like <strong>ServletConfig vs ServletContext</strong>, <strong>Session Management</strong>, or <strong>RequestDispatcher</strong>, just let me know!`",
       "image": ""
     }
+  
   ],
   "JDBC": [
   {
