@@ -422,13 +422,16 @@ main {
   }
 }
 /* Chat container styling */
-.chatbot-container {
+/* .chatbot-container {
   position: fixed;
   bottom: 10px;
   right: 10px;
   width: 360px;
   max-height: 500px;
-  background-color: #1e1e2f;
+  background-color: #b5195278;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cg fill='%23ffffff0d'%3E%3Cpath d='M10 10h30v2H10zM50 20h30v2H50zM80 40h20v2H80zM130 60h30v2h-30zM40 70h40v2H40zM20 100h50v2H20zM60 120h30v2H60zM120 140h50v2h-50zM30 160h40v2H30zM100 180h30v2h-30z'/%3E%3Ccircle cx='150' cy='40' r='4'/%3E%3Ccircle cx='60' cy='150' r='4'/%3E%3Ccircle cx='120' cy='100' r='4'/%3E%3C/g%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 200px 200px;
   border: 2px solid #6a4fff;
   border-radius: 12px;
   display: flex;
@@ -436,6 +439,24 @@ main {
   font-family: 'Arial', sans-serif;
   box-shadow: 0 0 15px rgba(0,0,0,0.4);
   overflow: hidden;
+  z-index: 1000;
+} */
+.chatbot-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 350px;
+  max-height: 500px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 16px;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  font-family: 'Segoe UI', sans-serif;
   z-index: 1000;
 }
 
@@ -453,10 +474,22 @@ main {
   padding: 10px 16px;
   font-weight: bold;
   color: white;
-  display: flex;               /* NEW */
-  justify-content: space-between; /* NEW */
-  align-items: center;         /* NEW */
+  display: flex;              
+  justify-content: space-between; 
+  align-items: center;         
   position: relative;
+}
+.chat-body {
+  flex: 1;
+  padding: 12px;
+  overflow-y: auto;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200' viewBox='0 0 200 200'%3E%3Cg stroke='%23ffffff0d' stroke-width='1'%3E%3Cpath d='M0 10 H200 M0 50 H200 M0 90 H200'/%3E%3Cpath d='M10 0 V200 M50 0 V200 M90 0 V200'/%3E%3C/g%3E%3C/svg%3E");
+
+  background-size: 250px;
+  background-color: rgba(255, 255, 255, 0.02); /* fallback */
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 /* Buttons container (fullscreen + close) */
@@ -467,16 +500,8 @@ main {
 }
 
 
-/* Chat body */
-.chat-body {
-  padding: 12px;
-  flex: 1;
-  overflow-y: auto;
-  background-color: #26263a;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
+
+
 .chatbot-container:not(.fullscreen) .chat-body {
   max-height: 300px;
 }
@@ -487,8 +512,8 @@ main {
   padding: 12px;
   font-size: 14px;
   width: 100%;
-  border-top: 1px solid #555;
-  background-color: #1e1e2f;
+  border-top: 1px solid #6a4fff;
+  background-color: transparent;
   color: white;
   outline: none;
 }
@@ -498,8 +523,8 @@ main {
   align-items: center;
   gap: 8px;
   padding: 10px;
-  border-top: 1px solid #444;
-  background-color: #1a1a1a;
+  border-top: 1px solid #694fff74;
+  background-color: #694fff23;
 }
 
 .chatbox-input-container input {
@@ -514,10 +539,10 @@ main {
 }
 
 #chatSendBtn {
-  background: #4a90e2;
+  background:#6a4fff;
   border: none;
   padding: 10px 14px;
-  color: white;
+  color: #d0cfda;
   border-radius: 5px;
   cursor: pointer;
 }
@@ -537,7 +562,7 @@ main {
   margin: 5px 0;
   line-height: 1.5;
   font-size: 0.95rem;
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(212, 20, 20, 0.05);
   color: #ddd;
 }
 .chat-message strong {
@@ -567,7 +592,7 @@ main {
   list-style-type: disc;
 }
 .chat-message.error {
-  background-color: #ff4d4f;
+  background-color: #ff4d5000;
   color: white;
 }
 .chat-close-btn {
@@ -632,7 +657,7 @@ main {
 
 /* Text wrapper next to avatar */
 .chat-text {
-  background-color: rgba(255, 255, 255, 0.05);
+  background-color: rgba(187, 28, 28, 0.05);
   padding: 8px 10px;
   border-radius: 10px;
   color: #ddd;
@@ -647,7 +672,7 @@ main {
   margin-left: auto;
 }
 .chat-message.user .chat-text {
-  background-color: #4f46e5;
+  background-color: rgba(255, 0, 128, 0.592);
   color: white;
 }
 
@@ -658,7 +683,7 @@ main {
   margin-right: auto;
 }
 .chat-message.bot .chat-text {
-  background-color: #3d3d5c;
+  background-color: #7760f74a;
   color: #f1f1f1;
 }
 
