@@ -187,13 +187,34 @@ setTimeout(() => {
   }
 </script>
 
+  <!--
   
-  <div class="chatbot-container" id="chatbot">
-  <!-- <div class="chatbot-container" id="chatbot"> -->
     <div class="chat-close-btn" id="chatCloseBtn" title="Close Chat">×</div>
 
-  <div class="chat-header">NOTOMIQ AI Assistant</div> <!-- Optional -->
-  <div class="chat-body" id="chatBody"></div> <!-- This was missing -->
+  <div class="chat-header">NOTOMIQ AI Assistant</div> 
+  <div class="chat-body" id="chatBody"></div> 
+  <div class="chatbox-input-container">
+    <input type="text" id="chatInput" placeholder="Ask me anything..." />
+    <button id="chatSendBtn" title="Send"><i class="fas fa-paper-plane"></i></button>
+  </div>
+</div>
+<div class="chat-close-btn" id="chatCloseBtn" title="Close Chat">×</div>
+<button class="chat-fullscreen-btn" id="chatFullscreenBtn" title="Toggle Fullscreen">
+  <i class="fas fa-expand"></i>
+</button> -->
+
+
+ <div class="chatbot-container" id="chatbot">
+  <div class="chat-header">
+    NOTOMIQ AI Assistant
+    <div class="chat-buttons">
+      <div class="chat-close-btn" id="chatCloseBtn" title="Close Chat">×</div>
+      <button class="chat-fullscreen-btn" id="chatFullscreenBtn" title="Toggle Fullscreen">
+        <i class="fas fa-expand"></i>
+      </button>
+    </div>
+  </div>
+  <div class="chat-body" id="chatBody"></div>
   <div class="chatbox-input-container">
     <input type="text" id="chatInput" placeholder="Ask me anything..." />
     <button id="chatSendBtn" title="Send"><i class="fas fa-paper-plane"></i></button>

@@ -84,6 +84,56 @@ You should behave like a **senior software engineer + mentor**, capable of solvi
     reopenBtn.style.display = "block";
     gtag('event', 'chatbot_closed', { event_category: 'Chatbot', event_label: 'User closed chatbot' });
   });
+// Fullscreen toggle
+const fullscreenBtn = document.getElementById("chatFullscreenBtn");
+
+function setFullscreenIcon(isFullscreen) {
+  const icon = fullscreenBtn?.querySelector("i");
+  if (!icon) return;
+  icon.classList.toggle("fa-expand", !isFullscreen);
+  icon.classList.toggle("fa-compress", isFullscreen);
+}
+
+function toggleFullscreen() {
+  chatbot.classList.toggle("fullscreen");
+  const isFs = chatbot.classList.contains("fullscreen");
+  setFullscreenIcon(isFs);
+}
+
+if (fullscreenBtn) {
+  fullscreenBtn.addEventListener("click", toggleFullscreen);
+}
+
+// Exit fullscreen on ESC
+document.addEventListener("keydown", (e) => {
+  if (e.key === "Escape" && chatbot.classList.contains("fullscreen")) {
+    toggleFullscreen();
+  }
+});
+
+// When you close, also make sure you exit fullscreen so it opens normal next time
+closeBtn.addEventListener("click", () => {
+  chatbot.classList.remove("fullscreen");
+  setFullscreenIcon(false);
+  chatbot.style.display = "none";
+  reopenBtn.style.display = "block";
+  gtag('event', 'chatbot_closed', { event_category: 'Chatbot', event_label: 'User closed chatbot' });
+});
+
+// When reopen, sync icon again
+reopenBtn.addEventListener("click", () => {
+  chatbot.classList.remove("fullscreen");
+  setFullscreenIcon(false);
+  chatbot.style.display = "block";
+  reopenBtn.style.display = "none";
+  gtag('event', 'chatbot_opened', { event_category: 'Chatbot', event_label: 'User opened chatbot' });
+
+  setTimeout(() => {
+    chatInput.focus();
+    scrollChatToBottom();
+  }, 100);
+});
+
 
   reopenBtn.addEventListener("click", () => {
     chatbot.style.display = "block";
