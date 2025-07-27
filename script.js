@@ -380,6 +380,15 @@ console.log("Logged in:", isLoggedIn);
 console.log("Token:", localStorage.getItem("accessToken"));
 
 async function loadNotes(isUserLoggedIn) {
+  const cached = sessionStorage.getItem("notesData");
+  if (cached) {
+    window.notesData = JSON.parse(cached);
+    isLoggedIn = isUserLoggedIn;
+    console.log("✅ Loaded notes from sessionStorage");
+    renderSidebar();
+    renderNoteFromHash();
+    return;
+  }
   window.notesData = {};
 
   try {
