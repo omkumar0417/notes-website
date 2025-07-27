@@ -359,20 +359,25 @@ async function initializeNotesApp() {
   let isUserLoggedIn = false;
 
   try {
-    const res = await fetch("/api/verify");
+    const token = localStorage.getItem("accessToken");
+    const res = await fetch("/api/verify", {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    });
     const data = await res.json();
-    isUserLoggedIn = data.loggedIn;
-    console.log("Verified login:", isUserLoggedIn);
+    isUserLoggedIn = data.verified;
+    console.log("✅ Verified login:", isUserLoggedIn);
   } catch (err) {
     console.warn("Could not verify login:", err);
   }
 
   await loadNotes(isUserLoggedIn);  // ✅ pass explicitly
 
-
   window.addEventListener("hashchange", renderNoteFromHash);
   window.addEventListener("beforeunload", trackTopicExit);
 }
+
 
 
 

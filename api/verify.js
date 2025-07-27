@@ -6,16 +6,20 @@
 //     res.status(200).json({ loggedIn: false });
 //   }
 // }
-export default function handler(req, res) {
-  const validToken = "om123access4567"; // ✅ PLACE HERE
+async function checkLoginStatus() {
+  const token = localStorage.getItem("accessToken");
 
-  const authHeader = req.headers.authorization || "";
-  const token = authHeader.split(" ")[1]; // "Bearer om123access4567" => "om123access4567"
+  try {
+    const res = await fetch("/api/verify", {
+      headers: {
+        Authorization: `Bearer ${token}` // ✅ This must be "Bearer <token>"
+      }
+    });
 
-  if (token === validToken) {
-    res.status(200).json({ verified: true });
-  } else {
-    res.status(401).json({ verified: false });
+    const data = await res.json();
+    return data.verified === true;
+  } catch (err) {
+    console.error("Verify request failed:", err);
+    return false;
   }
 }
-
