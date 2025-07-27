@@ -4,7 +4,7 @@ export default function handler(req, res) {
 
   if (token === validToken) {
     const privateNotes = {
-      "Java": [
+      "Jaa": [
         {
           title: "OOP Concepts",
           date: "2024-07-01",
@@ -20,7 +20,7 @@ export default function handler(req, res) {
           content: "<p>Java uses try-catch blocks to handle exceptions. Common types: checked, unchecked, and errors.</p>"
         }
       ],
-      "DSA": [
+      "DA": [
         {
           title: "Binary Search",
           date: "2024-06-15",
