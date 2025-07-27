@@ -1,23 +1,25 @@
 export default function handler(req, res) {
-  const { username, password } = req.headers;
+  const auth = req.headers.authorization || "";
+  const [username, password] = auth.split(":");
 
   if (
     username === process.env.USERNAME &&
     password === process.env.PASSWORD
   ) {
     const privateNotes = {
-      "DSA": {
-        "Arrays": "Arrays are fixed-size structures storing elements of same type...",
-        "Stacks": "LIFO data structure useful in recursion, parsing..."
-      },
-      "Spring Boot": {
-        "Intro": "Spring Boot simplifies backend dev using starters and annotations...",
-        "JPA": "Java Persistence API helps ORM between Java and DB..."
-      }
+      "Java": [
+        {
+          title: "OOP Concepts",
+          date: "2024-07-01",
+          tags: ["java", "oops"],
+          private: true,
+          content: "<p>Java supports Object-Oriented Programming: inheritance, polymorphism, encapsulation, abstraction.</p>"
+        }
+      ]
     };
 
-    res.status(200).json(privateNotes);
+    return res.status(200).json(privateNotes);
   } else {
-    res.status(401).json({ error: "Unauthorized" });
+    return res.status(401).json({ error: "Unauthorized" });
   }
 }

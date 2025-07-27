@@ -183,7 +183,8 @@ setTimeout(() => {
         const token = localStorage.getItem("accessToken"); // if you're storing it
         const privateRes = await fetch('/api/private-notes', {
           headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: token
+
           }
         });
         const privateNotes = await privateRes.json();
