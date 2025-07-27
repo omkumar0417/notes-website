@@ -1,22 +1,28 @@
-// api/public-notes.js
+// /api/private-notes.js
 export default function handler(req, res) {
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader || authHeader !== `Bearer ${process.env.ACCESS_TOKEN}`) {
+    return res.status(401).json({ error: "Unauthorized" });
+  }
+
   res.status(200).json({
     "Java": [
       {
-        title: "Introduction to Java",
-        date: "2025-07-01",
-        content: "<p>Java is a high-level, object-oriented programming language.</p>",
-        tags: ["java", "basics"],
-        private: false
+        title: "OOP in Java",
+        date: "2025-07-10",
+        content: "<p>OOP stands for Object-Oriented Programming.</p>",
+        tags: ["java", "oop"],
+        private: true
       }
     ],
-    "HTML": [
+    "CSS": [
       {
-        title: "HTML Basics",
-        date: "2025-06-25",
-        content: "<p>HTML is used to create web pages.</p>",
-        tags: ["html", "web"],
-        private: false
+        title: "CSS Grid",
+        date: "2025-07-15",
+        content: "<p>CSS Grid helps you create complex layouts easily.</p>",
+        tags: ["css", "layout"],
+        private: true
       }
     ]
   });

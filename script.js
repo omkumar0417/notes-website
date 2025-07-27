@@ -349,23 +349,35 @@ initializeNotesApp();
 async function loadNotes() {
   window.notesData = {};
 
-  // ✅ 1. Load public notes from API route
+  // 1. Load public notes
   try {
-    const publicNotes = await fetch("/api/public-notes").then(r => r.json());
+    const publicNotes = await fetch("/api/public-notes").then(res => res.json());
     Object.assign(window.notesData, publicNotes);
   } catch (err) {
-    console.error("Failed to load public notes:", err);
+    console.error("Public notes load error:", err);
   }
 
-  // ✅ 2. Load private notes (if logged in)
+  // 2. Load private notes if logged in
   if (isLoggedIn) {
     try {
-      const privateNotes = await fetch("/api/private-notes").then(r => r.json());
+      const token = localStorage.getItem("accessToken");
+      const privateNotes = await fetch("/api/private-notes", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then(res => {
+        if (!res.ok) throw new Error("Unauthorized");
+        return res.json();
+      });
+
       Object.assign(window.notesData, privateNotes);
     } catch (err) {
-      console.warn("Private notes not loaded:", err);
+      console.warn("Private notes not loaded:", err.message);
     }
   }
+
+  populateSidebar();
+  renderArticleFromHash();
 }
 
 
