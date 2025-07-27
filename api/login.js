@@ -6,11 +6,11 @@ export default function handler(req, res) {
   const { username, password } = req.body;
 
   if (
-    username === process.env.USERNAME &&
-    password === process.env.PASSWORD
-  ) {
-    res.status(200).json({ success: true });
-  } else {
+  username === process.env.USERNAME &&
+  password === process.env.PASSWORD
+) {
+  return res.status(200).json({ success: true, token: process.env.ACCESS_TOKEN }); // ✅ Include token here
+}else {
     res.status(401).json({ success: false, message: "Invalid credentials" });
   }
 }

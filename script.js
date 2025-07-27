@@ -1,6 +1,11 @@
 let currentTopicLabel = null;
 let topicStartTime = null;
 let isLoggedIn = false;
+const token = localStorage.getItem("accessToken");
+if (!token) {
+  console.warn("No access token found.");
+  return;
+}
 
 function trackTopicView(subject, topic) {
   // If switching topics, track exit
@@ -211,10 +216,13 @@ function renderNoteFromHash() {
   const notes = notesData[subject];
   const note = notes?.find(n => n.title.toLowerCase() === title.toLowerCase());
 
-if (!note) {
-  mainContent.innerHTML = `<p>Note not found.</p>`;
-  return;
-}
+mainContent.innerHTML = `
+  <div class="note-not-found">
+    <h2>Note Not Found</h2>
+    <p>Check the topic name or return to the sidebar.</p>
+  </div>
+`;
+
 
 // ⛔ Block private notes if not logged in
 if (note.private && !isLoggedIn) {
@@ -324,32 +332,33 @@ Array.from(resultsBox.children).forEach(child => {
 
 // ====== INIT ======
 async function initializeNotesApp() {
-  // ✅ Check login using backend
+  let isUserLoggedIn = false;
+
   try {
     const res = await fetch("/api/verify");
     const data = await res.json();
-    isLoggedIn = data.loggedIn;
+    isUserLoggedIn = data.loggedIn;
+    console.log("Verified login:", isUserLoggedIn);
   } catch (err) {
     console.warn("Could not verify login:", err);
   }
 
-  await loadNotes(); // 👇 New function explained below
-  renderSidebar();
-  renderNoteFromHash();
+  await loadNotes(isUserLoggedIn);  // ✅ pass explicitly
+
 
   window.addEventListener("hashchange", renderNoteFromHash);
-  window.addEventListener("beforeunload", () => {
-    trackTopicExit();
-  });
+  window.addEventListener("beforeunload", trackTopicExit);
 }
 
 
-initializeNotesApp();
 
-async function loadNotes() {
+initializeNotesApp();
+console.log("Logged in:", isLoggedIn);
+console.log("Token:", localStorage.getItem("accessToken"));
+
+async function loadNotes(isUserLoggedIn) {
   window.notesData = {};
 
-  // 1. Load public notes
   try {
     const publicNotes = await fetch("/api/public-notes").then(res => res.json());
     Object.assign(window.notesData, publicNotes);
@@ -357,34 +366,41 @@ async function loadNotes() {
     console.error("Public notes load error:", err);
   }
 
- // 2. Load private notes if logged in
-if (isLoggedIn) {
-  try {
-    const token = localStorage.getItem("accessToken"); // must be ACCESS_TOKEN
-    const privateNotes = await fetch("/api/private-notes", {
-      headers: {
-        Authorization: `Bearer ${token}`
-      }
-    }).then(res => {
-      if (!res.ok) throw new Error("Unauthorized");
-      return res.json();
-    });
+  if (isUserLoggedIn) {
+    try {
+      const token = localStorage.getItem("accessToken");
+      const privateNotes = await fetch("/api/private-notes", {
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then(res => {
+        if (!res.ok) throw new Error("Failed to load private notes");
+        return res.json();
+      });
 
-    Object.assign(window.notesData, privateNotes);
-  } catch (err) {
-    console.warn("Private notes not loaded:", err.message);
+      Object.assign(window.notesData, privateNotes);
+    } catch (err) {
+      console.error("Private notes not loaded:", err);
+    }
   }
+
+  isLoggedIn = isUserLoggedIn; // ✅ assign global after fetches done
+
+  renderSidebar();
+  renderNoteFromHash();
 }
+console.log("✅ Final isLoggedIn state:", isLoggedIn);
+console.log("✅ Final notesData:", window.notesData);
 
-
-renderSidebar();
-
- renderNoteFromHash();
-
-}
-
-
+// ❌ REMOVE these two (they break login completely):
+// localStorage.clear();
+// location.reload();
 
 console.log("isLoggedIn:", isLoggedIn);
 console.log("accessToken:", localStorage.getItem("accessToken"));
 console.log("notesData after loading:", window.notesData);
+console.log("All notes:", window.notesData);
+
+// ✅ This line is redundant here, remove it too:
+// renderSidebar();  // Already called in loadNotes()
+
