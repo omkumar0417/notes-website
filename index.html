@@ -178,19 +178,6 @@ setTimeout(() => {
       const publicNotes = await publicRes.json();
       window.notesData = publicNotes;
 
-      // If user is logged in, fetch private notes too
-      // if (localStorage.getItem("loggedIn") === "true") {
-      //   const token = localStorage.getItem("accessToken"); // if you're storing it
-      //   const privateRes = await fetch('/api/private-notes', {
-      //     headers: {
-      //       Authorization: token
-
-      //     }
-      //   });
-      //   const privateNotes = await privateRes.json();
-      //   Object.assign(window.notesData, privateNotes); // Merge notes
-      // }
-
       // Now load your script.js
       const script = document.createElement("script");
       script.src = "script.js";
