@@ -408,6 +408,12 @@ async function loadNotes(isUserLoggedIn) {
   }
 
   isLoggedIn = isUserLoggedIn; // ✅ assign global after fetches done
+if (isUserLoggedIn) {
+  gtag('event', 'login_success', {
+    event_category: 'User',
+    event_label: 'AccessToken Verified'
+  });
+}
 
   renderSidebar();
   renderNoteFromHash();
@@ -415,9 +421,11 @@ async function loadNotes(isUserLoggedIn) {
 console.log("✅ Final isLoggedIn state:", isLoggedIn);
 console.log("✅ Final notesData:", window.notesData);
 
-// ❌ REMOVE these two (they break login completely):
-// localStorage.clear();
-// location.reload();
+
+localStorage.removeItem("accessToken");
+sessionStorage.removeItem("notesData");
+location.reload();
+
 
 console.log("isLoggedIn:", isLoggedIn);
 console.log("accessToken:", localStorage.getItem("accessToken"));
