@@ -148,4 +148,3 @@ const validToken = process.env.ACCESS_TOKEN;
     return res.status(401).json({ error: "Unauthorized: Invalid token" });
   }
 }
-
