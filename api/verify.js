@@ -8,7 +8,10 @@
 // }
 async function checkLoginStatus() {
   const token = localStorage.getItem("accessToken");
-
+if (!process.env.ACCESS_TOKEN) {
+    console.error("❌ ACCESS_TOKEN not set in environment!");
+    return res.status(500).json({ error: "Server misconfiguration: ACCESS_TOKEN not set." });
+  }
   try {
     const res = await fetch("/api/verify", {
       headers: {
