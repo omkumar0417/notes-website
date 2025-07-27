@@ -5,6 +5,7 @@ export default function handler(req, res) {
     username === process.env.USERNAME &&
     password === process.env.PASSWORD
   ) {
+    res.setHeader('Set-Cookie', 'loggedIn=true; Path=/; HttpOnly; SameSite=Strict; Max-Age=86400');
     res.status(200).json({ success: true });
   } else {
     res.status(401).json({ success: false });

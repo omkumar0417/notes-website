@@ -5,11 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Your second brain for code, notes, and snippets" />
   <title>NOTOMIQ | Your Second Brain for Code, Notes & Snippets</title>
-<script>
-  if (localStorage.getItem("loggedIn") !== "true") {
-    window.location.href = "landing";
-  }
-</script>
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css" />
@@ -160,9 +155,10 @@ setTimeout(() => {
   
       <div id="searchResults" class="search-results"></div>
     </div>
-    <div class="logout-btn">
+    <div class="logout-btn" id="logoutSection" style="display: none;">
   <button onclick="logoutUser()">Logout</button>
 </div>
+
 
   </header>
 
@@ -172,36 +168,32 @@ setTimeout(() => {
     <main id="noteContent"></main>
   </div>
 
-  <!-- JS Files -->
-  <!-- <script src="notes.js"></script>
-  <script src="script.js"></script> -->
-  <script>
-  if (localStorage.getItem("loggedIn") === "true") {
-    const s1 = document.createElement("script");
-    s1.src = "script.js";
-    document.body.appendChild(s1);
+<script>
+  window.notesData = {};
 
-    const s2 = document.createElement("script");
-    s2.src = "notes.js";
-    document.body.appendChild(s2);
-  }
+  const publicNotes = document.createElement("script");
+  publicNotes.src = "public-notes.js";
+  publicNotes.onload = () => {
+    if (localStorage.getItem("loggedIn") === "true") {
+      const privateNotes = document.createElement("script");
+      privateNotes.src = "private-notes.js";
+      privateNotes.onload = () => {
+        const appScript = document.createElement("script");
+        appScript.src = "script.js";
+        document.body.appendChild(appScript);
+      };
+      document.body.appendChild(privateNotes);
+    } else {
+      const appScript = document.createElement("script");
+      appScript.src = "script.js";
+      document.body.appendChild(appScript);
+    }
+  };
+  document.body.appendChild(publicNotes);
 </script>
 
-  <!--
-  
-    <div class="chat-close-btn" id="chatCloseBtn" title="Close Chat">×</div>
 
-  <div class="chat-header">NOTOMIQ AI Assistant</div> 
-  <div class="chat-body" id="chatBody"></div> 
-  <div class="chatbox-input-container">
-    <input type="text" id="chatInput" placeholder="Ask me anything..." />
-    <button id="chatSendBtn" title="Send"><i class="fas fa-paper-plane"></i></button>
-  </div>
-</div>
-<div class="chat-close-btn" id="chatCloseBtn" title="Close Chat">×</div>
-<button class="chat-fullscreen-btn" id="chatFullscreenBtn" title="Toggle Fullscreen">
-  <i class="fas fa-expand"></i>
-</button> -->
+
 
 
  <div class="chatbot-container" id="chatbot">
@@ -238,6 +230,11 @@ setTimeout(() => {
     window.location.href = "login";
   }
 </script>
+<script>
+  if (localStorage.getItem("loggedIn") === "true") {
+  document.getElementById("logoutSection").style.display = "block";
+}
 
+</script>
 </body>
 </html>

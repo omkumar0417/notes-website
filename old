@@ -1,6 +1,6 @@
 let currentTopicLabel = null;
 let topicStartTime = null;
-let isLoggedIn = false;
+const isLoggedIn = localStorage.getItem("loggedIn") === "true";
 
 function trackTopicView(subject, topic) {
   // If switching topics, track exit
@@ -324,49 +324,41 @@ Array.from(resultsBox.children).forEach(child => {
 
 // ====== INIT ======
 async function initializeNotesApp() {
-  // ✅ Check login using backend
-  try {
-    const res = await fetch("/api/verify");
-    const data = await res.json();
-    isLoggedIn = data.loggedIn;
-  } catch (err) {
-    console.warn("Could not verify login:", err);
-  }
-
-  await loadNotes(); // 👇 New function explained below
+  await waitForNotesData();
   renderSidebar();
   renderNoteFromHash();
 
   window.addEventListener("hashchange", renderNoteFromHash);
   window.addEventListener("beforeunload", () => {
-    trackTopicExit();
+    trackTopicExit(); // Log last topic before exit
   });
 }
 
-
 initializeNotesApp();
 
-async function loadNotes() {
-  window.notesData = {};
 
-  // ✅ 1. Load public notes from API route
-  try {
-    const publicNotes = await fetch("/api/public-notes").then(r => r.json());
-    Object.assign(window.notesData, publicNotes);
-  } catch (err) {
-    console.error("Failed to load public notes:", err);
-  }
+// Wait until notesData is fully populated
+function waitForNotesData(maxRetries = 20) {
+  return new Promise((resolve, reject) => {
+    let retries = 0;
+    const checkInterval = setInterval(() => {
+      const hasPrivate = notesData.some(note => note.subject === "System Design" || note.subject === "Internship Prep");
 
-  // ✅ 2. Load private notes (if logged in)
-  if (isLoggedIn) {
-    try {
-      const privateNotes = await fetch("/api/private-notes").then(r => r.json());
-      Object.assign(window.notesData, privateNotes);
-    } catch (err) {
-      console.warn("Private notes not loaded:", err);
-    }
-  }
+      if (hasPrivate || retries >= maxRetries) {
+        clearInterval(checkInterval);
+        resolve();
+      }
+
+      retries++;
+    }, 100); // checks every 100ms
+  });
 }
+
+document.addEventListener("DOMContentLoaded", async () => {
+  await waitForNotesData();
+  renderSidebar();        // ✅ Sidebar is refreshed with private notes
+  renderNoteFromHash();   // ✅ Renders the current note if there's a hash
+});
 
 
 
