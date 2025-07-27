@@ -2,24 +2,24 @@ export default function handler(req, res) {
   const publicNotes = {
     "Java": {
       "Introduction": `
-- **Java is a powerful, versatile, and widely-used programming language**, developed in 1995 by Sun Microsystems under James Gosling.<br>
-- **Designed with "Write Once, Run Anywhere" (WORA)** – Java code runs on any device with a Java Virtual Machine (JVM).<br>
-- **Platform independent** through compilation to bytecode, which the JVM executes.<br>
-- **Object-oriented language**, promoting modularity, code reuse, and maintainability.<br>
-- **Simpler than C/C++**, avoiding direct memory manipulation and pointer arithmetic.<br>
+- Java is a powerful, versatile, and widely-used programming language**, developed in 1995 by Sun Microsystems under James Gosling.<br>
+- Designed with "Write Once, Run Anywhere" (WORA)** – Java code runs on any device with a Java Virtual Machine (JVM).<br>
+- Platform independent** through compilation to bytecode, which the JVM executes.<br>
+- Object-oriented language**, promoting modularity, code reuse, and maintainability.<br>
+- Simpler than C/C++**, avoiding direct memory manipulation and pointer arithmetic.<br>
 - Features like **automatic garbage collection, exception handling, and strong type checking** enhance reliability and security.<br>
-- **Rich standard library (Java API)** supports tasks like data structures, networking, GUIs, and cryptography.<br>
-- **Supports multithreading**, enabling concurrent execution for responsive and scalable apps.<br>
-- **Vast ecosystem** with frameworks like Spring, Hibernate, and JSF for rapid development.<br>
-- **Core language for Android development** and widely used in enterprise software.<br>
-- **Integrates well with databases, messaging systems, and cloud platforms.**<br>
+- Rich standard library (Java API)** supports tasks like data structures, networking, GUIs, and cryptography.<br>
+- Supports multithreading**, enabling concurrent execution for responsive and scalable apps.<br>
+- Vast ecosystem** with frameworks like Spring, Hibernate, and JSF for rapid development.<br>
+- Core language for Android development** and widely used in enterprise software.<br>
+- Integrates well with databases, messaging systems, and cloud platforms.**<br>
 - Continually evolves with new features (e.g., generics, annotations, lambdas, Streams API).<br>
-- **Backward compatibility** ensures older code runs on newer versions.<br>
-- **Large, active global community** contributes to open-source projects and knowledge sharing.<br>
-- **Maintained by Oracle**, with regular updates for performance, security, and features.<br>
-- **Ideal for building desktop, web, mobile, and enterprise applications.**<br>
+- Backward compatibility** ensures older code runs on newer versions.<br>
+- Large, active global community** contributes to open-source projects and knowledge sharing.<br>
+- Maintained by Oracle**, with regular updates for performance, security, and features.<br>
+- Ideal for building desktop, web, mobile, and enterprise applications.**<br>
 
-**Example: Hello World in Java**
+Example: Hello World in Java
 <pre>
 public class HelloWorld {
     public static void main(String[] args) {
