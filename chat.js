@@ -73,7 +73,7 @@ You should behave like a **senior software engineer + mentor**, capable of solvi
     <div class="chat-message bot">
       <img src="bot-avatar.png" class="chat-avatar" alt="Bot Avatar" />
       <div class="chat-text">
-        <b>NOTOMIQ:</b> Hello Coder  💪🏻! I'm your AI assistant. Ask me anything about coding or this website.
+        <b>NOTOMIQ:</b> Hello Coder  2💪🏻! I'm your AI assistant. Ask me anything about coding or this website.
       </div>
     </div>`);
   scrollChatToBottom();
