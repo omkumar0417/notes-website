@@ -182,6 +182,11 @@ notes.forEach((note, index) => {
         if (list !== topics) list.style.display = 'none';
       });
       topics.style.display = (topics.style.display === 'block') ? 'none' : 'block';
+      gtag('event', 'subject_toggle', {
+  event_category: 'Sidebar',
+  event_label: subject
+});
+
     });
   });
 
@@ -257,6 +262,10 @@ if (note.private && !isLoggedIn) {
 
   if (note) {
     trackTopicView(subject, title);
+    gtag('event', 'subject_viewed', {
+    event_category: 'Subject',
+    event_label: subject
+  });
     mainContent.innerHTML = `
       <div class="note-card">
         <h2>${note.title}</h2>
@@ -429,17 +438,7 @@ if (isUserLoggedIn) {
 }
 console.log("✅ Final isLoggedIn state:", isLoggedIn);
 console.log("✅ Final notesData:", window.notesData);
-
-
-
-
-
-
 console.log("isLoggedIn:", isLoggedIn);
 console.log("accessToken:", localStorage.getItem("accessToken"));
 console.log("notesData after loading:", window.notesData);
 console.log("All notes:", window.notesData);
-
-// ✅ This line is redundant here, remove it too:
-// renderSidebar();  // Already called in loadNotes()
-
