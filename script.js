@@ -141,7 +141,15 @@ function renderSidebar() {
     const topicUl = document.createElement("ul");
     topicUl.className = "topics";
 
-    notesData[subject].forEach((note, index) => {
+   const notes = Array.isArray(notesData[subject])
+  ? notesData[subject]
+  : Object.entries(notesData[subject]).map(([title, content]) => ({
+      title,
+      content
+    }));
+
+notes.forEach((note, index) => {
+
       const topicLi = document.createElement("li");
       const topicA = document.createElement("a");
       if (note.private && !isLoggedIn) {
@@ -216,7 +224,21 @@ function renderNoteFromHash() {
   const [subject, ...titleParts] = hash.split("/");
   const title = titleParts.join(" ").replaceAll("-", " ");
   const notes = notesData[subject];
-  const note = notes?.find(n => n.title.toLowerCase() === title.toLowerCase());
+ let note = null;
+if (Array.isArray(notes)) {
+  note = notes.find(n => n.title.toLowerCase() === title.toLowerCase());
+} else {
+  note = Object.entries(notes).find(
+    ([key]) => key.toLowerCase() === title.toLowerCase()
+  );
+  if (note) {
+    note = {
+      title: note[0],
+      content: note[1]
+    };
+  }
+}
+
 
 mainContent.innerHTML = `
   <div class="note-not-found">
