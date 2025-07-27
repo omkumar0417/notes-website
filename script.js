@@ -376,7 +376,8 @@ async function loadNotes() {
     }
   }
 
-  populateSidebar();
+renderSidebar();
+
   renderArticleFromHash();
 }
 
