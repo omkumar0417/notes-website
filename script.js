@@ -357,24 +357,25 @@ async function loadNotes() {
     console.error("Public notes load error:", err);
   }
 
-  // 2. Load private notes if logged in
-  if (isLoggedIn) {
-    try {
-      const token = localStorage.getItem("accessToken");
-      const privateNotes = await fetch("/api/private-notes", {
-        headers: {
-          Authorization: `Bearer ${token}`
-        }
-      }).then(res => {
-        if (!res.ok) throw new Error("Unauthorized");
-        return res.json();
-      });
+ // 2. Load private notes if logged in
+if (isLoggedIn) {
+  try {
+    const token = localStorage.getItem("accessToken"); // must be ACCESS_TOKEN
+    const privateNotes = await fetch("/api/private-notes", {
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    }).then(res => {
+      if (!res.ok) throw new Error("Unauthorized");
+      return res.json();
+    });
 
-      Object.assign(window.notesData, privateNotes);
-    } catch (err) {
-      console.warn("Private notes not loaded:", err.message);
-    }
+    Object.assign(window.notesData, privateNotes);
+  } catch (err) {
+    console.warn("Private notes not loaded:", err.message);
   }
+}
+
 
 renderSidebar();
 
@@ -384,3 +385,6 @@ renderSidebar();
 
 
 
+console.log("isLoggedIn:", isLoggedIn);
+console.log("accessToken:", localStorage.getItem("accessToken"));
+console.log("notesData after loading:", window.notesData);
