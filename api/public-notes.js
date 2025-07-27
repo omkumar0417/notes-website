@@ -1,23 +1,22 @@
-
 export default function handler(req, res) {
-  res.status(200).json({
-    "Java": [
-      {
-        title: "Introduction to Java",
-        date: "2025-07-01",
-        content: "<p>Java is a high-level, object-oriented programming language.</p>",
-        tags: ["java", "basics"],
-        private: false
-      }
-    ],
+  const publicNotes = {
     "HTML": [
       {
         title: "HTML Basics",
-        date: "2025-06-25",
-        content: "<p>HTML is used to create web pages.</p>",
+        date: "2024-05-01",
         tags: ["html", "web"],
-        private: false
+        content: "<p>HTML is the standard markup language for creating Web pages.</p>"
+      }
+    ],
+    "CSS": [
+      {
+        title: "Flexbox Guide",
+        date: "2024-05-10",
+        tags: ["css", "flexbox"],
+        content: "<p>Flexbox helps you design flexible responsive layout structure.</p>"
       }
     ]
-  });
+  };
+
+  res.status(200).json(publicNotes);
 }

@@ -1,29 +1,22 @@
-// /api/private-notes.js
 export default function handler(req, res) {
   const authHeader = req.headers.authorization;
+  const token = authHeader?.split(" ")[1];
 
-  if (!authHeader || authHeader !== `Bearer ${process.env.ACCESS_TOKEN}`) {
+  if (!token || token !== process.env.ACCESS_TOKEN) {
     return res.status(401).json({ error: "Unauthorized" });
   }
 
-  res.status(200).json({
-    "Java": [
+  const privateNotes = {
+    "JavaScript": [
       {
-        title: "OOP in Java",
-        date: "2025-07-10",
-        content: "<p>OOP stands for Object-Oriented Programming.</p>",
-        tags: ["java", "oop"],
-        private: true
-      }
-    ],
-    "CSS": [
-      {
-        title: "CSS Grid",
-        date: "2025-07-15",
-        content: "<p>CSS Grid helps you create complex layouts easily.</p>",
-        tags: ["css", "layout"],
-        private: true
+        title: "Async Await",
+        date: "2024-06-01",
+        tags: ["js", "async"],
+        private: true,
+        content: "<p>Async/await makes asynchronous code look synchronous.</p>"
       }
     ]
-  });
+  };
+
+  res.status(200).json(privateNotes);
 }

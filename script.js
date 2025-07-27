@@ -378,7 +378,8 @@ async function loadNotes() {
 
 renderSidebar();
 
-  renderArticleFromHash();
+ renderNoteFromHash();
+
 }
 
 
