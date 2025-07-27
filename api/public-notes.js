@@ -29,7 +29,12 @@ public class HelloWorld {
 </pre>
 This simple program demonstrates Java's syntax, the use of classes and methods, and the standard output mechanism. The main method serves as the entry point for the application, and System.out.println prints the message to the console.
 `,
-      "History": "Java was created by James Gosling and released in 1995. Its original purpose was to enable interactive television, but it quickly became popular for web and enterprise development. Over the years, Java has evolved through several versions, each introducing new features and enhancements.",
+      "History": `- Java was created by James Gosling at Sun Microsystems and released in 1995.<br>
+- Originally designed for interactive television, but was too advanced for the digital cable industry at the time.<br>
+- Gained popularity for web and enterprise application development due to its platform independence and security.<br>
+- In 2009, Sun Microsystems was acquired by Oracle Corporation, which now maintains Java.<br>
+- Java has evolved through multiple versions, adding features like Generics (Java 5), Annotations, Lambda Expressions (Java 8), and the Module System (Java 9).<br>
+- Regular updates continue to improve performance, security, and developer productivity.<br>`,
       "Features": "Java offers platform independence via the JVM, automatic garbage collection, robust exception handling, multithreading, and a rich standard library. Its syntax is similar to C++, but it removes low-level constructs like pointers, making it safer and easier to use.",
       "JVM": "The Java Virtual Machine (JVM) is an abstract computing machine that enables Java bytecode to be executed on any platform. The JVM handles memory management, security, and provides a layer of abstraction between the compiled Java code and the underlying hardware.",
       "JRE & JDK": "The Java Runtime Environment (JRE) includes the JVM and standard libraries required to run Java applications. The Java Development Kit (JDK) contains the JRE plus development tools such as the Java compiler (javac), debugger, and other utilities needed for developing Java programs.",
