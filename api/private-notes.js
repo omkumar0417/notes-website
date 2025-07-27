@@ -1,11 +1,7 @@
 export default function handler(req, res) {
-  const auth = req.headers.authorization || "";
-  const [username, password] = auth.split(":");
+  const token = req.headers.authorization?.split(" ")[1]; // Get token after "Bearer"
 
-  if (
-    username === process.env.USERNAME &&
-    password === process.env.PASSWORD
-  ) {
+  if (token === process.env.ACCESS_TOKEN) {
     const privateNotes = {
       "Java": [
         {
@@ -23,3 +19,4 @@ export default function handler(req, res) {
     return res.status(401).json({ error: "Unauthorized" });
   }
 }
+
