@@ -424,7 +424,7 @@ console.log("✅ Final notesData:", window.notesData);
 
 localStorage.removeItem("accessToken");
 sessionStorage.removeItem("notesData");
-location.reload();
+
 
 
 console.log("isLoggedIn:", isLoggedIn);
