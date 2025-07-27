@@ -1,7 +1,31 @@
 export default function handler(req, res) {
   const publicNotes = {
     "Java": {
-      "Introduction": "Java is a versatile, object-oriented programming language developed by Sun Microsystems in 1995. It is designed to be platform-independent, allowing developers to write code once and run it anywhere. Java is widely used for building enterprise applications, mobile apps, web servers, and embedded systems.",
+      "Introduction": `
+Java is a powerful, versatile, and widely-used programming language that has shaped the software development landscape since its inception in 1995. Developed by Sun Microsystems under the leadership of James Gosling, Java was designed with the philosophy of "Write Once, Run Anywhere" (WORA), meaning that code written in Java can run on any device equipped with a Java Virtual Machine (JVM), regardless of the underlying hardware or operating system. This platform independence is achieved through the compilation of Java source code into bytecode, which the JVM interprets and executes.
+
+Java is an object-oriented language, which means it organizes software as a collection of objects that encapsulate both data and behavior. This approach promotes modularity, code reuse, and maintainability, making Java an excellent choice for large-scale enterprise applications. Java's syntax is heavily influenced by C and C++, but it eliminates many of the complexities and pitfalls associated with those languages, such as direct memory manipulation and pointer arithmetic. Instead, Java provides automatic garbage collection, robust exception handling, and strong type checking, which contribute to its reputation for reliability and security.
+
+One of Java's most significant contributions to the programming world is its extensive standard library, known as the Java API. This library provides thousands of classes and interfaces for tasks ranging from data structures and networking to graphical user interfaces and cryptography. Java also supports multithreading, allowing developers to write programs that can perform multiple tasks simultaneously, which is essential for modern applications that require responsiveness and scalability.
+
+Java's ecosystem is vast and vibrant, with a multitude of frameworks, tools, and libraries available to streamline development. Popular frameworks like Spring, Hibernate, and JavaServer Faces (JSF) enable rapid development of web applications, while Android development relies heavily on Java for building mobile apps. Java's integration with databases, messaging systems, and cloud platforms makes it a cornerstone of enterprise computing.
+
+The language has evolved significantly over the years, with major releases introducing features such as generics, annotations, lambda expressions, and the Streams API. These enhancements have kept Java relevant and competitive in a rapidly changing technological landscape. Java's commitment to backward compatibility ensures that older applications continue to run smoothly on newer versions of the language, protecting investments in software development.
+
+Java's community is another key strength. Millions of developers worldwide contribute to open-source projects, share knowledge through forums and conferences, and collaborate on improving the language and its ecosystem. The Oracle Corporation, which acquired Sun Microsystems, continues to steward Java's development, releasing regular updates that address security, performance, and new features.
+
+In summary, Java is more than just a programming language; it is a comprehensive platform for building robust, scalable, and secure applications across a wide range of domains. Its object-oriented design, platform independence, rich standard library, and active community make it an enduring choice for developers and organizations alike. Whether you are building desktop software, web applications, mobile apps, or enterprise systems, Java provides the tools and capabilities needed to succeed in today's complex software environment.
+
+**Example: Hello World in Java**
+<pre>
+public class HelloWorld {
+    public static void main(String[] args) {
+        System.out.println("Hello, World!");
+    }
+}
+</pre>
+This simple program demonstrates Java's syntax, the use of classes and methods, and the standard output mechanism. The main method serves as the entry point for the application, and System.out.println prints the message to the console.
+`,
       "History": "Java was created by James Gosling and released in 1995. Its original purpose was to enable interactive television, but it quickly became popular for web and enterprise development. Over the years, Java has evolved through several versions, each introducing new features and enhancements.",
       "Features": "Java offers platform independence via the JVM, automatic garbage collection, robust exception handling, multithreading, and a rich standard library. Its syntax is similar to C++, but it removes low-level constructs like pointers, making it safer and easier to use.",
       "JVM": "The Java Virtual Machine (JVM) is an abstract computing machine that enables Java bytecode to be executed on any platform. The JVM handles memory management, security, and provides a layer of abstraction between the compiled Java code and the underlying hardware.",
