@@ -29,7 +29,7 @@ const validToken = process.env.ACCESS_TOKEN;
           content: "<p>Binary Search is a fast search algorithm with O(log n) time complexity on sorted arrays.</p>"
         }
       ],
-      "C Language": [
+      "C ": [
   {
     "title": "C Language Summary",
     "date": "2025-07-13",
