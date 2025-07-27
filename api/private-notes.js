@@ -1,41 +1,23 @@
-export const privateNotes = {
-  Java: [
-    {
-      title: "OOP Concepts",
-      content: `
-        <h2>Object-Oriented Programming (OOP) in Java</h2>
-        <ul>
-          <li><strong>Encapsulation:</strong> Wrapping data and code in a class</li>
-          <li><strong>Inheritance:</strong> Subclass inherits from superclass</li>
-          <li><strong>Polymorphism:</strong> One interface, many implementations</li>
-          <li><strong>Abstraction:</strong> Hiding internal details, exposing only essentials</li>
-        </ul>
-      `
-    },
-    {
-      title: "Exception Handling",
-      content: `
-        <h2>Exception Handling in Java</h2>
-        <p>Used to handle runtime errors.</p>
-        <ul>
-          <li><code>try</code>, <code>catch</code>, <code>finally</code>, <code>throw</code>, <code>throws</code></li>
-          <li>Checked vs Unchecked Exceptions</li>
-        </ul>
-      `
-    }
-  ],
+export default function handler(req, res) {
+  const { username, password } = req.headers;
 
-  DSA: [
-    {
-      title: "Stacks and Queues",
-      content: `
-        <h2>Stacks and Queues</h2>
-        <ul>
-          <li><strong>Stack:</strong> LIFO (Last In First Out) using push() and pop()</li>
-          <li><strong>Queue:</strong> FIFO (First In First Out) using enqueue() and dequeue()</li>
-          <li>Used in recursion, task scheduling, memory management</li>
-        </ul>
-      `
-    }
-  ]
-};
+  if (
+    username === process.env.USERNAME &&
+    password === process.env.PASSWORD
+  ) {
+    const privateNotes = {
+      "DSA": {
+        "Arrays": "Arrays are fixed-size structures storing elements of same type...",
+        "Stacks": "LIFO data structure useful in recursion, parsing..."
+      },
+      "Spring Boot": {
+        "Intro": "Spring Boot simplifies backend dev using starters and annotations...",
+        "JPA": "Java Persistence API helps ORM between Java and DB..."
+      }
+    };
+
+    res.status(200).json(privateNotes);
+  } else {
+    res.status(401).json({ error: "Unauthorized" });
+  }
+}
