@@ -171,25 +171,35 @@ setTimeout(() => {
 <script>
   window.notesData = {};
 
-  const publicNotes = document.createElement("script");
-  publicNotes.src = "public-notes.js";
-  publicNotes.onload = () => {
-    if (localStorage.getItem("loggedIn") === "true") {
-      const privateNotes = document.createElement("script");
-      privateNotes.src = "private-notes.js";
-      privateNotes.onload = () => {
-        const appScript = document.createElement("script");
-        appScript.src = "script.js";
-        document.body.appendChild(appScript);
-      };
-      document.body.appendChild(privateNotes);
-    } else {
-      const appScript = document.createElement("script");
-      appScript.src = "script.js";
-      document.body.appendChild(appScript);
+  async function loadNotesAndStartApp() {
+    try {
+      // Fetch public notes
+      const publicRes = await fetch('/api/public-notes');
+      const publicNotes = await publicRes.json();
+      window.notesData = publicNotes;
+
+      // If user is logged in, fetch private notes too
+      if (localStorage.getItem("loggedIn") === "true") {
+        const token = localStorage.getItem("accessToken"); // if you're storing it
+        const privateRes = await fetch('/api/private-notes', {
+          headers: {
+            Authorization: `Bearer ${token}`
+          }
+        });
+        const privateNotes = await privateRes.json();
+        Object.assign(window.notesData, privateNotes); // Merge notes
+      }
+
+      // Now load your script.js
+      const script = document.createElement("script");
+      script.src = "script.js";
+      document.body.appendChild(script);
+    } catch (err) {
+      console.error("Error loading notes:", err);
     }
-  };
-  document.body.appendChild(publicNotes);
+  }
+
+  loadNotesAndStartApp();
 </script>
 
 
