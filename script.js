@@ -422,8 +422,7 @@ console.log("✅ Final isLoggedIn state:", isLoggedIn);
 console.log("✅ Final notesData:", window.notesData);
 
 
-localStorage.removeItem("accessToken");
-sessionStorage.removeItem("notesData");
+
 
 
 
