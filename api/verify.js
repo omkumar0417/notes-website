@@ -6,23 +6,13 @@
 //     res.status(200).json({ loggedIn: false });
 //   }
 // }
-async function checkLoginStatus() {
-  const token = localStorage.getItem("accessToken");
-if (!process.env.ACCESS_TOKEN) {
-    console.error("❌ ACCESS_TOKEN not set in environment!");
-    return res.status(500).json({ error: "Server misconfiguration: ACCESS_TOKEN not set." });
-  }
-  try {
-    const res = await fetch("/api/verify", {
-      headers: {
-        Authorization: `Bearer ${token}` // ✅ This must be "Bearer <token>"
-      }
-    });
+export default function handler(req, res) {
+  const token = req.headers.authorization?.split(" ")[1];
+  const validToken = "om123access4567"; // Replace with your real secret or use process.env.ACCESS_TOKEN in production
 
-    const data = await res.json();
-    return data.verified === true;
-  } catch (err) {
-    console.error("Verify request failed:", err);
-    return false;
+  if (token === validToken) {
+    return res.status(200).json({ verified: true });
+  } else {
+    return res.status(401).json({ verified: false, error: "Invalid token" });
   }
 }
