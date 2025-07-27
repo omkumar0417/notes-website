@@ -1,10 +1,12 @@
 let currentTopicLabel = null;
 let topicStartTime = null;
 let isLoggedIn = false;
+
+// Token check will happen inside initializeNotesApp instead
 const token = localStorage.getItem("accessToken");
 if (!token) {
   console.warn("No access token found.");
-  return;
+  // Do NOT use `return` here. Just log, don't halt script.
 }
 
 function trackTopicView(subject, topic) {
