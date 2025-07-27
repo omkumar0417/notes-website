@@ -2,12 +2,6 @@ let currentTopicLabel = null;
 let topicStartTime = null;
 let isLoggedIn = false;
 
-// Token check will happen inside initializeNotesApp instead
-const token = localStorage.getItem("accessToken");
-if (!token) {
-  console.warn("No access token found.");
-  // Do NOT use `return` here. Just log, don't halt script.
-}
 
 function trackTopicView(subject, topic) {
   // If switching topics, track exit
@@ -240,12 +234,16 @@ if (Array.isArray(notes)) {
 }
 
 
-mainContent.innerHTML = `
-  <div class="note-not-found">
-    <h2>Note Not Found</h2>
-    <p>Check the topic name or return to the sidebar.</p>
-  </div>
-`;
+if (!note) {
+  mainContent.innerHTML = `
+    <div class="note-not-found">
+      <h2>Note Not Found</h2>
+      <p>Check the topic name or return to the sidebar.</p>
+    </div>
+  `;
+  return;
+}
+
 
 
 // ⛔ Block private notes if not logged in
@@ -386,6 +384,16 @@ console.log("Logged in:", isLoggedIn);
 console.log("Token:", localStorage.getItem("accessToken"));
 
 async function loadNotes(isUserLoggedIn) {
+  const cached = sessionStorage.getItem("notesData");
+  if (cached) {
+    window.notesData = JSON.parse(cached);
+    isLoggedIn = isUserLoggedIn;
+    console.log("✅ Loaded notes from sessionStorage");
+    renderSidebar();
+    renderNoteFromHash();
+    return;
+  }
+  
   window.notesData = {};
 
   try {
@@ -414,22 +422,22 @@ async function loadNotes(isUserLoggedIn) {
   }
 
   isLoggedIn = isUserLoggedIn; // ✅ assign global after fetches done
+    // ✅ Cache notesData in sessionStorage
+  sessionStorage.setItem("notesData", JSON.stringify(window.notesData));
+  console.log("✅ Notes data cached in sessionStorage");
 
+if (isUserLoggedIn) {
+  gtag('event', 'login_success', {
+    event_category: 'User',
+    event_label: 'AccessToken Verified'
+  });
+}
   renderSidebar();
   renderNoteFromHash();
 }
 console.log("✅ Final isLoggedIn state:", isLoggedIn);
 console.log("✅ Final notesData:", window.notesData);
-
-// ❌ REMOVE these two (they break login completely):
-// localStorage.clear();
-// location.reload();
-
 console.log("isLoggedIn:", isLoggedIn);
 console.log("accessToken:", localStorage.getItem("accessToken"));
 console.log("notesData after loading:", window.notesData);
 console.log("All notes:", window.notesData);
-
-// ✅ This line is redundant here, remove it too:
-// renderSidebar();  // Already called in loadNotes()
-
