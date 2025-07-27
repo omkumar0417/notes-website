@@ -1,5 +1,5 @@
 export default function handler(req, res) {
-  const token = req.headers.authorization?.split(" ")[1]; // Get token after "Bearer"
+  const token = req.headers.authorization?.split(" ")[1]; // Bearer <token>
 
   if (token === process.env.ACCESS_TOKEN) {
     const privateNotes = {
