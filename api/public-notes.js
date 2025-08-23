@@ -69,7 +69,7 @@ This simple program demonstrates Java's syntax, the use of classes and methods, 
 "Syllabus(os.pdf)": `
 You can view the complete Java syllabus PDF directly below:
 <div class="pdf-container">
-  <object data="os.pdf#toolbar=0&navpanes=0&scrollbar=0" 
+  <object data="os.pdf#toolbar=0&navpanes=0" 
           type="application/pdf" 
           class="pdf-frame">
     <div class="pdf-fallback">
@@ -84,7 +84,7 @@ You can view the complete Java syllabus PDF directly below:
   Please refer to the PDF for a detailed breakdown of chapters, units, and learning objectives.
 </p>
 `
-
+//  <object data="os.pdf#toolbar=0&navpanes=0&scrollbar=0"
 
 
     },
