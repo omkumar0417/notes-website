@@ -766,38 +766,63 @@ main {
 
 
 
-
-
+/* PDF Container */
 .pdf-container {
   width: 100%;
-  height: 90vh;           /* almost full screen height */
-  border: 1px solid #f20000;
-  border-radius: 10px;
+  height: 85vh; /* nearly full screen on desktop */
+  border: 1px solid #a855f7;
+  border-radius: 14px;
   overflow: hidden;
-  margin: 15px 0;
+  margin: 20px 0;
+  background: #fff;
+  box-shadow: 0 4px 16px rgba(168, 85, 247, 0.25);
+  transition: all 0.3s ease-in-out;
 }
 
+.pdf-container:hover {
+  transform: scale(1.01);
+  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.35);
+}
+
+/* Frame (object/pdf embed) */
 .pdf-frame {
   width: 100%;
   height: 100%;
   border: none;
 }
 
+/* Fallback (mobile/iOS or unsupported browsers) */
 .pdf-fallback {
   text-align: center;
-  margin-top: 10px;
-  font-size: 14px;
-  color: #a855f7;
-  font-weight: bold;
+  padding: 20px;
+  font-size: 15px;
+  color: #6b21a8;
+  font-weight: 600;
 }
+
+.pdf-fallback a {
+  display: inline-block;
+  padding: 10px 18px;
+  margin-top: 12px;
+  background: #a855f7;
+  color: #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.pdf-fallback a:hover {
+  background: #9333ea;
+}
+
+/* Responsive */
 @media (max-width: 768px) {
   .pdf-container {
-    height: 60vh;   /* smaller so user can scroll */
+    height: 60vh; /* smaller so users can scroll */
   }
 
   .pdf-frame {
     height: 100%;
-    transform: scale(1.2);       /* zoom in for readability */
-    transform-origin: top left;  /* keeps zoom aligned */
   }
 }

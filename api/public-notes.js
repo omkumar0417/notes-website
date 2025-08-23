@@ -67,19 +67,23 @@ This simple program demonstrates Java's syntax, the use of classes and methods, 
       "Unit Testing": "JUnit and TestNG are popular frameworks for writing and running unit tests in Java. Example:<br>```java<br>@Test<br>public void testAdd() {<br>  assertEquals(5, add(2,3));<br>}<br>```",
       "Best Practices": "Follow naming conventions, use design patterns, write modular code, handle exceptions properly, and document your code for maintainability. Example: Use meaningful variable names, keep methods short, and write comments where necessary.",
 "Syllabus (os.pdf)": `
-You can view the complete Java syllabus PDF directly below:<br><br>
-<object data="os.pdf#toolbar=0&navpanes=0&scrollbar=0" 
-        type="application/pdf" 
-        width="100%" 
-        height="600" 
-        style="border:1px solid #a855f7;border-radius:8px;">
-   <p>Your browser doesn’t support inline PDFs. 
-   <a href="os.pdf" target="_blank" style="color:#a855f7;font-weight:bold;">Click here to view the PDF</a>.
-   </p>
-</object>
-<br><br>
-This syllabus covers all the essential topics and modules required for your Java course or exam preparation. Please refer to the PDF for a detailed breakdown of chapters, units, and learning objectives.
+<div class="pdf-container">
+  <object data="os.pdf#toolbar=0&navpanes=0&scrollbar=0" 
+          type="application/pdf" 
+          class="pdf-frame">
+    <div class="pdf-fallback">
+      <p>Your browser doesn’t support inline PDFs.</p>
+      <a href="os.pdf" target="_blank">Click here to view the PDF</a>
+    </div>
+  </object>
+</div>
+<br>
+<p>
+  This syllabus covers all the essential topics and modules required for your Java course or exam preparation. 
+  Please refer to the PDF for a detailed breakdown of chapters, units, and learning objectives.
+</p>
 `
+
 
 
     },
