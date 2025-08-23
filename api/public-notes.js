@@ -69,21 +69,18 @@ This simple program demonstrates Java's syntax, the use of classes and methods, 
 "Syllabus (os.pdf)": `
 <div class="syllabus-container">
   <h2 class="syllabus-title">📘 Operating System Syllabus</h2>
-  <p class="syllabus-desc">
+  <p class="syllabus-subtext">
     You can view the complete syllabus PDF directly below. Use the controls to zoom or scroll for a better reading experience.
   </p>
+
   <div class="pdf-wrapper">
-    <object data="os.pdf#toolbar=1&navpanes=0&scrollbar=1" 
+    <object data="os.pdf#toolbar=0&navpanes=0&scrollbar=0" 
             type="application/pdf" 
-            class="pdf-viewer">
+            class="pdf-object">
       <p>Your browser doesn’t support inline PDFs. 
-      <a href="os.pdf" target="_blank">Click here to view the PDF</a>.
+      <a href="os.pdf" target="_blank" class="pdf-link">Click here to view the PDF</a>.
       </p>
     </object>
-  </div>
-  <div class="pdf-actions">
-    <a href="os.pdf" target="_blank" class="btn-outline">Open in New Tab</a>
-    <a href="os.pdf" download class="btn-primary">Download PDF</a>
   </div>
 </div>
 `
