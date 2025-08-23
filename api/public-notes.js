@@ -83,6 +83,7 @@ Please refer to the PDF for a detailed breakdown of chapters, units, and learnin
 `
 
 
+
     },
     "HTML": {
       "Tags": "HTML (HyperText Markup Language) is the standard markup language for creating web pages. It uses tags to structure content, such as headings, paragraphs, links, images, lists, tables, and forms. Tags are enclosed in angle brackets, and most have opening and closing forms.<br><br>Common Tags:<br>- <div>: Defines a division or section<br>- <a>: Creates hyperlinks<br>- <p>: Paragraphs<br>- <img>: Embeds images<br>- <ul>/<ol>: Unordered/ordered lists<br>- <table>: Tables<br><br>Example:<br>```html<br><h1>Welcome</h1><p>This is a paragraph.</p><a href=\"https://example.com\">Visit</a><br>```",

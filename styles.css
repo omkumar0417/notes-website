@@ -762,3 +762,31 @@ main {
 .chat-header .chat-fullscreen-btn:hover {
   color: #ddd;
 }
+
+
+
+
+
+
+.pdf-container {
+  width: 100%;
+  height: 90vh;           /* almost full screen height */
+  border: 1px solid #a855f7;
+  border-radius: 10px;
+  overflow: hidden;
+  margin: 15px 0;
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.pdf-fallback {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  color: #a855f7;
+  font-weight: bold;
+}
