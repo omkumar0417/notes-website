@@ -2,62 +2,62 @@ export default function handler(req, res) {
   const publicNotes = {
    "Operating Systems (College)": {
   "Unit 1: Introduction, OS Structure and Services": `
-Overview
-- An Operating System (OS) is system software that manages hardware resources and provides services for application programs and users.
-- Objectives: convenience, efficiency (resource utilization), and ability to evolve.
+<strong>Overview:</strong><br>
+An Operating System (OS) is system software that manages hardware resources and provides services for application programs and users.<br>
+<strong>Objectives:</strong> convenience, efficiency (resource utilization), and ability to evolve.<br><br>
 
-Computer-System Organization
-- Components: CPU, main memory, I/O devices, device controllers, system bus.
-- DMA (Direct Memory Access): device transfers blocks directly to memory, reducing CPU overhead.
-- Storage hierarchy: registers → cache → main memory → secondary storage → tertiary storage (decreasing speed, increasing capacity).
+<strong>Computer-System Organization:</strong><br>
+• Components: CPU, main memory, I/O devices, device controllers, system bus.<br>
+• DMA (Direct Memory Access): device transfers blocks directly to memory, reducing CPU overhead.<br>
+• Storage hierarchy: registers → cache → main memory → secondary storage → tertiary storage (decreasing speed, increasing capacity).<br><br>
 
-Computer-System Architecture
-- Single-processor vs multi-processor (symmetric multiprocessing, NUMA).
-- Multicore CPUs & hardware threads (SMT/Hyper-Threading).
-- Clustered systems: loosely coupled computers working together.
-- Modes: user mode and kernel mode (privileged instructions only in kernel).
+<strong>Computer-System Architecture:</strong><br>
+• Single-processor vs multi-processor (symmetric multiprocessing, NUMA).<br>
+• Multicore CPUs & hardware threads (SMT/Hyper-Threading).<br>
+• Clustered systems: loosely coupled computers working together.<br>
+• Modes: user mode and kernel mode (privileged instructions only in kernel).<br><br>
 
-Operating-System Structure & Operations
-- Monolithic kernel (Unix), Microkernel (minimal kernel + services in user space), Modular kernels, Layered design, Hybrid (Windows, modern Linux with modules).
-- OS operations are event-driven: interrupts (from hardware) and traps/exceptions (from software).
-- Context switch: save PCB of running process and load PCB of next process.
-- Boot sequence: firmware (BIOS/UEFI) → bootloader (e.g., GRUB) → kernel load → init/systemd starts services.
+<strong>Operating-System Structure & Operations:</strong><br>
+• Monolithic kernel (Unix), Microkernel (minimal kernel + services in user space), Modular kernels, Layered design, Hybrid (Windows, modern Linux with modules).<br>
+• OS operations are event-driven: interrupts (from hardware) and traps/exceptions (from software).<br>
+• Context switch: save PCB of running process and load PCB of next process.<br>
+• Boot sequence: firmware (BIOS/UEFI) → bootloader (e.g., GRUB) → kernel load → init/systemd starts services.<br><br>
 
-OS Services (for users/programs)
-- Program execution, I/O operations, File-system manipulation, Interprocess communication (IPC), Error detection, Resource allocation, Accounting, Protection and Security, Networking, UI (CLI/GUI).
+<strong>OS Services (for users/programs):</strong><br>
+• Program execution, I/O operations, File-system manipulation, Interprocess communication (IPC), Error detection, Resource allocation, Accounting, Protection and Security, Networking, UI (CLI/GUI).<br><br>
 
-User and OS Interface
-- CLI (shell: bash, zsh, PowerShell), GUI (Windows, GNOME, KDE), Touch/Voice UIs.
-- Command interpreter parses commands and invokes system calls or utilities.
+<strong>User and OS Interface:</strong><br>
+• CLI (shell: bash, zsh, PowerShell), GUI (Windows, GNOME, KDE), Touch/Voice UIs.<br>
+• Command interpreter parses commands and invokes system calls or utilities.<br><br>
 
-System Calls (types & examples)
-- Process control (fork, exec, exit, wait).
-- File management (open, read, write, lseek, close).
-- Device management (ioctl, read/write on device files).
-- Information maintenance (getpid, time, uname).
-- Communications (pipe, socket, send/recv, shmget/shmat).
-- Protection (chmod, chown, setuid).
-- In POSIX, system calls are exposed via C library wrappers (glibc).
+<strong>System Calls (types & examples):</strong><br>
+• Process control (fork, exec, exit, wait).<br>
+• File management (open, read, write, lseek, close).<br>
+• Device management (ioctl, read/write on device files).<br>
+• Information maintenance (getpid, time, uname).<br>
+• Communications (pipe, socket, send/recv, shmget/shmat).<br>
+• Protection (chmod, chown, setuid).<br><br>
 
-System Programs
-- Compilers, linkers, loaders, assemblers, text editors, shells, daemons, network tools, file utilities.
+<strong>System Programs:</strong><br>
+Compilers, linkers, loaders, assemblers, text editors, shells, daemons, network tools, file utilities.<br><br>
 
-Kernel Data Structures (core OS tables)
-- Process: PCB (PID, state, registers, PC, memory pointers, open files, accounting).
-- Memory: page tables, frame table, free lists, TLB entries.
-- File system: open file table, inodes/FCBs, directory entries.
-- I/O: device-status tables, buffer caches, request queues.
+<strong>Kernel Data Structures:</strong><br>
+• Process: PCB (PID, state, registers, PC, memory pointers, open files, accounting).<br>
+• Memory: page tables, frame table, free lists, TLB entries.<br>
+• File system: open file table, inodes/FCBs, directory entries.<br>
+• I/O: device-status tables, buffer caches, request queues.<br><br>
 
-Computing Environments
-- Traditional desktops/servers, Mobile/Embedded/IoT, Client–Server and P2P, Virtualization (type-1/type-2 hypervisors), Cloud (IaaS/PaaS/SaaS), Real-time systems (hard vs soft).
+<strong>Computing Environments:</strong><br>
+Traditional desktops/servers, Mobile/Embedded/IoT, Client–Server and P2P, Virtualization (type-1/type-2 hypervisors), Cloud (IaaS/PaaS/SaaS), Real-time systems (hard vs soft).<br><br>
 
-Open-Source Operating Systems
-- Linux (kernel + GNU userland), BSD family (FreeBSD, OpenBSD, NetBSD), Android (Linux kernel + ART runtime).
+<strong>Open-Source Operating Systems:</strong><br>
+Linux (kernel + GNU userland), BSD family (FreeBSD, OpenBSD, NetBSD), Android (Linux kernel + ART runtime).<br><br>
 
-OS Design & Implementation
-- Policy (what) vs Mechanism (how). Portability (C/C++), performance (kernel space), reliability and security.
-- Debugging: logging, tracing, core dumps, kernel debuggers (kgdb), performance profiling (perf, ftrace).
-- Generation: configuring/building kernel, tailoring to hardware (drivers, modules).`,
+<strong>OS Design & Implementation:</strong><br>
+Policy (what) vs Mechanism (how). Portability (C/C++), performance (kernel space), reliability and security.<br>
+Debugging: logging, tracing, core dumps, kernel debuggers (kgdb), performance profiling (perf, ftrace).<br>
+Generation: configuring/building kernel, tailoring to hardware (drivers, modules).<br>
+`,
 
   "Unit 2: Process Management and Synchronization": `
 Process Concept
