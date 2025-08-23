@@ -66,20 +66,22 @@ This simple program demonstrates Java's syntax, the use of classes and methods, 
       "JDBC": "Java Database Connectivity (JDBC) enables interaction with databases. It supports SQL queries, transactions, and connection pooling. Example:<br>```java<br>Connection con = DriverManager.getConnection(url, user, pass);<br>Statement stmt = con.createStatement();<br>ResultSet rs = stmt.executeQuery(\"SELECT * FROM users\");<br>```",
       "Unit Testing": "JUnit and TestNG are popular frameworks for writing and running unit tests in Java. Example:<br>```java<br>@Test<br>public void testAdd() {<br>  assertEquals(5, add(2,3));<br>}<br>```",
       "Best Practices": "Follow naming conventions, use design patterns, write modular code, handle exceptions properly, and document your code for maintainability. Example: Use meaningful variable names, keep methods short, and write comments where necessary.",
-      "Syllabu (os.pdf)": `
+      "Syllabus (os.pdf)": `
 You can view the complete Java syllabus PDF directly below:<br><br>
 
 <div class="pdf-container">
   <iframe src="os.pdf" class="pdf-frame"></iframe>
   <p class="pdf-fallback">
-    PDF viewer might not work on your phone.  
-    <a href="os.pdf" target="_blank">Click here to open the file</a>.
+    If the PDF does not display properly, 
+    <a href="os.pdf" target="_blank">click here to open it in a new tab</a>.
   </p>
 </div>
 
 <br>
-This syllabus covers all the essential topics and modules required for your Java course or exam preparation. Please refer to the PDF for a detailed breakdown of chapters, units, and learning objectives.
+This syllabus covers all the essential topics and modules required for your Java course or exam preparation. 
+Please refer to the PDF for a detailed breakdown of chapters, units, and learning objectives.
 `
+
 
     },
     "HTML": {
