@@ -771,7 +771,7 @@ main {
 .pdf-container {
   width: 100%;
   height: 90vh;           /* almost full screen height */
-  border: 1px solid #a855f7;
+  border: 1px solid #f20000;
   border-radius: 10px;
   overflow: hidden;
   margin: 15px 0;
@@ -789,4 +789,15 @@ main {
   font-size: 14px;
   color: #a855f7;
   font-weight: bold;
+}
+@media (max-width: 768px) {
+  .pdf-container {
+    height: 60vh;   /* smaller so user can scroll */
+  }
+
+  .pdf-frame {
+    height: 100%;
+    transform: scale(1.2);       /* zoom in for readability */
+    transform-origin: top left;  /* keeps zoom aligned */
+  }
 }
