@@ -1,6 +1,5 @@
 export default function handler(req, res) {
   const token = req.headers.authorization?.split(" ")[1];
-//   const validToken = "om123access4567"; // Replace with process.env.ACCESS_TOKEN in production
 const validToken = process.env.ACCESS_TOKEN;
   if (token === validToken) {
     const privateNotes = {
