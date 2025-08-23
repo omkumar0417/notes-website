@@ -819,7 +819,7 @@ main {
 /* Responsive */
 @media (max-width: 768px) {
   .pdf-container {
-    height: 60vh; /* smaller so users can scroll */
+    height: 20vh; /* smaller so users can scroll */
   }
 
   .pdf-frame {
