@@ -1,5 +1,53 @@
 export default function handler(req, res) {
   const publicNotes = {
+    "Operating Systems (College)": {
+      "Unit 1: Introduction to Operating Systems": "Covers the basics of OS, types, functions, and system components. Explains kernel, shell, and user interface concepts.",
+      "Unit 2: Process Management": "Explains processes, threads, process scheduling, context switching, and synchronization mechanisms.",
+      "Unit 3: Memory Management": "Discusses memory allocation, paging, segmentation, virtual memory, and memory protection.",
+      "Unit 4: File Systems": "Describes file concepts, directory structures, file allocation methods, and file system implementation.",
+      "Unit 5: Device Management & Deadlocks": "Covers I/O systems, device drivers, deadlock detection, prevention, and recovery.",
+      "Syllabus": `
+<iframe src="pdfs/os_syllabus.pdf" width="100%" height="600px" class="pdf-frame" style="border:1px solid #a855f7;border-radius:8px;"></iframe>
+<br>If the PDF does not display, <a href="pdfs/os_syllabus.pdf" target="_blank" style="color:#a855f7;font-weight:bold;">click here to open it in a new tab</a>.
+`,
+      "Important Questions": "A curated list of frequently asked questions and previous year exam questions for Operating Systems."
+    },
+    "Mathematics III (College)": {
+      "Unit 1: Laplace Transforms": "Introduction to Laplace transforms, properties, and applications in engineering problems.",
+      "Unit 2: Fourier Series and Transforms": "Covers Fourier series, integrals, and transforms with engineering applications.",
+      "Unit 3: Partial Differential Equations": "Formation, solutions, and applications of partial differential equations.",
+      "Unit 4: Complex Analysis": "Analytic functions, Cauchy-Riemann equations, contour integration, and residue theorem.",
+      "Unit 5: Probability and Statistics": "Probability distributions, mean, variance, hypothesis testing, and statistical methods.",
+      "Syllabus": "Detailed syllabus for Mathematics III including all units and reference books.",
+      "Formula Sheet": "A comprehensive formula sheet for quick revision and exam preparation."
+    },
+    "Computer Organization & Architecture (College)": {
+      "Unit 1: Basic Computer Organization": "Covers computer components, instruction cycles, and basic architecture.",
+      "Unit 2: Microprogrammed Control": "Microinstructions, control memory, and microprogramming concepts.",
+      "Unit 3: Central Processing Unit": "CPU organization, instruction formats, addressing modes, and ALU design.",
+      "Unit 4: Memory Organization": "Memory hierarchy, cache, RAM, ROM, and associative memory.",
+      "Unit 5: Input/Output Organization": "I/O interfaces, data transfer methods, interrupts, and DMA.",
+      "Syllabus": "Complete syllabus for COA with unit-wise breakdown and recommended readings.",
+      "Viva Questions": "Common viva and oral exam questions for COA practicals and theory."
+    },
+    "Data Structures & Algorithms (College)": {
+      "Unit 1: Introduction to Data Structures": "Overview of data structures, types, and algorithm analysis.",
+      "Unit 2: Linear Data Structures": "Arrays, linked lists, stacks, and queues with operations and applications.",
+      "Unit 3: Non-Linear Data Structures": "Trees, binary trees, BST, AVL trees, and graph representations.",
+      "Unit 4: Sorting and Searching Algorithms": "Bubble, selection, insertion, merge, quick sort, and search algorithms.",
+      "Unit 5: Hashing and Advanced Topics": "Hash tables, collision resolution, and introduction to advanced data structures.",
+      "Syllabus": "Unit-wise syllabus for DSA, including practical and theoretical components.",
+      "Interview Preparation": "Key DSA questions and problems commonly asked in technical interviews."
+    },
+    "Advanced Programming Practice (College)": {
+      "Unit 1: Advanced C Programming": "Pointers, dynamic memory, file handling, and modular programming in C.",
+      "Unit 2: Object-Oriented Programming": "OOP concepts, classes, objects, inheritance, and polymorphism in C++/Java.",
+      "Unit 3: Data Structures Implementation": "Implementing stacks, queues, trees, and graphs in code.",
+      "Unit 4: Algorithms and Complexity": "Algorithm design, complexity analysis, and optimization techniques.",
+      "Unit 5: Real-World Projects": "Building mini-projects and applications using advanced programming concepts.",
+      "Syllabus": "Comprehensive syllabus for Advanced Programming Practice with project guidelines.",
+      "Coding Challenges": "A set of coding challenges and practice problems to enhance programming skills."
+    },
     "Java": {
       "Introduction": `
 - Java is a powerful, versatile, and widely-used programming language, developed in 1995 by Sun Microsystems under James Gosling.<br>
