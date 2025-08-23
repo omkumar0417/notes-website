@@ -700,7 +700,7 @@ main {
 
 .logout-btn button {
   padding: 2px 8px;
-  background-color: #6b4eff;
+  background-color: #2f0ae9;
   color: white;
   border: none;
   border-radius: 100px;
@@ -709,7 +709,7 @@ main {
 }
 
 .logout-btn button:hover {
-  background-color: #3e25bb;
+  background-color: #3310e0;
 }
 /* Fullscreen Chat Mode */
 .chatbot-container.fullscreen {
@@ -742,7 +742,7 @@ main {
   justify-content: space-between;
   align-items: center;
   padding: 10px 16px;
-  background-color: #6a4fff;
+  background-color: #300ef2;
   color: white;
   font-weight: bold;
 }
@@ -770,18 +770,18 @@ main {
 .pdf-container {
   width: 100%;
   height: 85vh; /* nearly full screen on desktop */
-  border: 1px solid #a855f7;
+  border: 1px solid #9027f3;
   border-radius: 14px;
   overflow: hidden;
   margin: 20px 0;
   background: #fff;
-  box-shadow: 0 4px 16px rgba(168, 85, 247, 0.25);
+  box-shadow: 0 4px 16px rgba(146, 39, 247, 0.84);
   transition: all 0.3s ease-in-out;
 }
 
 .pdf-container:hover {
   transform: scale(1.01);
-  box-shadow: 0 6px 20px rgba(168, 85, 247, 0.35);
+  box-shadow: 0 6px 20px rgba(143, 29, 249, 0.661);
 }
 
 /* Frame (object/pdf embed) */
@@ -804,7 +804,7 @@ main {
   display: inline-block;
   padding: 10px 18px;
   margin-top: 12px;
-  background: #a855f7;
+  background: #8014e6;
   color: #fff;
   border-radius: 8px;
   text-decoration: none;
@@ -813,7 +813,7 @@ main {
 }
 
 .pdf-fallback a:hover {
-  background: #9333ea;
+  background: #840df3;
 }
 
 /* Responsive */
