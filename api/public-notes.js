@@ -48,110 +48,6 @@ export default function handler(req, res) {
       "Syllabus": "Comprehensive syllabus for Advanced Programming Practice with project guidelines.",
       "Coding Challenges": "A set of coding challenges and practice problems to enhance programming skills."
     },
-    "Java": {
-      "Introduction": `
-- Java is a powerful, versatile, and widely-used programming language, developed in 1995 by Sun Microsystems under James Gosling.<br>
-- Designed with "Write Once, Run Anywhere" (WORA) – Java code runs on any device with a Java Virtual Machine (JVM).<br>
-- Platform independent through compilation to bytecode, which the JVM executes.<br>
-- Object-oriented language, promoting modularity, code reuse, and maintainability.<br>
-- Simpler than C/C++, avoiding direct memory manipulation and pointer arithmetic.<br>
-- Features like automatic garbage collection, exception handling, and strong type checking** enhance reliability and security.<br>
-- Rich standard library (Java API) supports tasks like data structures, networking, GUIs, and cryptography.<br>
-- Supports multithreading, enabling concurrent execution for responsive and scalable apps.<br>
-- Vast ecosystem with frameworks like Spring, Hibernate, and JSF for rapid development.<br>
-- Core language for Android development and widely used in enterprise software.<br>
-- Integrates well with databases, messaging systems, and cloud platforms.<br>
-- Continually evolves with new features (e.g., generics, annotations, lambdas, Streams API).<br>
-- Backward compatibility ensures older code runs on newer versions.<br>
-- Large, active global community contributes to open-source projects and knowledge sharing.<br>
-- Maintained by Oracle, with regular updates for performance, security, and features.<br>
-- Ideal for building desktop, web, mobile, and enterprise applications.<br>
-
-Example: Hello World in Java
-<pre>
-public class HelloWorld {
-    public static void main(String[] args) {
-        System.out.println("Hello, World!");
-    }
-}
-</pre>
-This simple program demonstrates Java's syntax, the use of classes and methods, and the standard output mechanism. The main method serves as the entry point for the application, and System.out.println prints the message to the console.
-`,
-      "History": `- Java was created by James Gosling at Sun Microsystems and released in 1995.<br>
-- Originally designed for interactive television, but was too advanced for the digital cable industry at the time.<br>
-- Gained popularity for web and enterprise application development due to its platform independence and security.<br>
-- In 2009, Sun Microsystems was acquired by Oracle Corporation, which now maintains Java.<br>
-- Java has evolved through multiple versions, adding features like Generics (Java 5), Annotations, Lambda Expressions (Java 8), and the Module System (Java 9).<br>
-- Regular updates continue to improve performance, security, and developer productivity.<br>`,
-      "Features": "Java offers platform independence via the JVM, automatic garbage collection, robust exception handling, multithreading, and a rich standard library. Its syntax is similar to C++, but it removes low-level constructs like pointers, making it safer and easier to use.",
-      "JVM": "The Java Virtual Machine (JVM) is an abstract computing machine that enables Java bytecode to be executed on any platform. The JVM handles memory management, security, and provides a layer of abstraction between the compiled Java code and the underlying hardware.",
-      "JRE & JDK": "The Java Runtime Environment (JRE) includes the JVM and standard libraries required to run Java applications. The Java Development Kit (JDK) contains the JRE plus development tools such as the Java compiler (javac), debugger, and other utilities needed for developing Java programs.",
-      "Syntax": "Java syntax is similar to C/C++. Statements end with semicolons, blocks are enclosed in curly braces, and variables must be declared with a type. Example:<br>```java<br>int x = 10;<br>if (x > 5) {<br>  System.out.println(\"x is greater than 5\");<br>}<br>```",
-      "Data Types": "Java supports primitive data types (byte, short, int, long, float, double, char, boolean) and reference types (arrays, objects). Example:<br>```java<br>int age = 25;<br>double salary = 50000.50;<br>char grade = 'A';<br>boolean isActive = true;<br>```",
-      "Variables": "Variables must be declared with a type. Local variables are declared inside methods, instance variables are declared in a class, and static variables are shared among all instances. Example:<br>```java<br>class Person {<br>  String name;<br>  static int count;<br>}<br>```",
-      "Operators": "Java provides arithmetic (+, -, *, /, %), relational (==, !=, >, <, >=, <=), logical (&&, ||, !), bitwise (&, |, ^, ~, <<, >>), assignment (=, +=, -=, etc.), and ternary (?:) operators. Example:<br>```java<br>int a = 5, b = 3;<br>int sum = a + b;<br>boolean isEqual = (a == b);<br>```",
-      "Control Statements": "Java supports if, else, switch, for, while, do-while, break, continue, and return statements for controlling program flow. Example:<br>```java<br>for (int i = 0; i < 5; i++) {<br>  if (i % 2 == 0) continue;<br>  System.out.println(i);<br>}<br>```",
-      "Classes": "A class is a blueprint for objects. It encapsulates data and methods. Example:<br>```java<br>class Car {<br>  String model;<br>  void drive() {<br>    System.out.println(\"Driving \" + model);<br>  }<br>}<br>```",
-      "Objects": "Objects are instances of classes. They have state (fields) and behavior (methods). Example:<br>```java<br>Car myCar = new Car();<br>myCar.model = \"Honda\";<br>myCar.drive();<br>```",
-      "Methods": "Methods define the behavior of objects. They can have parameters and return values. Java supports method overloading (same name, different parameters) and overriding (subclass redefines method). Example:<br>```java<br>int add(int a, int b) { return a + b; }<br>double add(double a, double b) { return a + b; }<br>```",
-      "Constructors": "Constructors initialize objects. They have the same name as the class and no return type. Example:<br><br>class Student {<br>  String name;<br>  Student(String n) { name = n; }<br>}<br>Student s = new Student(\"Alice\");<br>",
-      "Inheritance": "Inheritance allows a class to acquire properties and methods of another class. The 'extends' keyword is used. Example:<br>```java<br>class Animal { void eat() {} }<br>class Dog extends Animal { void bark() {} }<br>```",
-      "Polymorphism": "Polymorphism enables objects to be treated as instances of their parent class. It supports method overriding and dynamic method dispatch. Example:<br>```java<br>Animal a = new Dog();<br>a.eat();<br>```",
-      "Encapsulation": "Encapsulation hides internal details and exposes only necessary features. Access modifiers (private, protected, public) control visibility. Example:<br>```java<br>class Account {<br>  private double balance;<br>  public double getBalance() { return balance; }<br>}<br>```",
-      "Abstraction": "Abstraction focuses on essential features by hiding implementation details. Abstract classes and interfaces are used for abstraction. Example:<br>```java<br>abstract class Shape {<br>  abstract void draw();<br>}<br>```",
-      "Interfaces": "Interfaces define a contract for classes. They can contain abstract methods and constants. Classes implement interfaces using the 'implements' keyword. Example:<br>```java<br>interface Drawable { void draw(); }<br>class Circle implements Drawable {<br>  public void draw() { System.out.println(\"Drawing Circle\"); }<br>}<br>```",
-      "Packages": "Packages organize classes into namespaces. The 'import' statement is used to access classes from other packages. Example:<br>```java<br>package myapp;<br>import java.util.*;<br>```",
-      "Exception Handling": "Java uses try, catch, finally, throw, and throws for robust error handling. Checked exceptions must be declared or handled, unchecked exceptions do not. Example:<br>```java<br>try {<br>  int x = 10 / 0;<br>} catch (ArithmeticException e) {<br>  System.out.println(\"Error: \" + e.getMessage());<br>} finally {<br>  System.out.println(\"Done\");<br>}<br>```",
-      "Multithreading": "Java supports concurrent programming using threads. The Thread class and Runnable interface are used to create and manage threads. Example:<br>```java<br>class MyThread extends Thread {<br>  public void run() { System.out.println(\"Thread running\"); }<br>}<br>MyThread t = new MyThread();<br>t.start();<br>```",
-      "Collections": "The Collections Framework provides data structures like List, Set, Map, and Queue. It supports generics and utility methods. Example:<br>```java<br>List<String> names = new ArrayList<>();<br>names.add(\"Alice\");<br>names.add(\"Bob\");<br>```",
-      "Generics": "Generics enable type-safe code and reusable algorithms. They are used with collections and custom classes. Example:<br>```java<br>class Box<T> {<br>  T value;<br>  void set(T v) { value = v; }<br>  T get() { return value; }<br>}<br>```",
-      "File I/O": "Java provides classes in java.io and java.nio for reading and writing files, handling streams, and working with directories. Example:<br>```java<br>BufferedReader reader = new BufferedReader(new FileReader(\"file.txt\"));<br>String line = reader.readLine();<br>reader.close();<br>```",
-      "Networking": "Java supports network programming using sockets, URLs, and HTTP connections. The java.net package provides relevant classes. Example:<br>```java<br>Socket s = new Socket(\"localhost\", 8080);<br>```",
-      "GUI Programming": "Java offers GUI development using Swing, AWT, and JavaFX. Components like JFrame, JButton, and JPanel are used to build interfaces. Example:<br>```java<br>JFrame frame = new JFrame(\"Demo\");<br>frame.setSize(300,200);<br>frame.setVisible(true);<br>```",
-      "Annotations": "Annotations provide metadata for classes, methods, and fields. They are used for configuration, documentation, and code analysis. Example:<br>```java<br>@Override<br>public void run() { }<br>```",
-      "Lambda Expressions": "Introduced in Java 8, lambda expressions enable functional programming and simplify code for event handling and collections. Example:<br>```java<br>List<String> list = Arrays.asList(\"a\", \"b\", \"c\");<br>list.forEach(item -> System.out.println(item));<br>```",
-      "Streams API": "The Streams API allows functional-style operations on collections, such as filtering, mapping, and reducing data. Example:<br>```java<br>List<Integer> nums = Arrays.asList(1,2,3,4);<br>nums.stream().filter(n -> n%2==0).forEach(System.out::println);<br>```",
-      "JDBC": "Java Database Connectivity (JDBC) enables interaction with databases. It supports SQL queries, transactions, and connection pooling. Example:<br>```java<br>Connection con = DriverManager.getConnection(url, user, pass);<br>Statement stmt = con.createStatement();<br>ResultSet rs = stmt.executeQuery(\"SELECT * FROM users\");<br>```",
-      "Unit Testing": "JUnit and TestNG are popular frameworks for writing and running unit tests in Java. Example:<br>```java<br>@Test<br>public void testAdd() {<br>  assertEquals(5, add(2,3));<br>}<br>```",
-      "Best Practices": "Follow naming conventions, use design patterns, write modular code, handle exceptions properly, and document your code for maintainability. Example: Use meaningful variable names, keep methods short, and write comments where necessary.",
-"Syllabus(os.pdf)": `
-You can view the complete Java syllabus PDF directly below:
-<div class="pdf-container">
-  <object data="pdfs/os_syllabus.pdf#toolbar=0&navpanes=0" 
-          type="application/pdf" 
-          class="pdf-frame">
-    <div class="pdf-fallback">
-      <p>Your browser doesn’t support inline PDFs.</p>
-      <a href="pdfs/os_syllabus.pdf" target="_blank">Click here to view the PDF</a>
-    </div>
-  </object>
-</div>
-<br>
-<p>
-  This syllabus covers all the essential topics and modules required for your Java course or exam preparation. 
-  Please refer to the PDF for a detailed breakdown of chapters, units, and learning objectives.
-</p>
-`
-//  <object data="os_syllabus.pdf#toolbar=0&navpanes=0&scrollbar=0"
-
-
-    },
-    "HTML": {
-      "Tags": "HTML (HyperText Markup Language) is the standard markup language for creating web pages. It uses tags to structure content, such as headings, paragraphs, links, images, lists, tables, and forms. Tags are enclosed in angle brackets, and most have opening and closing forms.<br><br>Common Tags:<br>- <div>: Defines a division or section<br>- <a>: Creates hyperlinks<br>- <p>: Paragraphs<br>- <img>: Embeds images<br>- <ul>/<ol>: Unordered/ordered lists<br>- <table>: Tables<br><br>Example:<br>```html<br><h1>Welcome</h1><p>This is a paragraph.</p><a href=\"https://example.com\">Visit</a><br>```",
-      "Forms": "HTML forms are used to collect user input. They consist of form elements like input fields, checkboxes, radio buttons, select dropdowns, and textareas. Forms use the <form> tag and can send data to a server using GET or POST methods.<br><br>Common Elements:<br>- <input>: Text, password, email, etc.<br>- <select>: Dropdown list<br>- <textarea>: Multi-line text input<br>- <button>: Clickable button<br><br>Example:<br>```html<br><form action=\"/submit\" method=\"post\"><br>  <input type=\"text\" name=\"username\"><br>  <input type=\"password\" name=\"pwd\"><br>  <button type=\"submit\">Login</button><br></form><br>```"
-    },
-    "CSS": {
-      "Selectors": "CSS (Cascading Style Sheets) is used to style and layout web pages. Selectors target HTML elements to apply styles. There are several types:<br><br>- Element selector: Targets all elements of a type (e.g., p, h1)<br>- Class selector: Targets elements with a specific class (e.g., .container)<br>- ID selector: Targets a unique element (e.g., #header)<br>- Attribute selector: Targets elements with specific attributes<br>- Descendant, child, and sibling selectors for complex relationships<br><br>Example:<br>```css<br>p { color: blue; }<br>.main { padding: 10px; }<br>#nav { background: #eee; }<br>```",
-      "Flexbox": "Flexbox is a CSS layout model that makes it easy to design flexible and responsive layouts. It arranges items in rows or columns and distributes space dynamically.<br><br>Key Properties:<br>- display: flex;<br>- flex-direction: row | column<br>- justify-content: center | space-between | flex-end<br>- align-items: center | stretch<br>- flex-wrap: wrap<br><br>Example:<br>```css<br>.container {<br>  display: flex;<br>  flex-direction: row;<br>  justify-content: space-between;<br>  align-items: center;<br>}<br>```"
-    },
-    "JavaScript": {
-      "Variables": "JavaScript is a versatile scripting language for web development. Variables store data values and can be declared using:<br><br>- var: Function-scoped, can be redeclared and updated<br>- let: Block-scoped, can be updated but not redeclared in the same scope<br>- const: Block-scoped, cannot be updated or redeclared<br><br>Example:<br>```js<br>var name = \"Alice\";<br>let age = 25;<br>const PI = 3.14;<br>```<br>Variables can hold numbers, strings, objects, arrays, functions, etc.",
-      "Functions": "Functions are reusable blocks of code that perform specific tasks. They can be declared using the function keyword or arrow syntax.<br><br>Function Declaration:<br>```js<br>function greet(name) {<br>  return \"Hello, \" + name;<br>}<br>```<br>Arrow Function:<br>```js<br>const add = (a, b) => a + b;<br>```<br>Functions can accept parameters and return values. They are first-class objects, meaning they can be assigned to variables, passed as arguments, and returned from other functions."
-    },
-    "Python": {
-      "Data Types": "Python is a high-level, interpreted language known for its readability and simplicity. It has several built-in data types:<br><br>- int: Integer numbers<br>- float: Decimal numbers<br>- str: Text data<br>- list: Ordered, mutable collection<br>- tuple: Ordered, immutable collection<br>- dict: Key-value pairs<br>- set: Unordered, unique elements<br><br>Example:<br>```python<br>age = 20<br>pi = 3.14<br>name = \"Alice\"<br>numbers = [1, 2, 3]<br>info = {\"name\": \"Bob\", \"age\": 25}<br>```",
-      "Control Flow": "Python uses control flow statements to direct program execution:<br><br>- if/elif/else: Conditional branching<br>- for: Iteration over sequences<br>- while: Looping until a condition is false<br>- break/continue: Alter loop execution<br><br>Example:<br>```python<br>for i in range(5):<br>  if i % 2 == 0:<br>    print(i, \"is even\")<br>  else:<br>    print(i, \"is odd\")<br>```"
-    },
     "C Language": [
       {
         "title": "C Language Summary",
@@ -188,3 +84,4 @@ You can view the complete Java syllabus PDF directly below:
 
   res.status(200).json(publicNotes);
 }
+//  <object data="os_syllabus.pdf#toolbar=0&navpanes=0&scrollbar=0"
