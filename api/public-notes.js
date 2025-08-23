@@ -70,7 +70,7 @@ This simple program demonstrates Java's syntax, the use of classes and methods, 
 You cean view the complete Java syllabus PDF directly below:<br><br>
 <object data="os.pdf" type="application/pdf" width="100%" height="600" style="border:1px solid #a855f7;border-radius:8px;">
    <p>Your browser doesn’t support inline PDFs. 
-   <a href="os.pdf" target="_blank" style="color:#a855f7;font-weight:bold;">Click here to view the PDF</a>.
+   <a href="os.pdf" target="https://noteswebsite04.vercel.app/os.pdf" style="color:#a855f7;font-weight:bold;">Click here to view the PDF</a>.
    </p>
 </object>
 <br><br>
