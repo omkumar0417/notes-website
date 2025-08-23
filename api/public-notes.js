@@ -66,14 +66,17 @@ This simple program demonstrates Java's syntax, the use of classes and methods, 
       "JDBC": "Java Database Connectivity (JDBC) enables interaction with databases. It supports SQL queries, transactions, and connection pooling. Example:<br>```java<br>Connection con = DriverManager.getConnection(url, user, pass);<br>Statement stmt = con.createStatement();<br>ResultSet rs = stmt.executeQuery(\"SELECT * FROM users\");<br>```",
       "Unit Testing": "JUnit and TestNG are popular frameworks for writing and running unit tests in Java. Example:<br>```java<br>@Test<br>public void testAdd() {<br>  assertEquals(5, add(2,3));<br>}<br>```",
       "Best Practices": "Follow naming conventions, use design patterns, write modular code, handle exceptions properly, and document your code for maintainability. Example: Use meaningful variable names, keep methods short, and write comments where necessary.",
-      "Syllabus (os.pdf)": `
+     "Syllabus (os.pdf)": `
 You can view the complete Java syllabus PDF directly below:<br><br>
-<iframe src="os.pdf" width="100%" height="600px" style="border:1px solid #a855f7;border-radius:8px;"></iframe>
-<br>
-If the PDF does not display, <a href="os.pdf" target="_blank" style="color:#a855f7;font-weight:bold;">click here to open it in a new tab</a>.
+<object data="os.pdf" type="application/pdf" width="100%" height="600" style="border:1px solid #a855f7;border-radius:8px;">
+   <p>Your browser doesn’t support inline PDFs. 
+   <a href="os.pdf" target="_blank" style="color:#a855f7;font-weight:bold;">Click here to view the PDF</a>.
+   </p>
+</object>
 <br><br>
 This syllabus covers all the essential topics and modules required for your Java course or exam preparation. Please refer to the PDF for a detailed breakdown of chapters, units, and learning objectives.
 `
+
     },
     "HTML": {
       "Tags": "HTML (HyperText Markup Language) is the standard markup language for creating web pages. It uses tags to structure content, such as headings, paragraphs, links, images, lists, tables, and forms. Tags are enclosed in angle brackets, and most have opening and closing forms.<br><br>Common Tags:<br>- <div>: Defines a division or section<br>- <a>: Creates hyperlinks<br>- <p>: Paragraphs<br>- <img>: Embeds images<br>- <ul>/<ol>: Unordered/ordered lists<br>- <table>: Tables<br><br>Example:<br>```html<br><h1>Welcome</h1><p>This is a paragraph.</p><a href=\"https://example.com\">Visit</a><br>```",
