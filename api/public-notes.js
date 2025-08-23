@@ -67,9 +67,9 @@ This simple program demonstrates Java's syntax, the use of classes and methods, 
       "Unit Testing": "JUnit and TestNG are popular frameworks for writing and running unit tests in Java. Example:<br>```java<br>@Test<br>public void testAdd() {<br>  assertEquals(5, add(2,3));<br>}<br>```",
       "Best Practices": "Follow naming conventions, use design patterns, write modular code, handle exceptions properly, and document your code for maintainability. Example: Use meaningful variable names, keep methods short, and write comments where necessary.",
 "Syllabus(os.pdf)": `
-You caan view the complete Java syllabus PDF directly below:
+You can view the complete Java syllabus PDF directly below:
 <div class="pdf-container">
-  <object data="os.pdf#toolbar=0&navpanes=0" 
+  <object data="pdfs/os.pdf#toolbar=0&navpanes=0" 
           type="application/pdf" 
           class="pdf-frame">
     <div class="pdf-fallback">
