@@ -275,7 +275,24 @@ Security Classifications & Models
 - Bell–LaPadula (confidentiality: no read up, no write down) and Biba (integrity: no read down, no write up) models.`,
 
  
-
+"Question bank":`
+You can view the Operating System question bank PDF directly below:
+<div class="pdf-container">
+  <object data="pdfs/os_bank.pdf#toolbar=0&navpanes=0" 
+          type="application/pdf" 
+          class="pdf-frame">
+    <div class="pdf-fallback">
+      <p>Your browser doesn’t support inline PDFs.</p>
+      <a href="pdfs/os_bank.pdf" target="_blank">Click here to view the PDF</a>
+    </div>
+  </object>
+</div>
+<br>
+<p>
+  This syllabus covers all the essential topics and modules required for your Java course or exam preparation. 
+  Please refer to the PDF for a detailed breakdown of chapters, units, and learning objectives.
+</p>
+`,
   "Important Questions unitwise": `
 Unit 1
 1) Explain kernel vs shell, user vs kernel mode with examples. 
