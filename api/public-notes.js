@@ -2,8 +2,22 @@ export default function handler(req, res) {
   const publicNotes = {
    "Operating Systems (College)": {
      "Syllabus": `
-<iframe src="pdfs/os_syllabus.pdf" width="100%" height="600px" class="pdf-frame" style="border:1px solid #a855f7;border-radius:8px;"></iframe>
-<br>If the PDF does not display, <a href="pdfs/os_syllabus.pdf" target="_blank" style="color:#a855f7;font-weight:bold;">click here to open it in a new tab</a>.
+You can view the complete Java syllabus PDF directly below:
+<div class="pdf-container">
+  <object data="pdfs/os_syllabus.pdf#toolbar=0&navpanes=0" 
+          type="application/pdf" 
+          class="pdf-frame">
+    <div class="pdf-fallback">
+      <p>Your browser doesn’t support inline PDFs.</p>
+      <a href="pdfs/os_syllabus.pdf" target="_blank">Click here to view the PDF</a>
+    </div>
+  </object>
+</div>
+<br>
+<p>
+  This syllabus covers all the essential topics and modules required for your Java course or exam preparation. 
+  Please refer to the PDF for a detailed breakdown of chapters, units, and learning objectives.
+</p>
 `,
   "Unit 1: Introduction, OS Structure and Services": `
 <strong>Overview:</strong><br>
