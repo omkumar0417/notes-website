@@ -1,0 +1,10 @@
+Operating systems (OS) manage computer hardware and software resources.  
+They provide a user interface for interacting with the machine.  
+Popular OS examples include Windows, macOS, and Linux.  
+An OS handles memory management and process scheduling.  
+File systems are organized and maintained by the OS.  
+Security and user authentication are core OS responsibilities.  
+Device drivers allow the OS to communicate with hardware.  
+Multitasking is enabled by modern operating systems.  
+Updates and patches keep the OS secure and efficient.  
+Without an OS, most computers would be unusable for everyday tasks.

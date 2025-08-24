@@ -288,6 +288,17 @@ You can view the Operating System question bank PDF directly below:
   </object>
 </div>
 <br>
+<div class="pdf-container">
+  <object data="txts/hello.txt#toolbar=0&navpanes=0" 
+          type="application/txt" 
+          class="pdf-frame">
+    <div class="pdf-fallback">
+      <p>Your browser doesn’t support inline PDFs.</p>
+      <a href="pdfs/os_bank.pdf" target="_blank">Click here to view the PDF</a>
+    </div>
+  </object>
+</div>
+<br>
 <p>
 If there is any problem while opening the PDF, you can also open it through this – 
 <a href="pdfs/os_bank.pdf" target="_blank" style="color: #1E90FF; text-decoration: underline;">
