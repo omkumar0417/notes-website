@@ -316,6 +316,59 @@ Click here to view the PDF
   Please refer to the PDF for a detailed breakdown of chapters, units, and learning objectives.
 </p>
 `,
+"Video lecture ":
+` 
+<div class="video-text-container" style="
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 15px;
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+">
+
+  <!-- YouTube Video -->
+  <div class="video-container" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px;">
+    <iframe src="https://www.youtube.com/embed/yK1uBHPdp30?si=7OIOcOkPBaG2gVzq" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 12px;">
+    </iframe>
+  </div>
+
+  <!-- Text File Display -->
+  <div class="pdf-container" style="
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    padding: 15px;
+    border-radius: 12px;
+    width: 100%;
+    height: 300px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    overflow: hidden;
+  ">
+    <iframe src="/txts/hello.txt" style="
+      width: 100%;
+      height: 100%;
+      border: none;
+      background: transparent;
+      color: #ffffff;
+      font-family: monospace;
+      font-size: 16px;
+    "></iframe>
+  </div>
+
+</div>
+
+`,
   "Important Questions unitwise": `
 Unit 1
 1) Explain kernel vs shell, user vs kernel mode with examples. 
