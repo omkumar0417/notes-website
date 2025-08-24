@@ -2,7 +2,7 @@ export default function handler(req, res) {
   const publicNotes = {
    "Operating Systems (College)": {
      "Syllabus": `
-You can view the complete Java syllabus PDF directly below:
+You can view the complete Operating System syllabus PDF directly below:
 <div class="pdf-container">
   <object data="pdfs/os_syllabus.pdf#toolbar=0&navpanes=0" 
           type="application/pdf" 
