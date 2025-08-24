@@ -301,7 +301,7 @@ You can view the Operating System question bank PDF directly below:
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  fetch('txts/hello.txt')
+  fetch('/txts/hello.txt')
     .then(response => {
       if (!response.ok) {
         throw new Error("File not found: " + response.status);
