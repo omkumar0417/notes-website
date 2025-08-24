@@ -289,29 +289,21 @@ You can view the Operating System question bank PDF directly below:
 </div>
 <br>
 <div class="pdf-container" style="
-  background: rgba(255, 255, 255, 0.05);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 15px;
-  border-radius: 12px;
+  background: transparent;
+  padding: 10px;
+  border-radius: 8px;
   width: 100%;
   height: 400px;
-  border: 1px solid rgba(255, 255, 255, 0.15);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
   overflow: hidden;
   display: flex;
 ">
-  <iframe src="/txts/hello.txt" style="
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: transparent;
-    color: #ffffff;
-    font-family: monospace;
+  <iframe src="/txts/hello.txt" 
+          style="width: 100%; height: 100%; border: none; background: transparent; 
+           font-family: monospace;
     font-size: 16px;
-  "></iframe>
+          color: #e62424ff;">
+  </iframe>
 </div>
-
 
 
 
