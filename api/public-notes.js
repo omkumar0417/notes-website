@@ -296,12 +296,12 @@ You can view the Operating System question bank PDF directly below:
   font-family: monospace;
   font-size: 16px;
   white-space: pre-wrap;">
-  <pre id="textContent" style="margin: 0;"></pre>
+  <pre id="textContent" style="margin: 0; color: #ffffff;"></pre>
 </div>
 
 <script>
 document.addEventListener("DOMContentLoaded", function() {
-  fetch('/txts/hello.txt')
+  fetch('/txts/hello.txt')  // correct absolute path
     .then(response => {
       if (!response.ok) {
         throw new Error("File not found: " + response.status);
@@ -309,13 +309,18 @@ document.addEventListener("DOMContentLoaded", function() {
       return response.text();
     })
     .then(data => {
-      document.getElementById('textContent').textContent = data;
+      const textElement = document.getElementById('textContent');
+      textElement.textContent = data;
+      textElement.style.display = 'block'; // force show
     })
     .catch(error => {
       document.getElementById('textContent').textContent = "Error loading text: " + error.message;
     });
 });
 </script>
+
+
+
 
 
 
