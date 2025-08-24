@@ -288,19 +288,18 @@ You can view the Operating System question bank PDF directly below:
   </object>
 </div>
 <br>
-<div class="pdf-container" style="background-color: transparent; color: #ffffff; padding: 10px; border-radius: 8px;">
-  <object data="txts/hello.txt" 
-          type="text/plain" 
-          class="pdf-frame" 
-          style="background-color: transparent; color: #ffffff; width:100%; height:400px; border:none;">
-    <div class="pdf-fallback" style="color: #ffffff;">
-      <p>Your browser doesn’t support viewing this document inline.</p>
-      <a href="txts/hello.txt" target="_blank" style="color: #1E90FF; text-decoration: underline;">
-        Click here to view the document
-      </a>
-    </div>
-  </object>
+<div class="pdf-container" style="background: transparent; color: #ffffff; padding: 10px; border-radius: 8px;">
+  <pre id="textContent" style="white-space: pre-wrap; font-family: monospace; font-size: 16px;"></pre>
 </div>
+
+<script>
+fetch('txts/hello.txt')
+  .then(response => response.text())
+  .then(data => {
+    document.getElementById('textContent').textContent = data;
+  });
+</script>
+
 
 
 
