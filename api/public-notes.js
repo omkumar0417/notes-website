@@ -288,16 +288,33 @@ You can view the Operating System question bank PDF directly below:
   </object>
 </div>
 <br>
-<div class="pdf-container" style="background: transparent; color: #ffffff; padding: 10px; border-radius: 8px;">
-  <pre id="textContent" style="white-space: pre-wrap; font-family: monospace; font-size: 16px;"></pre>
+<div class="pdf-container" style="
+  background: transparent;
+  color: #ffffff;
+  padding: 10px;
+  border-radius: 8px;
+  font-family: monospace;
+  font-size: 16px;
+  white-space: pre-wrap;">
+  <pre id="textContent" style="margin: 0;"></pre>
 </div>
 
 <script>
-fetch('txts/hello.txt')
-  .then(response => response.text())
-  .then(data => {
-    document.getElementById('textContent').textContent = data;
-  });
+document.addEventListener("DOMContentLoaded", function() {
+  fetch('txts/hello.txt')
+    .then(response => {
+      if (!response.ok) {
+        throw new Error("File not found: " + response.status);
+      }
+      return response.text();
+    })
+    .then(data => {
+      document.getElementById('textContent').textContent = data;
+    })
+    .catch(error => {
+      document.getElementById('textContent').textContent = "Error loading text: " + error.message;
+    });
+});
 </script>
 
 
