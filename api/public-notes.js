@@ -289,7 +289,10 @@ You can view the Operating System question bank PDF directly below:
 </div>
 <br>
 <p>
-If there any problem while opening with the pdf you can also open through this-  <a href="pdfs/os_bank.pdf" target="_blank">Click here to view the PDF</a><br>
+If there is any problem while opening the PDF, you can also open it through this – 
+<a href="pdfs/os_bank.pdf" target="_blank" style="color: #1E90FF; text-decoration: underline;">
+Click here to view the PDF
+</a><br>
   This syllabus covers all the essential topics and modules required for your Java course or exam preparation. 
   Please refer to the PDF for a detailed breakdown of chapters, units, and learning objectives.
 </p>
