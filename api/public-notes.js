@@ -300,16 +300,10 @@ You can view the Operating System question bank PDF directly below:
   <iframe src="/txts/hello.txt" 
           style="width: 100%; height: 100%; border: none; background: transparent; 
            font-family: monospace;
-    font-size: 16px;
+    font-size: 106px;
           color: #ffffffff;">
   </iframe>
 </div>
-
-
-
-
-
-
 
 
 <br>
