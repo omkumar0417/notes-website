@@ -288,7 +288,7 @@ You can view the Operating System question bank PDF directly below:
   </object>
 </div>
 <br>
-<div class="pdf-container" style="background-color: rgba(0,0,0,0.4); color: #ffffff; padding: 10px; border-radius: 8px;">
+<div class="pdf-container" style="background-color: transparent; color: #ffffff; padding: 10px; border-radius: 8px;">
   <object data="txts/hello.txt" 
           type="text/plain" 
           class="pdf-frame" 
@@ -301,6 +301,7 @@ You can view the Operating System question bank PDF directly below:
     </div>
   </object>
 </div>
+
 
 
 <br>
