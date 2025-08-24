@@ -318,7 +318,7 @@ Click here to view the PDF
 `,
 "Video lecture":
 ` 
-<h2 style="color:#fff; font-size:20px; margin-bottom:10px;">Video Lecture</h2>
+
 <div class="video-text-container" style="
   display: flex;
   flex-direction: column;
@@ -332,7 +332,7 @@ Click here to view the PDF
   margin: auto;
   box-shadow: 0 4px 20px rgba(0,0,0,0.3);
 ">
-
+<h2 style="color:#fff; font-size:20px; margin-bottom:10px;">Video Lecture</h2>
   <!-- YouTube Video -->
   <div class="video-container" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px;">
     <iframe src="https://www.youtube.com/embed/yK1uBHPdp30?si=7OIOcOkPBaG2gVzq" 
