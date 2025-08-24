@@ -289,15 +289,13 @@ You can view the Operating System question bank PDF directly below:
 </div>
 <br>
 <div class="pdf-container" style="
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  padding: 15px;
+  background: rgba(0, 0, 0, 0.4);
   border-radius: 16px;
+  padding: 15px;
   width: 100%;
   height: 400px;
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  border: 2px solid rgba(255, 0, 255, 0.4);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.7), 0 0 30px rgba(0, 255, 255, 0.4);
 ">
   <iframe src="/txts/hello.txt" style="
     width: 100%;
@@ -309,6 +307,7 @@ You can view the Operating System question bank PDF directly below:
     font-size: 16px;
   "></iframe>
 </div>
+
 
 
 
