@@ -316,8 +316,9 @@ Click here to view the PDF
   Please refer to the PDF for a detailed breakdown of chapters, units, and learning objectives.
 </p>
 `,
-"Video lecture ":
+"Video lecture":
 ` 
+<h2 style="color:#fff; font-size:20px; margin-bottom:10px;">Video Lecture</h2>
 <div class="video-text-container" style="
   display: flex;
   flex-direction: column;
@@ -342,7 +343,7 @@ Click here to view the PDF
             style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 12px;">
     </iframe>
   </div>
-
+<h3 style="color:#ccc; font-size:18px; margin-top:10px;">Reference Notes</h3>
   <!-- Text File Display -->
   <div class="pdf-container" style="
     background: rgba(255, 255, 255, 0.05);
