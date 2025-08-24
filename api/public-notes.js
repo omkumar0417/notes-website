@@ -290,47 +290,16 @@ You can view the Operating System question bank PDF directly below:
 <br>
 <div class="pdf-container" style="
   background: transparent;
-  color: #ffffff;
   padding: 10px;
   border-radius: 8px;
-  font-family: monospace;
-  font-size: 16px;
-  white-space: pre-wrap;">
-  <pre id="textContent" style="margin: 0; color: #ffffff;"></pre>
+  width: 100%;
+  height: 400px;
+">
+  <iframe src="/txts/hello.txt" 
+          style="width: 100%; height: 100%; border: none; background: transparent; color: #ffffff;">
+  </iframe>
 </div>
 
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  fetch('/txts/hello.txt')  // correct absolute path
-    .then(response => {
-      if (!response.ok) {
-        throw new Error("File not found: " + response.status);
-      }
-      return response.text();
-    })
-    .then(data => {
-      const textElement = document.getElementById('textContent');
-      textElement.textContent = data;
-      textElement.style.display = 'block'; // force show
-    })
-    .catch(error => {
-      document.getElementById('textContent').textContent = "Error loading text: " + error.message;
-    });
-});
-</script>
-<script>
-document.addEventListener("DOMContentLoaded", function() {
-  fetch('/txts/hello.txt')
-    .then(response => response.text())
-    .then(data => {
-      console.log("Fetched data:", data); // Debug in browser console
-      document.getElementById('textContent').textContent = data;
-    })
-    .catch(error => {
-      console.error("Error:", error);
-    });
-});
-</script>
 
 
 
