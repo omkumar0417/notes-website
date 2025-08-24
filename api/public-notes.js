@@ -318,6 +318,19 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 });
 </script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  fetch('/txts/hello.txt')
+    .then(response => response.text())
+    .then(data => {
+      console.log("Fetched data:", data); // Debug in browser console
+      document.getElementById('textContent').textContent = data;
+    })
+    .catch(error => {
+      console.error("Error:", error);
+    });
+});
+</script>
 
 
 
