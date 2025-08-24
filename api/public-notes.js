@@ -301,7 +301,7 @@ You can view the Operating System question bank PDF directly below:
           style="width: 100%; height: 100%; border: none; background: transparent; 
            font-family: monospace;
     font-size: 16px;
-          color: #e62424ff;">
+          color: #ffffffff;">
   </iframe>
 </div>
 
