@@ -290,24 +290,15 @@ You can view the Operating System question bank PDF directly below:
 <br>
 <div class="pdf-container" style="
   background: transparent;
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  border-radius: 12px;
   padding: 10px;
+  border-radius: 8px;
   width: 100%;
   height: 400px;
 ">
-  <iframe src="/txts/hello.txt" style="
-    width: 100%;
-    height: 100%;
-    border: none;
-    background: transparent;
-    color: #ffffff;
-    font-family: monospace;
-    font-size: 16px;
-  "></iframe>
+  <iframe src="/txts/hello.txt" 
+          style="width: 100%; height: 100%; border: none; background: transparent; color: #ffffff;">
+  </iframe>
 </div>
-
-
 
 
 
@@ -318,7 +309,7 @@ You can view the Operating System question bank PDF directly below:
 
 <br>
 <p>
-If 2there is any problem while opening the PDF, you can also open it through this – 
+If there is any problem while opening the PDF, you can also open it through this – 
 <a href="pdfs/os_bank.pdf" target="_blank" style="color: #1E90FF; text-decoration: underline;">
 Click here to view the PDF
 </a><br>
