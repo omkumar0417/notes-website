@@ -1,6 +1,10 @@
 export default function handler(req, res) {
   const publicNotes = {
    "Operating Systems (College)": {
+     "Syllabus": `
+<iframe src="pdfs/os_syllabus.pdf" width="100%" height="600px" class="pdf-frame" style="border:1px solid #a855f7;border-radius:8px;"></iframe>
+<br>If the PDF does not display, <a href="pdfs/os_syllabus.pdf" target="_blank" style="color:#a855f7;font-weight:bold;">click here to open it in a new tab</a>.
+`,
   "Unit 1: Introduction, OS Structure and Services": `
 <strong>Overview:</strong><br>
 An Operating System (OS) is system software that manages hardware resources and provides services for application programs and users.<br>
@@ -256,10 +260,7 @@ Security Classifications & Models
 - Discretionary Access Control (DAC), Mandatory Access Control (MAC), RBAC.
 - Bell–LaPadula (confidentiality: no read up, no write down) and Biba (integrity: no read down, no write up) models.`,
 
-  "Syllabus": `
-<iframe src="pdfs/os_syllabus.pdf" width="100%" height="600px" class="pdf-frame" style="border:1px solid #a855f7;border-radius:8px;"></iframe>
-<br>If the PDF does not display, <a href="pdfs/os_syllabus.pdf" target="_blank" style="color:#a855f7;font-weight:bold;">click here to open it in a new tab</a>.
-`,
+ 
 
   "Important Questions unitwise": `
 Unit 1
