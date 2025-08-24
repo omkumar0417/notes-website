@@ -277,7 +277,6 @@ Security Classifications & Models
  
 "Question bank":`
 You can view the Operating System question bank PDF directly below:
- <a href="pdfs/os_bank.pdf" target="_blank">Click here to view the PDF</a>
 <div class="pdf-container">
   <object data="pdfs/os_bank.pdf#toolbar=0&navpanes=0" 
           type="application/pdf" 
@@ -290,6 +289,7 @@ You can view the Operating System question bank PDF directly below:
 </div>
 <br>
 <p>
+If there any problem while opening with the pdf you can also open through this-  <a href="pdfs/os_bank.pdf" target="_blank">Click here to view the PDF</a>
   This syllabus covers all the essential topics and modules required for your Java course or exam preparation. 
   Please refer to the PDF for a detailed breakdown of chapters, units, and learning objectives.
 </p>
