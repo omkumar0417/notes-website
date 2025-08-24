@@ -277,6 +277,7 @@ Security Classifications & Models
  
 "Question bank":`
 You can view the Operating System question bank PDF directly below:
+ <a href="pdfs/os_bank.pdf" target="_blank">Click here to view the PDF</a>
 <div class="pdf-container">
   <object data="pdfs/os_bank.pdf#toolbar=0&navpanes=0" 
           type="application/pdf" 
