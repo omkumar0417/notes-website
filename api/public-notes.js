@@ -322,7 +322,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 <br>
 <p>
-If there 2is any problem while opening the PDF, you can also open it through this – 
+If there is any problem while opening the PDF, you can also open it through this – 
 <a href="pdfs/os_bank.pdf" target="_blank" style="color: #1E90FF; text-decoration: underline;">
 Click here to view the PDF
 </a><br>
