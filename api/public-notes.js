@@ -475,6 +475,36 @@ Unit 5
         "title": "Input and Output in C",
         "date": "2025-07-13",
         "content": "C uses standard input/output functions from stdio.h for communication with the user.<br><br>📥 **Input**: Use scanf() to read user input. Format specifiers like %d (int), %f (float), %c (char), %s (string) are used.<br>📤 **Output**: Use printf() to display output. Format specifiers are also used here.<br><br>Example:<br>```c<br>#include <stdio.h><br><br>int main() {<br>    int num;<br>    printf(\"Enter a number: \");<br>    scanf(\"%d\", &num);<br>    printf(\"You entered: %d\\n\", num);<br>    return 0;<br>}<br>```<br>This program prompts the user for a number and prints it back."
+      },
+      {
+        "title": "Video lecture",
+        "content": `
+<div class="video-text-container" style="
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  border-radius: 12px;
+  padding: 15px;
+  width: 100%;
+  max-width: 800px;
+  margin: auto;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+">
+<h2 style="color:#fff; font-size:20px; margin-bottom:10px;">Video Lecture</h2>
+  <!-- YouTube Video -->
+  <div class="video-container" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px;">
+    <iframe src="https://www.youtube.com/embed/KJgsSFOSQv0?si=4197skd7nP8DaNBM" 
+            title="YouTube video player" 
+            frameborder="0" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen
+            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border-radius: 12px;">
+    </iframe>
+  </div>
+</div>
+`
       }
     ]
   };
