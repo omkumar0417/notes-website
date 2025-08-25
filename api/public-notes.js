@@ -495,7 +495,7 @@ Unit 5
 <h2 style="color:#fff; font-size:20px; margin-bottom:10px;">Video Lecture</h2>
   <!-- YouTube Video -->
   <div class="video-container" style="position: relative; width: 100%; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px;">
-    <iframe src="https://www.youtube.com/embed/KJgsSFOSQv0?si=4197skd7nP8DaNBM" 
+    <iframe src="https://youtu.be/xND0t1pr3KY?si=9gkHoE9VPxpMnnQL" 
             title="YouTube video player" 
             frameborder="0" 
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
